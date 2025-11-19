@@ -1,0 +1,64 @@
+{
+  "coordenadores": [
+    {
+      "imgUrl": "./img/rodrigo.jpeg",
+      "name": "Prof. Dr. Rodrigo Coelho Barros",
+      "role": "Coordenador do MALTA Lab",
+      "specialty": "Coordenador de Pesquisa na Kunumi | Especialista em Machine Learning e Deep Learning.",
+      "lattes": "#",
+      "linkedin": "#"
+    },
+    {
+        "imgUrl": "./img/lucas.jpg",
+        "name": "Prof. Dr. Lucas S. Kupssinskû",
+        "role": "Vice Coordenador",
+        "specialty": "Deep Learning | Machine Learning | VC | PLN ",
+        "lattes": "http://lattes.cnpq.br/7949995756060059",
+        "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/"
+}
+  ],
+  "alunos": [
+    {
+      "imgUrl": "./img/parraga.png",
+      "name": "Me. Otávio Parraga",
+      "role": "Doutorando",
+      "topic": "PLN | LLMs | Activation Engineering | Fairness",
+      "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
+      "lattes": "http://lattes.cnpq.br/5668566915713518"
+    },
+    {
+      "imgUrl": "./img/marcelo.jpg",
+      "name": "Marcelo M. Delucis",
+      "role": "Doutorando",
+      "topic": "PLN | LLMs | Minsinformation Detection | Computer Vision | Healthcare",
+      "lattes": "http://lattes.cnpq.br/9944471444662969",
+      "scholar": "https://scholar.google.com/citations?user=ZdDSinAAAAAJ&hl=pt-BR",
+      "linkedin": "https://www.linkedin.com/in/marcelomussi/"
+    },
+    {
+      "imgUrl": "https://placehold.co/200x200/1e1b4b/a5b4fc?text=MSc",
+      "name": "Christian Mattjie de Oliveira",
+      "role": "Doutorando",
+      "topic": "Clustering | Imagens Médicas | Visão Computacional",
+      "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
+      "lattes": "http://lattes.cnpq.br/7402982950960470",
+      "linkedin": "https://www.linkedin.com/in/christianmattjie/"
+    },
+    {
+      "imgUrl": "./img/lucas_fraga.png",
+      "name": "Lucas M. Fraga",
+      "role": "Mestrando",
+      "topic": "Desinformação, PLN, LLMs",
+      "lattes": "http://lattes.cnpq.br/4680421690073859",
+      "linkedin": "https://www.linkedin.com/in/lucasfrag/"
+    },
+    {
+      "imgUrl": "./img/raissa.jpeg",
+      "name": "Raíssa Xavier Contassot",
+      "role": "Mestranda",
+      "topic": "Imagens Médicas",
+      "linkedin": "https://www.linkedin.com/in/raíssa-xavier-contassot/",
+      "lattes": "http://lattes.cnpq.br/2873185245435465"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "type": "Periódico",
+    "year": "2025",
+    "title": "Fairness in Deep Learning: A Survey on Vision and Language Research",
+    "authors": "PARRAGA, O.; MÓRE, M. D.; OLIVEIRA, C. M.; GAVENSKI, N. S.; KUPSSINSKÜ, L. S.; MEDRONHA, A.; MOURA, L. V.; SIMÕES, G. S.; BARROS, R. C.",
+    "source": "ACM Computing Surveys, vol. 57, no. 6, 2025.",
+    "doiUrl": "#"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Processamento de Linguagem Natural na Identificação de Quedas em Prontuários Eletrônicos dos Pacientes: Caso-Controle",
+    "authors": "SILVA, A. P.; LOPES, F. R.; SANTOS, H. D. P.; KUPSSINSKÜ, L. S.; URBANETTO, J. S.",
+    "source": "In: Anais do IV Congresso Internacional da Rede Brasileira de Enfermagem e Segurança do Paciente (CIREBRAENSP 2025).",
+    "doiUrl": "https://proceedings.science/cirebraensp-2025/trabalhos/processamento-de-linguagem-natural"
+  },
+  {
+    "type": "Conferência",
+    "year": "2024",
+    "title": "LERMO: A Novel Web Game for AI-Enhanced Sign Language Recognition",
+    "authors": "MEDRONHA, A.; LIMA, L.; CLAUDIO, J.; KUPSSINSKÜ, L. S.; BARROS, R. C.",
+    "source": "In: Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2024).",
+    "doiUrl": "https://doi.org/10.1609/aaai.v38i21.30387"
+  },
+  {
+    "type": "Conferência",
+    "year": "2024",
+    "title": "One Against Many: Exploring Multi-task Learning Generalization in Source-Code Tasks",
+    "authors": "PARRAGA, O.; KUPSSINSKÜ, L. S.; OLIVEIRA, C. M.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2024).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN60899.2024.10650982"
+  },
+  {
+    "type": "Conferência",
+    "year": "2024",
+    "title": "Unlocking the Potential of Vision-Language Models for Mammography Analysis",
+    "authors": "MOURA, L. V.; RAVAZIO, R. C.; OLIVEIRA, C. M.; KUPSSINSKÜ, L. S.; FREITAS, C. M. D. S.",
+    "source": "In: Proceedings of the IEEE International Symposium on Biomedical Imaging (ISBI 2024).",
+    "doiUrl": "https://doi.org/10.1109/ISBI56570.2024.10635412"
+  }
+]
