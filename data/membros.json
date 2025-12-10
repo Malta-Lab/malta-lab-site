@@ -53,7 +53,7 @@
       "linkedin": "https://www.linkedin.com/in/lucasfrag/"
     },
     {
-      "imgUrl": "./img/raissa.png",
+      "imgUrl": "./img/raissa.jpg",
       "name": "Raíssa Xavier Contassot",
       "role": "Mestranda",
       "topic": "Medical Imaging",
@@ -79,7 +79,7 @@
         "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
       },
       {
-        "imgUrl": "./img/abitante.JPG",
+        "imgUrl": "./img/abitante.jpg",
         "name": "João Vitor Boer Abitante",
         "role": "Mestrando",
         "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
