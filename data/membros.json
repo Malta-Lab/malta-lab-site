@@ -61,7 +61,7 @@
       "lattes": "http://lattes.cnpq.br/2873185245435465"
     },
     {
-        "imgUrl": "./img/jerusa.jpg",
+        "imgUrl": "./img/jerusa.png",
         "name": "Jerusa Finatto",
         "role": "Mestranda",
         "topic": "Speech Analysis | Clustering | Medical Imaging",
@@ -79,7 +79,7 @@
         "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
       },
       {
-        "imgUrl": "./img/abitante.jpg",
+        "imgUrl": "./img/abitante.JPG",
         "name": "João Vitor Boer Abitante",
         "role": "Mestrando",
         "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
