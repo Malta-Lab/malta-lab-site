@@ -68,6 +68,15 @@
         "lattes": "http://lattes.cnpq.br/8623671040783621",
         "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
         "linkedin": "www.linkedin.com/in/jerusa-finatto-02021852"
+      },
+      {
+        "imgUrl": "./img/joana.png",
+        "name": "Joana Pasquali",
+        "role": "Mestranda",
+        "topic": "Deep Learning | Machine Unlearning",
+        "lattes": "http://lattes.cnpq.br/6522477912976706",
+        "linkedin": "linkedin.com/in/jmpasquali",
+        "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
       }
   ]
 }
