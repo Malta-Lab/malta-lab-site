@@ -53,7 +53,7 @@
       "linkedin": "https://www.linkedin.com/in/lucasfrag/"
     },
     {
-      "imgUrl": "./img/raissa.jpeg",
+      "imgUrl": "./img/raissa.png",
       "name": "Raíssa Xavier Contassot",
       "role": "Mestranda",
       "topic": "Medical Imaging",
@@ -77,6 +77,22 @@
         "lattes": "http://lattes.cnpq.br/6522477912976706",
         "linkedin": "linkedin.com/in/jmpasquali",
         "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
+      },
+      {
+        "imgUrl": "./img/abitante.JPG",
+        "name": "João Vitor Boer Abitante",
+        "role": "Mestrando",
+        "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
+        "lattes": "http://lattes.cnpq.br/8192678717960847",
+        "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/"
+      },
+      {
+        "imgUrl": "./img/wagner.jpeg",
+        "name": "Pedro Prokath Wagner",
+        "role": "Mestrando",
+        "topic": "PLN | LLMs",
+        "lattes": "http://lattes.cnpq.br/4683965954238969",
+        "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner"
       }
   ]
 }
