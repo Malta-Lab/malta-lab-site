@@ -12,7 +12,7 @@
         "imgUrl": "./img/lucas.jpg",
         "name": "Prof. Dr. Lucas S. Kupssinskû",
         "role": "Vice Coordenador",
-        "specialty": "Deep Learning | Machine Learning | VC | PLN ",
+        "specialty": "Deep Learning | Machine Learning | CV | NLP",
         "lattes": "http://lattes.cnpq.br/7949995756060059",
         "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/"
 }
@@ -22,7 +22,7 @@
       "imgUrl": "./img/parraga.png",
       "name": "Me. Otávio Parraga",
       "role": "Doutorando",
-      "topic": "PLN | LLMs | Activation Engineering | Fairness",
+      "topic": "NLP | LLMs | Activation Engineering | Fairness",
       "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
       "lattes": "http://lattes.cnpq.br/5668566915713518"
     },
@@ -30,7 +30,7 @@
       "imgUrl": "./img/marcelo.jpg",
       "name": "Marcelo M. Delucis",
       "role": "Doutorando",
-      "topic": "PLN | LLMs | Minsinformation Detection | Computer Vision | Healthcare",
+      "topic": "NLP | LLMs | Misinformation Detection | Computer Vision | Healthcare",
       "lattes": "http://lattes.cnpq.br/9944471444662969",
       "scholar": "https://scholar.google.com/citations?user=ZdDSinAAAAAJ&hl=pt-BR",
       "linkedin": "https://www.linkedin.com/in/marcelomussi/"
@@ -39,7 +39,7 @@
       "imgUrl": "https://placehold.co/200x200/1e1b4b/a5b4fc?text=MSc",
       "name": "Christian Mattjie de Oliveira",
       "role": "Doutorando",
-      "topic": "Clustering | Imagens Médicas | Visão Computacional",
+      "topic": "Clustering | Medical Imaging | Computer Vision",
       "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
       "lattes": "http://lattes.cnpq.br/7402982950960470",
       "linkedin": "https://www.linkedin.com/in/christianmattjie/"
@@ -48,7 +48,7 @@
       "imgUrl": "./img/lucas_fraga.png",
       "name": "Lucas M. Fraga",
       "role": "Mestrando",
-      "topic": "Desinformação, PLN, LLMs",
+      "topic": "Misinformation Detection | NLP | LLMs",
       "lattes": "http://lattes.cnpq.br/4680421690073859",
       "linkedin": "https://www.linkedin.com/in/lucasfrag/"
     },
@@ -56,9 +56,18 @@
       "imgUrl": "./img/raissa.jpeg",
       "name": "Raíssa Xavier Contassot",
       "role": "Mestranda",
-      "topic": "Imagens Médicas",
+      "topic": "Medical Imaging",
       "linkedin": "https://www.linkedin.com/in/raíssa-xavier-contassot/",
       "lattes": "http://lattes.cnpq.br/2873185245435465"
-    }
+    },
+    {
+        "imgUrl": "./img/jerusa.png",
+        "name": "Jerusa Finatto",
+        "role": "Mestranda",
+        "topic": "Speech Analysis | Clustering | Medical Imaging",
+        "lattes": "http://lattes.cnpq.br/8623671040783621",
+        "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
+        "linkedin": "www.linkedin.com/in/jerusa-finatto-02021852"
+      }
   ]
 }
