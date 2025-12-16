@@ -9,13 +9,13 @@
       "linkedin": "#"
     },
     {
-        "imgUrl": "./img/lucas.jpg",
-        "name": "Prof. Dr. Lucas S. Kupssinskû",
-        "role": "Vice Coordenador",
-        "specialty": "Deep Learning | Machine Learning | CV | NLP",
-        "lattes": "http://lattes.cnpq.br/7949995756060059",
-        "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/"
-}
+      "imgUrl": "./img/lucas.jpg",
+      "name": "Prof. Dr. Lucas S. Kupssinskû",
+      "role": "Vice Coordenador",
+      "specialty": "Deep Learning | Machine Learning | CV | NLP",
+      "lattes": "http://lattes.cnpq.br/7949995756060059",
+      "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/"
+    }
   ],
   "alunos": [
     {
@@ -61,38 +61,56 @@
       "lattes": "http://lattes.cnpq.br/2873185245435465"
     },
     {
-        "imgUrl": "./img/jerusa.png",
-        "name": "Jerusa Finatto",
-        "role": "Mestranda",
-        "topic": "Speech Analysis | Clustering | Medical Imaging",
-        "lattes": "http://lattes.cnpq.br/8623671040783621",
-        "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
-        "linkedin": "www.linkedin.com/in/jerusa-finatto-02021852"
-      },
-      {
-        "imgUrl": "./img/joana.png",
-        "name": "Joana Pasquali",
-        "role": "Mestranda",
-        "topic": "Deep Learning | Machine Unlearning",
-        "lattes": "http://lattes.cnpq.br/6522477912976706",
-        "linkedin": "linkedin.com/in/jmpasquali",
-        "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
-      },
-      {
-        "imgUrl": "./img/abitante.JPG",
-        "name": "João Vitor Boer Abitante",
-        "role": "Mestrando",
-        "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
-        "lattes": "http://lattes.cnpq.br/8192678717960847",
-        "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/"
-      },
-      {
-        "imgUrl": "./img/wagner.jpeg",
-        "name": "Pedro Prokath Wagner",
-        "role": "Mestrando",
-        "topic": "PLN | LLMs",
-        "lattes": "http://lattes.cnpq.br/4683965954238969",
-        "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner"
-      }
+      "imgUrl": "./img/jerusa.png",
+      "name": "Jerusa Finatto",
+      "role": "Mestranda",
+      "topic": "Speech Analysis | Clustering | Medical Imaging",
+      "lattes": "http://lattes.cnpq.br/8623671040783621",
+      "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
+      "linkedin": "www.linkedin.com/in/jerusa-finatto-02021852"
+    },
+    {
+      "imgUrl": "./img/joana.png",
+      "name": "Joana Pasquali",
+      "role": "Mestranda",
+      "topic": "Deep Learning | Machine Unlearning",
+      "lattes": "http://lattes.cnpq.br/6522477912976706",
+      "linkedin": "linkedin.com/in/jmpasquali",
+      "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
+    },
+    {
+      "imgUrl": "./img/abitante.JPG",
+      "name": "João Vitor Boer Abitante",
+      "role": "Mestrando",
+      "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
+      "lattes": "http://lattes.cnpq.br/8192678717960847",
+      "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/"
+    },
+    {
+      "imgUrl": "./img/wagner.jpeg",
+      "name": "Pedro Prokath Wagner",
+      "role": "Mestrando",
+      "topic": "PLN | LLMs",
+      "lattes": "http://lattes.cnpq.br/4683965954238969",
+      "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner"
+    },
+    {
+      "imgUrl": "./img/rafa.jpeg",
+      "name": "Rafaela Ravazio",
+      "role": "Doutoranda",
+      "topic": "Clustering | Medical Imaging | Bioinformatics",
+      "lattes": "https://lattes.cnpq.br/6522477912976706",
+      "linkedin": "https://www.linkedin.com/in/rafaelaravazio/"
+    }
+  ],
+  "alunos_graduacao": [
+    {
+      "imgUrl": "https://placehold.co/200x200/1e1b4b/a5b4fc?text=Grad",
+      "name": "Nome do Aluno",
+      "role": "Iniciação Científica",
+      "topic": "Área de Interesse",
+      "linkedin": "#",
+      "lattes": "#"
+    }
   ]
 }

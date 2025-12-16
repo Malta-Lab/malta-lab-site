@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MALTA Lab | PUCRS</title>
-    
-    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts - Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Define a fonte Inter como padrão */
         body {
             font-family: 'Inter', sans-serif;
         }
+
         /* Efeito de sublinhado animado para links da navbar */
         .nav-link {
             position: relative;
             text-decoration: none;
-            color: #d1d5db; /* text-gray-300 */
+            color: #d1d5db;
+            /* text-gray-300 */
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -30,15 +36,17 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: #6366f1; /* indigo-500 */
+            background-color: #6366f1;
+            /* indigo-500 */
             transform-origin: bottom right;
             transition: transform 0.25s ease-out;
         }
+
         .nav-link:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        
+
         /* Estilo para o fundo de partículas */
         #particles-js-container {
             position: fixed;
@@ -46,18 +54,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Coloca o fundo atrás de todo o conteúdo */
+            z-index: -1;
+            /* Coloca o fundo atrás de todo o conteúdo */
         }
-        
+
         .nav-link-mobile {
             transition: background-color 0.2s ease-out;
         }
+
         .nav-link-mobile:hover {
-            background-color: #1f2937; /* gray-800 */
+            background-color: #1f2937;
+            /* gray-800 */
         }
     </style>
-    
-    <!-- Configuração do Tailwind (opcional, mas bom para definir a fonte) --><script>
+
+    <!-- Configuração do Tailwind (opcional, mas bom para definir a fonte) -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -90,19 +102,22 @@
         };
     </script>
 </head>
+
 <body class="text-gray-200 antialiased bg-darkblue-900">
 
     <!-- ========== Contêiner do Fundo de Partículas ========== -->
     <div id="particles-js-container"></div>
 
-    <!-- ========== Header ========== --><header class="bg-darkblue-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 w-full">
+    <!-- ========== Header ========== -->
+    <header class="bg-darkblue-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 w-full">
         <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo --><a href="#inicio" class="text-2xl font-bold text-primary-500">
                     MALTA Lab
                 </a>
-                
-                <!-- Links de Navegação (Desktop) --><div class="hidden md:flex md:items-center md:space-x-8">
+
+                <!-- Links de Navegação (Desktop) -->
+                <div class="hidden md:flex md:items-center md:space-x-8">
                     <a href="#inicio" class="font-medium nav-link text-gray-300 hover:text-white">Início</a>
                     <a href="#sobre" class="font-medium nav-link text-gray-300 hover:text-white">Sobre</a>
                     <a href="#pesquisa" class="font-medium nav-link text-gray-300 hover:text-white">Pesquisa</a>
@@ -110,38 +125,50 @@
                     <a href="#publicacoes" class="font-medium nav-link text-gray-300 hover:text-white">Publicações</a>
                     <a href="#contato" class="font-medium nav-link text-gray-300 hover:text-white">Contato</a>
                 </div>
-                
-                <!-- Botão de Menu (Mobile) --><div class="md:hidden flex items-center">
+
+                <!-- Botão de Menu (Mobile) -->
+                <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
             </div>
         </nav>
-        
-        <!-- Menu (Mobile) --><div id="mobile-menu" class="md:hidden hidden bg-darkblue-800 shadow-lg absolute w-full z-40">
+
+        <!-- Menu (Mobile) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-darkblue-800 shadow-lg absolute w-full z-40">
             <div class="flex flex-col space-y-1 px-4 pt-2 pb-4">
-                <a href="#inicio" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Início</a>
-                <a href="#sobre" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Sobre</a>
-                <a href="#pesquisa" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Pesquisa</a>
-                <a href="#membros" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Membros</a>
-                <a href="#publicacoes" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Publicações</a>
-                <a href="#contato" class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Contato</a>
+                <a href="#inicio"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Início</a>
+                <a href="#sobre"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Sobre</a>
+                <a href="#pesquisa"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Pesquisa</a>
+                <a href="#membros"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Membros</a>
+                <a href="#publicacoes"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Publicações</a>
+                <a href="#contato"
+                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Contato</a>
             </div>
         </div>
     </header>
 
-    <!-- ========== Seção Principal (Início) ========== --><main id="inicio">
+    <!-- ========== Seção Principal (Início) ========== -->
+    <main id="inicio">
         <section class="relative h-screen flex items-center justify-center text-center bg-transparent overflow-hidden">
             <!-- Fundos anteriores removidos para mostrar o particles.js -->
-            
+
             <div class="relative z-10 p-4">
                 <div class="max-w-4xl mx-auto">
                     <!-- Título de texto removido e substituído pela imagem -->
-                    <img src="img/logo.png" alt="MALTA - Machine Learning Theory and Applications Lab Logo" class="mx-auto w-full h-auto" style="max-width: 600px;">
-                    
+                    <img src="img/logo.png" alt="MALTA - Machine Learning Theory and Applications Lab Logo"
+                        class="mx-auto w-full h-auto" style="max-width: 600px;">
+
                     <!-- O subtítulo (MAchine Learning...) foi removido, pois já está na imagem -->
 
                     <p class="mt-6 text-lg md:text-xl text-gray-400">
@@ -150,10 +177,12 @@
                         Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)
                     </p>
                     <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#sobre" class="inline-block px-8 py-3 bg-primary-500 text-white font-semibold rounded-lg shadow-md hover:bg-primary-600 transition duration-300">
+                        <a href="#sobre"
+                            class="inline-block px-8 py-3 bg-primary-500 text-white font-semibold rounded-lg shadow-md hover:bg-primary-600 transition duration-300">
                             Saiba Mais
                         </a>
-                        <a href="#pesquisa" class="inline-block px-8 py-3 bg-darkblue-700 text-gray-100 font-semibold rounded-lg shadow-md hover:bg-darkblue-600 transition duration-300">
+                        <a href="#pesquisa"
+                            class="inline-block px-8 py-3 bg-darkblue-700 text-gray-100 font-semibold rounded-lg shadow-md hover:bg-darkblue-600 transition duration-300">
                             Nossa Pesquisa
                         </a>
                     </div>
@@ -161,45 +190,72 @@
             </div>
         </section>
 
-        <!-- ========== Sobre ========== --><section id="sobre" class="py-20 md:py-28">
+        <!-- ========== Sobre ========== -->
+        <section id="sobre" class="py-20 md:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Sobre o Laboratório</h2>
+                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Sobre o Laboratório
+                    </h2>
                     <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                         Quem Somos
                     </p>
                     <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        O MALTA Lab (MAchine Learning Technologies and Applications Laboratory) é um grupo de pesquisa da Escola Politécnica da PUCRS focado no avanço e na aplicação de tecnologias de aprendizado de máquina. Nossa missão é conduzir pesquisas de ponta, formar recursos humanos altamente qualificados e desenvolver soluções inovadoras que impactem positivamente a sociedade e a indústria.
+                        O MALTA Lab (MAchine Learning Technologies and Applications Laboratory) é um grupo de pesquisa
+                        da Escola Politécnica da PUCRS focado no avanço e na aplicação de tecnologias de aprendizado de
+                        máquina. Nossa missão é conduzir pesquisas de ponta, formar recursos humanos altamente
+                        qualificados e desenvolver soluções inovadoras que impactem positivamente a sociedade e a
+                        indústria.
                     </p>
                 </div>
-                
+
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <div
+                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                            </path>
+                        </svg>
                         <h3 class="mt-6 text-xl font-semibold text-white">Missão</h3>
                         <p class="mt-2 text-base text-gray-400">
-                            Desenvolver pesquisa de vanguarda em IA e Machine Learning, com foco em problemas complexos e de alto impacto.
+                            Desenvolver pesquisa de vanguarda em IA e Machine Learning, com foco em problemas complexos
+                            e de alto impacto.
                         </p>
                     </div>
-                    <div class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <div
+                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
                         <h3 class="mt-6 text-xl font-semibold text-white">Inovação</h3>
                         <p class="mt-2 text-base text-gray-400">
-                            Aplicar técnicas avançadas para criar soluções tecnológicas inovadoras em diversas áreas, como saúde, finanças e cidades inteligentes.
+                            Aplicar técnicas avançadas para criar soluções tecnológicas inovadoras em diversas áreas,
+                            como saúde, finanças e cidades inteligentes.
                         </p>
                     </div>
-                    <div class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-2.124M6 18H1m5-2v2a3 3 0 01-5.356-2.124M12 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM3 21h18M12 11V7m0 11a3 3 0 01-3-3v-1m3 4v-4m0 0a3 3 0 013-3v0m-3 3c-1.657 0-3 1.343-3 3v1m6-4v1a3 3 0 01-3 3z"></path></svg>
+                    <div
+                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-2.124M6 18H1m5-2v2a3 3 0 01-5.356-2.124M12 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM3 21h18M12 11V7m0 11a3 3 0 01-3-3v-1m3 4v-4m0 0a3 3 0 013-3v0m-3 3c-1.657 0-3 1.343-3 3v1m6-4v1a3 3 0 01-3 3z">
+                            </path>
+                        </svg>
                         <h3 class="mt-6 text-xl font-semibold text-white">Formação</h3>
                         <p class="mt-2 text-base text-gray-400">
-                            Formar mestres, doutores e pesquisadores aptos a liderar a transformação digital e os desafios da Inteligência Artificial.
+                            Formar mestres, doutores e pesquisadores aptos a liderar a transformação digital e os
+                            desafios da Inteligência Artificial.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== Linhas de Pesquisa ========== --><section id="pesquisa" class="py-20 md:py-28">
+        <!-- ========== Linhas de Pesquisa ========== -->
+        <section id="pesquisa" class="py-20 md:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">O que fazemos</h2>
@@ -207,10 +263,11 @@
                         Linhas de Pesquisa
                     </p>
                     <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Nossas atividades de pesquisa estão concentradas em áreas-chave de Machine Learning, buscando tanto o avanço teórico quanto a aplicação prática.
+                        Nossas atividades de pesquisa estão concentradas em áreas-chave de Machine Learning, buscando
+                        tanto o avanço teórico quanto a aplicação prática.
                     </p>
                 </div>
-                
+
                 <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
                 <div id="research-lines-container" class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- O JavaScript irá popular esta área -->
@@ -219,7 +276,8 @@
             </div>
         </section>
 
-        <!-- ========== Membros ========== --><section id="membros" class="py-20 md:py-28">
+        <!-- ========== Membros ========== -->
+        <section id="membros" class="py-20 md:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Nossa Equipe</h2>
@@ -227,8 +285,9 @@
                         Conheça nossos Pesquisadores
                     </p>
                 </div>
-                
-                <!-- Coordenadores --><div class="mt-16">
+
+                <!-- Coordenadores -->
+                <div class="mt-16">
                     <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Coordenadores</h3>
                     <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
                     <div id="coordenadores-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -236,38 +295,54 @@
                         <div class="text-center text-gray-400 col-span-3">Carregando coordenadores...</div>
                     </div>
                 </div>
-                
-                <!-- Alunos de Pós-Graduação --><div class="mt-16">
-                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Alunos de Pós-Graduação</h3>
+
+                <!-- Alunos de Pós-Graduação -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Alunos de Pós-Graduação
+                    </h3>
                     <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
-                    <div id="alunos-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div id="alunos-container"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         <!-- O JavaScript irá popular esta área -->
                         <div class="text-center text-gray-400 col-span-4">Carregando alunos...</div>
+                    </div>
+                </div>
+
+                <!-- Alunos de Graduação -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Alunos de Graduação</h3>
+                    <div id="alunos-graduacao-container"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="text-center text-gray-400 col-span-4">Carregando alunos de graduação...</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== Publicações ========== --><section id="publicacoes" class="py-20 md:py-28">
+        <!-- ========== Publicações ========== -->
+        <section id="publicacoes" class="py-20 md:py-28">
             <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Produção Científica</h2>
+                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Produção Científica
+                    </h2>
                     <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                         Publicações Recentes
                     </p>
                     <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Confira alguns dos trabalhos mais recentes publicados por membros do nosso laboratório em conferências e periódicos de prestígio.
+                        Confira alguns dos trabalhos mais recentes publicados por membros do nosso laboratório em
+                        conferências e periódicos de prestígio.
                     </p>
                 </div>
-                
+
                 <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
                 <div id="publications-container" class="mt-16 space-y-8">
                     <!-- O JavaScript irá popular esta área -->
                     <div class="text-center text-gray-400">Carregando publicações...</div>
-                    
+
                     <!-- O botão "Ver todas" será mantido pelo JS -->
                     <div class="text-center mt-8">
-                        <a href="#" class="px-6 py-2 border border-primary-500 text-primary-400 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition duration-300">
+                        <a href="#"
+                            class="px-6 py-2 border border-primary-500 text-primary-400 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition duration-300">
                             Ver todas as publicações
                         </a>
                     </div>
@@ -275,7 +350,8 @@
             </div>
         </section>
 
-        <!-- ========== Contato ========== --><section id="contato" class="py-20 md:py-28">
+        <!-- ========== Contato ========== -->
+        <section id="contato" class="py-20 md:py-28">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Fale Conosco</h2>
@@ -283,12 +359,14 @@
                         Entre em Contato
                     </p>
                     <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Tem interesse em colaborar, ingressar no grupo ou saber mais sobre nossos projetos? Nos envie uma mensagem.
+                        Tem interesse em colaborar, ingressar no grupo ou saber mais sobre nossos projetos? Nos envie
+                        uma mensagem.
                     </p>
                 </div>
-                
+
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Informações de Contato --><div class="space-y-8">
+                    <!-- Informações de Contato -->
+                    <div class="space-y-8">
                         <div>
                             <h3 class="text-xl font-semibold text-white">Endereço</h3>
                             <p class="mt-2 text-base text-gray-400">
@@ -300,10 +378,12 @@
                         <div>
                             <h3 class="text-xl font-semibold text-white">Email</h3>
                             <p class="mt-2 text-base text-gray-400">
-                                Para assuntos gerais: <a href="mailto:malta.lab@pucrs.br" class="text-primary-400 hover:underline">malta.lab@pucrs.br</a>
+                                Para assuntos gerais: <a href="mailto:malta.lab@pucrs.br"
+                                    class="text-primary-400 hover:underline">malta.lab@pucrs.br</a>
                             </p>
                             <p class="mt-1 text-base text-gray-400">
-                                Para admissões: <a href="mailto:pos.comp@pucrs.br" class="text-primary-400 hover:underline">pos.comp@pucrs.br</a>
+                                Para admissões: <a href="mailto:pos.comp@pucrs.br"
+                                    class="text-primary-400 hover:underline">pos.comp@pucrs.br</a>
                             </p>
                         </div>
                         <div>
@@ -314,26 +394,32 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Formulário de Contato --><form action="#" method="POST" class="bg-darkblue-700 p-8 rounded-lg shadow-lg space-y-6">
+
+                    <!-- Formulário de Contato -->
+                    <form action="#" method="POST" class="bg-darkblue-700 p-8 rounded-lg shadow-lg space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-200">Nome</label>
-                            <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
+                            <input type="text" name="name" id="name" required
+                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-200">Email</label>
-                            <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
+                            <input type="email" name="email" id="email" required
+                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
                         </div>
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-200">Assunto</label>
-                            <input type="text" name="subject" id="subject" required class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
+                            <input type="text" name="subject" id="subject" required
+                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-200">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base"></textarea>
+                            <textarea id="message" name="message" rows="4" required
+                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base"></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-300">
+                            <button type="submit"
+                                class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-300">
                                 Enviar Mensagem
                             </button>
                         </div>
@@ -343,7 +429,8 @@
         </section>
     </main>
 
-    <!-- ========== Footer ========== --><footer class="bg-transparent text-gray-400 border-t border-darkblue-700">
+    <!-- ========== Footer ========== -->
+    <footer class="bg-transparent text-gray-400 border-t border-darkblue-700">
         <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
             <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                 <div class="mb-4 md:mb-0">
@@ -353,20 +440,22 @@
                 <div class="text-sm">
                     <p>&copy; 2024 MALTA Lab - Todos os direitos reservados.</p>
                     <p class="mt-1 text-gray-500">
-                        <a href="https://www.pucrs.br" target="_blank" rel="noopener noreferrer" class="hover:text-white">PUCRS</a> - Escola Politécnica
+                        <a href="https://www.pucrs.br" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-white">PUCRS</a> - Escola Politécnica
                     </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ========== Script (Mobile Menu) ========== --><script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <!-- ========== Script (Mobile Menu) ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             const menuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+
             // Alternar menu ao clicar no botão
-            menuButton.addEventListener('click', function() {
+            menuButton.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
 
@@ -382,14 +471,14 @@
 
     <!-- ========== SCRIPT DE CARREGAMENTO DE DADOS DINÂMICOS ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
+        document.addEventListener('DOMContentLoaded', function () {
+
             // --- 2. FUNÇÕES DE RENDERIZAÇÃO ---
 
             function renderResearchLines(lines) {
                 const container = document.getElementById('research-lines-container');
                 if (!container) return;
-                
+
                 container.innerHTML = ''; // Limpa o conteúdo estático/de loading
                 lines.forEach(line => {
                     const lineHtml = `
@@ -410,10 +499,13 @@
             function renderMembers(members) {
                 const coordContainer = document.getElementById('coordenadores-container');
                 const alunosContainer = document.getElementById('alunos-container');
+                const gradContainer = document.getElementById('alunos-graduacao-container');
+
                 if (!coordContainer || !alunosContainer) return;
 
                 coordContainer.innerHTML = ''; // Limpa o conteúdo
                 alunosContainer.innerHTML = ''; // Limpa o conteúdo
+                if (gradContainer) gradContainer.innerHTML = ''; // Limpa o conteúdo de graduação
 
                 const linkClasses = "text-gray-400 hover:text-primary-400 transition-colors duration-200";
 
@@ -446,7 +538,7 @@
 
                 members.alunos.forEach(aluno => {
                     // --- INÍCIO DA MODIFICAÇÃO ---
-                    
+
                     // 1. Criar HTML para links condicionalmente
                     let linksHtml = '';
                     const alunoLinkClasses = "text-gray-400 hover:text-primary-400 text-sm transition-colors duration-200";
@@ -455,7 +547,7 @@
                     if (aluno.lattes && aluno.lattes !== '#') {
                         linksHtml += `<a href="${aluno.lattes}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
                     }
-                    
+
                     // Verifica se 'linkedin' existe, não é nulo, e não é um placeholder '#'
                     if (aluno.linkedin && aluno.linkedin !== '#') {
                         linksHtml += `<a href="${aluno.linkedin}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
@@ -480,9 +572,37 @@
                         </div>
                     `;
                     // --- FIM DA MODIFICAÇÃO ---
-                    
+
                     alunosContainer.innerHTML += alunoHtml;
                 });
+
+                // Renderiza alunos de graduação se houver container e dados
+                if (gradContainer && members.alunos_graduacao) {
+                    members.alunos_graduacao.forEach(aluno => {
+                        let linksHtml = '';
+                        const alunoLinkClasses = "text-gray-400 hover:text-primary-400 text-sm transition-colors duration-200";
+
+                        if (aluno.lattes && aluno.lattes !== '#') {
+                            linksHtml += `<a href="${aluno.lattes}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
+                        }
+                        if (aluno.linkedin && aluno.linkedin !== '#') {
+                            linksHtml += `<a href="${aluno.linkedin}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
+                        }
+
+                        const alunoHtml = `
+                            <div class="text-center bg-darkblue-700 rounded-lg shadow-md p-5 transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between h-full">
+                                <div>
+                                    <img class="w-24 h-24 rounded-full mx-auto border border-primary-600" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
+                                    <h4 class="mt-3 text-lg font-semibold text-white">${aluno.name}</h4>
+                                    <p class="text-primary-400 text-sm">${aluno.role}</p>
+                                    <p class="mt-1 text-xs text-gray-400">${aluno.topic}</p>
+                                </div>
+                                ${linksHtml ? `<div class="mt-3 pt-3 border-t border-darkblue-600 flex justify-center space-x-4">${linksHtml}</div>` : ''}
+                            </div>
+                        `;
+                        gradContainer.innerHTML += alunoHtml;
+                    });
+                }
             }
 
             function renderPublications(publications) {
@@ -534,7 +654,7 @@
                     if (!resPesquisa.ok || !resMembros.ok || !resPublicacoes.ok) {
                         throw new Error('Falha ao carregar um ou mais arquivos JSON');
                     }
-                    
+
                     const pesquisa = await resPesquisa.json();
                     const membros = await resMembros.json();
                     const publicacoes = await resPublicacoes.json();
@@ -548,12 +668,17 @@
                     console.error("Erro ao carregar dados dos arquivos JSON:", error);
                     // Opcional: Mostrar uma mensagem de erro na UI
                     document.getElementById('research-lines-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
+                    document.getElementById('research-lines-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
                     document.getElementById('coordenadores-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar coordenadores.</p>';
+                    document.getElementById('alunos-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos.</p>';
+                    if (document.getElementById('alunos-graduacao-container')) {
+                        document.getElementById('alunos-graduacao-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos de graduação.</p>';
+                    }
                     document.getElementById('alunos-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos.</p>';
                     document.getElementById('publications-container').innerHTML = '<p class="text-red-400 text-center">Erro ao carregar publicações.</p>';
                 }
             }
-            
+
             // Para usar, comente 'loadMockData()' e descomente a linha abaixo:
             loadAllData();
 
@@ -564,7 +689,7 @@
     <!-- ========== SCRIPT (Particles.js) ========== -->
     <!-- Carrega a biblioteca -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
+
     <!-- Inicializa e configura o particles.js -->
     <script>
         particlesJS(
@@ -656,4 +781,5 @@
     </script>
 
 </body>
+
 </html>
