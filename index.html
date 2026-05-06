@@ -12,20 +12,20 @@
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* Define a fonte Inter como padrão */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Figtree', sans-serif;
         }
 
         /* Efeito de sublinhado animado para links da navbar */
         .nav-link {
             position: relative;
             text-decoration: none;
-            color: #d1d5db;
-            /* text-gray-300 */
+            color: #5A6270;
+            /* stone-600 equivalent */
         }
 
         .nav-link::after {
@@ -36,8 +36,8 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: #6366f1;
-            /* indigo-500 */
+            background-color: #ff4b3e;
+            /* Kunumi red-orange accent */
             transform-origin: bottom right;
             transition: transform 0.25s ease-out;
         }
@@ -63,9 +63,24 @@
         }
 
         .nav-link-mobile:hover {
-            background-color: #1f2937;
-            /* gray-800 */
+            background-color: #D0CAC5;
+            /* warm hover */
         }
+
+        /* === Kunumi Light Theme Color Overrides === */
+        /* Nav hover colors */
+        .nav-link:hover { color: #30353B !important; }
+        #mobile-menu-button:hover { color: #30353B !important; }
+
+        /* Override built-in Tailwind text colors for light theme */
+        .text-white { color: #30353B !important; }
+        .text-gray-100, .text-gray-200 { color: #30353B !important; }
+        .text-gray-300 { color: #5A6270 !important; }
+        .text-gray-400 { color: #8A9099 !important; }
+        .text-gray-500 { color: #A0A8B0 !important; }
+
+        /* Exceptions: keep white text on primary (red) backgrounds */
+        .bg-primary-500, .bg-primary-600, .bg-primary-700 { color: #ffffff !important; }
     </style>
 
     <!-- Configuração do Tailwind (opcional, mas bom para definir a fonte) -->
@@ -74,27 +89,27 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Figtree', 'sans-serif'],
                     },
                     colors: {
                         primary: {
-                            '50': '#eef2ff',
-                            '100': '#e0e7ff',
-                            '200': '#c7d2fe',
-                            '300': '#a5b4fc',
-                            '400': '#818cf8',
-                            '500': '#6366f1', // Azul principal para acentos
-                            '600': '#4f46e5',
-                            '700': '#4338ca',
-                            '800': '#3730a3',
-                            '900': '#312e81',
-                            '950': '#1e1b4b',
+                            '50': '#fff1f0',
+                            '100': '#ffe0de',
+                            '200': '#ffc5c2',
+                            '300': '#ff9b97',
+                            '400': '#ff6b66',
+                            '500': '#ff4b3e', // Red-orange accent (Kunumi)
+                            '600': '#ed2d1f',
+                            '700': '#c81e11',
+                            '800': '#a51d13',
+                            '900': '#881f13',
+                            '950': '#4b0c07',
                         },
                         darkblue: {
-                            '900': '#0f172a', /* slate-900 */
-                            '800': '#1e293b', /* slate-800 */
-                            '700': '#334155', /* slate-700 */
-                            '600': '#475569', /* slate-600 */
+                            '900': '#F3EFED', /* warm off-white - main background */
+                            '800': '#EAE6E2', /* slightly darker background */
+                            '700': '#E2DDD8', /* card/surface background */
+                            '600': '#D0CAC5', /* border/divider */
                         }
                     },
                 },
@@ -336,16 +351,11 @@
 
                 <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
                 <div id="publications-container" class="mt-16 space-y-8">
-                    <!-- O JavaScript irá popular esta área -->
                     <div class="text-center text-gray-400">Carregando publicações...</div>
+                </div>
 
-                    <!-- O botão "Ver todas" será mantido pelo JS -->
-                    <div class="text-center mt-8">
-                        <a href="#"
-                            class="px-6 py-2 border border-primary-500 text-primary-400 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition duration-300">
-                            Ver todas as publicações
-                        </a>
-                    </div>
+                <!-- Paginação -->
+                <div id="publications-pagination" class="mt-10 flex flex-wrap justify-center items-center gap-2 hidden">
                 </div>
             </div>
         </section>
@@ -441,7 +451,7 @@
                     <p>&copy; 2024 MALTA Lab - Todos os direitos reservados.</p>
                     <p class="mt-1 text-gray-500">
                         <a href="https://www.pucrs.br" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-white">PUCRS</a> - Escola Politécnica
+                            class="hover:text-stone-900">PUCRS</a> - Escola Politécnica
                     </p>
                 </div>
             </div>
@@ -484,10 +494,10 @@
                     const lineHtml = `
                         <div class="bg-darkblue-800 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 transform hover:-translate-y-2">
                             <div class="p-8">
-                                <div class="inline-flex items-center justify-center h-12 w-12 rounded-md bg-primary-900 text-primary-400">
+                                <div class="inline-flex items-center justify-center h-12 w-12 rounded-md bg-primary-100 text-primary-600">
                                     ${line.iconSvg}
                                 </div>
-                                <h3 class="mt-6 text-xl font-semibold text-white">${line.title}</h3>
+                                <h3 class="mt-6 text-xl font-semibold text-stone-900">${line.title}</h3>
                                 <p class="mt-3 text-base text-gray-400">${line.description}</p>
                             </div>
                         </div>
@@ -507,7 +517,7 @@
                 alunosContainer.innerHTML = ''; // Limpa o conteúdo
                 if (gradContainer) gradContainer.innerHTML = ''; // Limpa o conteúdo de graduação
 
-                const linkClasses = "text-gray-400 hover:text-primary-400 transition-colors duration-200";
+                const linkClasses = "text-stone-500 hover:text-primary-600 transition-colors duration-200";
 
                 members.coordenadores.forEach(member => {
                     // --- Lógica de links condicionais para Coordenadores ---
@@ -525,9 +535,9 @@
                     const memberHtml = `
                         <div class="text-center bg-darkblue-700 rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 h-full flex flex-col justify-between">
                             <div>
-                                <img class="w-32 h-32 rounded-full mx-auto shadow-md border-2 border-primary-500" src="${member.imgUrl}" alt="Foto de ${member.name}">
-                                <h4 class="mt-4 text-xl font-semibold text-white">${member.name}</h4>
-                                <p class="text-primary-400 font-medium">${member.role}</p>
+                                <img class="w-32 h-32 rounded-full mx-auto shadow-md border-2 border-primary-500 object-cover" src="${member.imgUrl}" alt="Foto de ${member.name}">
+                                <h4 class="mt-4 text-xl font-semibold text-stone-900">${member.name}</h4>
+                                <p class="text-primary-600 font-medium">${member.role}</p>
                                 <p class="mt-2 text-sm text-gray-400">${member.specialty}</p>
                             </div>
                             ${coordLinksHtml ? `<div class="mt-4 pt-4 border-t border-darkblue-600 flex justify-center space-x-4">${coordLinksHtml}</div>` : ''}
@@ -541,7 +551,7 @@
 
                     // 1. Criar HTML para links condicionalmente
                     let linksHtml = '';
-                    const alunoLinkClasses = "text-gray-400 hover:text-primary-400 text-sm transition-colors duration-200";
+                    const alunoLinkClasses = "text-stone-500 hover:text-primary-600 text-sm transition-colors duration-200";
 
                     // Verifica se 'lattes' existe, não é nulo, e não é um placeholder '#'
                     if (aluno.lattes && aluno.lattes !== '#') {
@@ -563,10 +573,10 @@
                     const alunoHtml = `
                         <div class="text-center bg-darkblue-700 rounded-lg shadow-md p-5 transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between h-full">
                             <div>
-                                <img class="w-24 h-24 rounded-full mx-auto border border-primary-600" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
-                                <h4 class="mt-3 text-lg font-semibold text-white">${aluno.name}</h4>
-                                <p class="text-primary-400 text-sm">${aluno.role}</p>
-                                <p class="mt-1 text-xs text-gray-400">${aluno.topic}</p>
+                                <img class="w-24 h-24 rounded-full mx-auto border border-primary-600 object-cover" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
+                                <h4 class="mt-3 text-lg font-semibold text-stone-900">${aluno.name}</h4>
+                                <p class="text-primary-600 text-sm">${aluno.role}</p>
+                                <p class="mt-1 text-xs text-stone-500">${aluno.topic}</p>
                             </div>
                             ${linksHtml ? `<div class="mt-3 pt-3 border-t border-darkblue-600 flex justify-center space-x-4">${linksHtml}</div>` : ''}
                         </div>
@@ -580,7 +590,7 @@
                 if (gradContainer && members.alunos_graduacao) {
                     members.alunos_graduacao.forEach(aluno => {
                         let linksHtml = '';
-                        const alunoLinkClasses = "text-gray-400 hover:text-primary-400 text-sm transition-colors duration-200";
+                        const alunoLinkClasses = "text-stone-500 hover:text-primary-600 text-sm transition-colors duration-200";
 
                         if (aluno.lattes && aluno.lattes !== '#') {
                             linksHtml += `<a href="${aluno.lattes}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
@@ -592,10 +602,10 @@
                         const alunoHtml = `
                             <div class="text-center bg-darkblue-700 rounded-lg shadow-md p-5 transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between h-full">
                                 <div>
-                                    <img class="w-24 h-24 rounded-full mx-auto border border-primary-600" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
-                                    <h4 class="mt-3 text-lg font-semibold text-white">${aluno.name}</h4>
-                                    <p class="text-primary-400 text-sm">${aluno.role}</p>
-                                    <p class="mt-1 text-xs text-gray-400">${aluno.topic}</p>
+                                    <img class="w-24 h-24 rounded-full mx-auto border border-primary-600 object-cover" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
+                                    <h4 class="mt-3 text-lg font-semibold text-stone-900">${aluno.name}</h4>
+                                    <p class="text-primary-600 text-sm">${aluno.role}</p>
+                                    <p class="mt-1 text-xs text-stone-500">${aluno.topic}</p>
                                 </div>
                                 ${linksHtml ? `<div class="mt-3 pt-3 border-t border-darkblue-600 flex justify-center space-x-4">${linksHtml}</div>` : ''}
                             </div>
@@ -605,31 +615,83 @@
                 }
             }
 
+            // --- Publicações: estado de paginação ---
+            const PUBS_PER_PAGE = 5;
+            let allPublications = [];
+            let currentPubPage = 1;
+
             function renderPublications(publications) {
+                allPublications = publications;
+                currentPubPage = 1;
+                renderPubPage(currentPubPage);
+            }
+
+            function renderPubPage(page) {
                 const container = document.getElementById('publications-container');
-                if (!container) return;
+                const pagination = document.getElementById('publications-pagination');
+                if (!container || !pagination) return;
 
-                // Salva o botão "Ver todas" antes de limpar
-                const viewAllButton = container.querySelector('.text-center');
-                container.innerHTML = ''; // Limpa o conteúdo
+                const totalPages = Math.ceil(allPublications.length / PUBS_PER_PAGE);
+                const start = (page - 1) * PUBS_PER_PAGE;
+                const slice = allPublications.slice(start, start + PUBS_PER_PAGE);
 
-                publications.forEach(pub => {
+                container.innerHTML = '';
+                slice.forEach(pub => {
                     const pubHtml = `
                         <div class="bg-darkblue-800 p-6 rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl">
                             <p class="text-sm text-gray-500">${pub.type} | ${pub.year}</p>
-                            <h3 class="mt-2 text-lg font-semibold text-white">${pub.title}</h3>
-                            <p class="mt-2 text-base text-gray-400">${pub.authors}</p>
-                            <p class="mt-1 text-base text-gray-400 italic">${pub.source}</p>
-                            <a href="${pub.doiUrl}" class="mt-3 inline-block text-primary-400 font-medium hover:text-primary-300" target="_blank" rel="noopener noreferrer">Ver [DOI]</a>
+                            <h3 class="mt-2 text-lg font-semibold text-stone-900">${pub.title}</h3>
+                            <p class="mt-2 text-base text-stone-500">${pub.authors}</p>
+                            <p class="mt-1 text-base text-stone-500 italic">${pub.source}</p>
+                            <a href="${pub.doiUrl}" class="mt-3 inline-block text-primary-600 font-medium hover:text-primary-500" target="_blank" rel="noopener noreferrer">Ver [DOI]</a>
                         </div>
                     `;
                     container.innerHTML += pubHtml;
                 });
 
-                // Readiciona o botão "Ver todas" no final
-                if (viewAllButton) {
-                    container.appendChild(viewAllButton);
+                // Renderiza controles de paginação
+                pagination.classList.remove('hidden');
+                pagination.innerHTML = '';
+
+                const btnBase = 'px-4 py-2 rounded-lg font-semibold transition duration-200 text-sm';
+                const btnActive = `${btnBase} bg-primary-500 text-white shadow-md`;
+                const btnInactive = `${btnBase} bg-darkblue-700 text-gray-300 hover:bg-darkblue-600`;
+                const btnDisabled = `${btnBase} bg-darkblue-700 text-gray-500 cursor-not-allowed opacity-50`;
+
+                // Botão « Anterior
+                const prevBtn = document.createElement('button');
+                prevBtn.textContent = '«';
+                prevBtn.title = 'Página anterior';
+                prevBtn.className = page === 1 ? btnDisabled : btnInactive;
+                prevBtn.disabled = page === 1;
+                prevBtn.addEventListener('click', () => goToPubPage(page - 1));
+                pagination.appendChild(prevBtn);
+
+                // Botões numerados
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.textContent = i === totalPages ? 'Último' : String(i);
+                    btn.className = i === page ? btnActive : btnInactive;
+                    btn.addEventListener('click', () => goToPubPage(i));
+                    pagination.appendChild(btn);
                 }
+
+                // Botão » Próximo
+                const nextBtn = document.createElement('button');
+                nextBtn.textContent = '»';
+                nextBtn.title = 'Próxima página';
+                nextBtn.className = page === totalPages ? btnDisabled : btnInactive;
+                nextBtn.disabled = page === totalPages;
+                nextBtn.addEventListener('click', () => goToPubPage(page + 1));
+                pagination.appendChild(nextBtn);
+            }
+
+            function goToPubPage(page) {
+                const totalPages = Math.ceil(allPublications.length / PUBS_PER_PAGE);
+                if (page < 1 || page > totalPages) return;
+                currentPubPage = page;
+                renderPubPage(page);
+                document.getElementById('publicacoes').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
             // --- 3. FUNÇÃO DE INICIALIZAÇÃO (MOCK) ---
@@ -667,15 +729,13 @@
                 } catch (error) {
                     console.error("Erro ao carregar dados dos arquivos JSON:", error);
                     // Opcional: Mostrar uma mensagem de erro na UI
-                    document.getElementById('research-lines-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
-                    document.getElementById('research-lines-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
-                    document.getElementById('coordenadores-container').innerHTML = '<p class="text-red-400 col-span-3 text-center">Erro ao carregar coordenadores.</p>';
-                    document.getElementById('alunos-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos.</p>';
+                    document.getElementById('research-lines-container').innerHTML = '<p class="text-red-600 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
+                    document.getElementById('coordenadores-container').innerHTML = '<p class="text-red-600 col-span-3 text-center">Erro ao carregar coordenadores.</p>';
+                    document.getElementById('alunos-container').innerHTML = '<p class="text-red-600 col-span-4 text-center">Erro ao carregar alunos.</p>';
                     if (document.getElementById('alunos-graduacao-container')) {
-                        document.getElementById('alunos-graduacao-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos de graduação.</p>';
+                        document.getElementById('alunos-graduacao-container').innerHTML = '<p class="text-red-600 col-span-4 text-center">Erro ao carregar alunos de graduação.</p>';
                     }
-                    document.getElementById('alunos-container').innerHTML = '<p class="text-red-400 col-span-4 text-center">Erro ao carregar alunos.</p>';
-                    document.getElementById('publications-container').innerHTML = '<p class="text-red-400 text-center">Erro ao carregar publicações.</p>';
+                    document.getElementById('publications-container').innerHTML = '<p class="text-red-600 text-center">Erro ao carregar publicações.</p>';
                 }
             }
 
@@ -704,7 +764,7 @@
                         }
                     },
                     "color": {
-                        "value": "#a5b4fc" // Cor dos nós (primary-300)
+                        "value": "#30353B" // Dark charcoal nodes for light background
                     },
                     "shape": {
                         "type": "circle",
@@ -714,7 +774,7 @@
                         }
                     },
                     "opacity": {
-                        "value": 0.5,
+                        "value": 0.25,
                         "random": true
                     },
                     "size": {
@@ -724,8 +784,8 @@
                     "line_linked": {
                         "enable": true, // Habilita as "arestas" do grafo
                         "distance": 150,
-                        "color": "#475569", // Cor das linhas (darkblue-600)
-                        "opacity": 0.4,
+                        "color": "#D0CAC5", // Warm border color for light background
+                        "opacity": 0.5,
                         "width": 1
                     },
                     "move": {

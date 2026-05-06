@@ -5,7 +5,23 @@
     "title": "Fairness in Deep Learning: A Survey on Vision and Language Research",
     "authors": "PARRAGA, O.; MÓRE, M. D.; OLIVEIRA, C. M.; GAVENSKI, N. S.; KUPSSINSKÜ, L. S.; MEDRONHA, A.; MOURA, L. V.; SIMÕES, G. S.; BARROS, R. C.",
     "source": "ACM Computing Surveys, vol. 57, no. 6, 2025.",
-    "doiUrl": "#"
+    "doiUrl": "https://doi.org/10.1145/3637549"
+  },
+  {
+    "type": "Periódico",
+    "year": "2025",
+    "title": "Hyposmia in Parkinson's Disease: Exploring Selective Odour Loss",
+    "authors": "MITCHELL, E.; MATTJIE, C.; BESTWICK, J.; BARROS, R. C.; SCHUH, A.; SIMONET, C.; NOYCE, A.",
+    "source": "npj Parkinson's Disease, 2025.",
+    "doiUrl": "https://doi.org/10.1038/s41531-025-00922-3"
+  },
+  {
+    "type": "Periódico",
+    "year": "2025",
+    "title": "Speech Subtypes Are Associated with Worsened Tremor and Axial Symptoms in Parkinson's Disease Patients",
+    "authors": "BRZOSKOWSKI DOS SANTOS, V.; RAVAZIO, R.; TEIXEIRA-DOS-SANTOS, D.; SCHUMACHER SCHUH, A. S.; MATTJIE, C.; PASQUALI, J.; DE BORBA, M. D.; BARROS, R. C.; OLCHIK, M.",
+    "source": "Clinical Parkinsonism & Related Disorders, 2025.",
+    "doiUrl": "https://doi.org/10.1016/j.prdoa.2025.100373"
   },
   {
     "type": "Conferência",
@@ -17,11 +33,83 @@
   },
   {
     "type": "Conferência",
+    "year": "2025",
+    "title": "Isolated Sign Language Recognition in LIBRAS",
+    "authors": "DELUCIS, M. M.; PARRAGA, O.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2025).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-15990-8_19"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Inference Time Debiasing Concepts in Diffusion Models",
+    "authors": "KUPSSINSKÜ, L. S.; BOCHERNITSAN, M. N.; KOPPER, J.; PARRAGA, O.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2025).",
+    "doiUrl": "https://doi.org/10.48550/arXiv.2508.14933"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Evaluating Odor Selectivity in α-Synucleinopathy: ML-Based Odor Profiling",
+    "authors": "OLIVEIRA, C. M.; RAVAZIO, R.; MITCHELL, E.; BESTWICK, J.; KUPSSINSKÜ, L. S.; NOYCE, A.; SCHUH, A.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2025).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-15990-8_13"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Automated Fact-Checking in Brazilian Portuguese: Resources and Baselines",
+    "authors": "DELUCIS, M. M.; FRAGA, L.; PARRAGA, O.; OLIVEIRA, C. M.; RAVAZIO, R.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the Brazilian Symposium in Information and Human Language Technology (STIL 2025).",
+    "doiUrl": "https://doi.org/10.5753/stil.2025.37820"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Which is the Best LLM for Geosciences?",
+    "authors": "GARCEZ, V. H.; PARRAGA, O.; MARQUES, A.; SPIGOLON, A. L. D.; DE BARROS, G.; GONZAGA, L.; VERONEZ, M.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the IEEE International Geoscience and Remote Sensing Symposium (IGARSS 2025).",
+    "doiUrl": "https://doi.org/10.1109/IGARSS55030.2025.11243488"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Comparing Speech Embeddings and Acoustic Features for Unsupervised Subtyping of Parkinson's Disease",
+    "authors": "FINATTO, J. D.; RAVAZIO, R.; OLIVEIRA, C. M.; BARROS, R. C.; SCHUH, A.; SANTOS, V. B. D.; OLCHIK, M. R.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the IEEE International Conference on Bioinformatics and Bioengineering (BIBE 2025).",
+    "doiUrl": "https://doi.org/10.1109/BIBE66822.2025.00048"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Subtyping Parkinson's Disease Via Probabilistic Neuroimaging Data Clustering",
+    "authors": "OLIVEIRA, C. M.; RAVAZIO, R.; PASQUALI, J.; KUPSSINSKÜ, L. S.; MOURA, L. V.; BARROS, R. C.; TEIXEIRA-DOS-SANTOS, D.; PEREIRA, G. M.; SCHUH, A.; et al.",
+    "source": "In: Proceedings of the IEEE International Conference on Bioinformatics and Bioengineering (BIBE 2025).",
+    "doiUrl": "https://doi.org/10.1109/BIBE66822.2025.00010"
+  },
+  {
+    "type": "Periódico",
+    "year": "2024",
+    "title": "Craving for a Robust Methodology: A Systematic Review of Machine Learning Algorithms on Substance-Use Disorders Treatment Outcomes",
+    "authors": "DE MATTOS, B. P.; MATTJIE, C.; RAVAZIO, R.; BARROS, R. C.; GRASSI-OLIVEIRA, R.",
+    "source": "International Journal of Mental Health and Addiction, 2024.",
+    "doiUrl": "https://doi.org/10.1007/s11469-024-01403-z"
+  },
+  {
+    "type": "Periódico",
+    "year": "2024",
+    "title": "Brain Morphometric Changes in SAA Positive Individuals with Idiopathic Parkinson's Disease",
+    "authors": "PINTO, S. D.; BIEGER, A.; TEIXEIRA SANTOS, D.; RAVAZIO, R.; MATTJIE, C.; SOUZA, L. A.; SCHLICKMANN, T.; BARROS, R. C.; ZIMMER, E.; SCHUH, A.",
+    "source": "Arquivos de Neuro-Psiquiatria, 2024.",
+    "doiUrl": "https://doi.org/10.5327/cbn240260"
+  },
+  {
+    "type": "Conferência",
     "year": "2024",
     "title": "LERMO: A Novel Web Game for AI-Enhanced Sign Language Recognition",
     "authors": "MEDRONHA, A.; LIMA, L.; CLAUDIO, J.; KUPSSINSKÜ, L. S.; BARROS, R. C.",
     "source": "In: Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2024).",
-    "doiUrl": "https://doi.org/10.1609/aaai.v38i21.30387"
+    "doiUrl": "https://doi.org/10.1609/aaai.v38i21.30384"
   },
   {
     "type": "Conferência",
@@ -29,14 +117,110 @@
     "title": "One Against Many: Exploring Multi-task Learning Generalization in Source-Code Tasks",
     "authors": "PARRAGA, O.; KUPSSINSKÜ, L. S.; OLIVEIRA, C. M.; BARROS, R. C.",
     "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2024).",
-    "doiUrl": "https://doi.org/10.1109/IJCNN60899.2024.10650982"
+    "doiUrl": "https://doi.org/10.1109/IJCNN60899.2024.10651070"
   },
   {
     "type": "Conferência",
     "year": "2024",
     "title": "Unlocking the Potential of Vision-Language Models for Mammography Analysis",
-    "authors": "MOURA, L. V.; RAVAZIO, R. C.; OLIVEIRA, C. M.; KUPSSINSKÜ, L. S.; FREITAS, C. M. D. S.",
+    "authors": "MOURA, L. V.; RAVAZIO, R.; OLIVEIRA, C. M.; KUPSSINSKÜ, L. S.; FREITAS, C.; BARROS, R. C.",
     "source": "In: Proceedings of the IEEE International Symposium on Biomedical Imaging (ISBI 2024).",
-    "doiUrl": "https://doi.org/10.1109/ISBI56570.2024.10635412"
+    "doiUrl": "https://doi.org/10.1109/ISBI56570.2024.10635683"
+  },
+  {
+    "type": "Conferência",
+    "year": "2024",
+    "title": "Semi-Supervised Learning for mRALE Score Prediction in COVID-19 Chest Radiographs",
+    "authors": "MATTJIE, C.; DE MOURA, L. V.; RAVAZIO, R.; PARRAGA, O.; KUPSSINSKÜ, L. S.; MEDRONHA, A.; DA SILVA, A. L. M.; BARROS, R. C.",
+    "source": "In: Proceedings of the SPIE Medical Imaging (SPIE MI 2024).",
+    "doiUrl": "https://doi.org/10.1117/12.3003750"
+  },
+  {
+    "type": "Conferência",
+    "year": "2023",
+    "title": "Zero-Shot Performance of the Segment Anything Model (SAM) in 2D Medical Imaging: A Comprehensive Evaluation and Practical Guidelines",
+    "authors": "OLIVEIRA, C. M.; MOURA, L.; RAVAZIO, R.; KUPSSINSKÜ, L. S.; PARRAGA, O.; DELUCIS, M. M.; BARROS, R. C.",
+    "source": "In: Proceedings of the IEEE International Conference on Bioinformatics and Bioengineering (BIBE 2023).",
+    "doiUrl": "https://doi.org/10.1109/BIBE60311.2023.00025"
+  },
+  {
+    "type": "Conferência",
+    "year": "2023",
+    "title": "Self-Supervised Adversarial Imitation Learning",
+    "authors": "MONTEIRO, J.; GAVENSKI, N.; MENEGUZZI, F.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2023).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN54540.2023.10191197"
+  },
+  {
+    "type": "Conferência",
+    "year": "2023",
+    "title": "Radiomics for Predicting Oxygen Necessity in COVID-19 Patients Using Longitudinal Lung Computed Tomography",
+    "authors": "RAVAZIO, R.; OLIVEIRA, C. M.; MOURA, L. V.; KUPSSINSKÜ, L. S.; BARROS, R. C.; MACHADO, D. C.; DA SILVA, A. M. M.",
+    "source": "In: Proceedings of the IEEE International Conference on Bioinformatics and Bioengineering (BIBE 2023).",
+    "doiUrl": "https://doi.org/10.1109/BIBE60311.2023.00051"
+  },
+  {
+    "type": "Conferência",
+    "year": "2022",
+    "title": "Efficient Counterfactual Debiasing for Visual Question Answering",
+    "authors": "KOLLING, C.; MÓRE, M. D.; GAVENSKI, N.; POOCH, E.; PARRAGA, O.; BARROS, R. C.",
+    "source": "In: Proceedings of the IEEE Winter Conference on Applications of Computer Vision (WACV 2022).",
+    "doiUrl": "https://doi.org/10.1109/WACV51458.2022.00263"
+  },
+  {
+    "type": "Conferência",
+    "year": "2022",
+    "title": "COBE: A Natural Language Code Search Robustness Benchmark",
+    "authors": "WEHRMANN, J.; PARRAGA, O.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2022).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN55064.2022.9892610"
+  },
+  {
+    "type": "Conferência",
+    "year": "2022",
+    "title": "How Resilient Are Imitation Learning Methods to Sub-optimal Experts?",
+    "authors": "GAVENSKI, N.; MONTEIRO, J.; MEDRONHA, A.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2022).",
+    "doiUrl": "https://doi.org/10.1007/978-3-031-21689-3_32"
+  },
+  {
+    "type": "Conferência",
+    "year": "2022",
+    "title": "Leveraging Textual Descriptions for House Price Valuation",
+    "authors": "BITTENCOURT, L.; PARRAGA, O.; RUIZ, D.; MANSSOUR, I.; MUSSE, S.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2022).",
+    "doiUrl": "https://doi.org/10.1007/978-3-031-21686-2_25"
+  },
+  {
+    "type": "Conferência",
+    "year": "2021",
+    "title": "Model Compression in Object Detection",
+    "authors": "SALVI, A.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2021).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN52387.2021.9533792"
+  },
+  {
+    "type": "Conferência",
+    "year": "2020",
+    "title": "Augmented Behavioral Cloning from Observation",
+    "authors": "MONTEIRO, J.; GAVENSKI, N.; GRANADA, R.; MENEGUZZI, F.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2020).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN48605.2020.9207672"
+  },
+  {
+    "type": "Conferência",
+    "year": "2020",
+    "title": "Component Analysis for Visual Question Answering Architectures",
+    "authors": "KOLLING, C.; WEHRMANN, J.; BARROS, R. C.",
+    "source": "In: Proceedings of the International Joint Conference on Neural Networks (IJCNN 2020).",
+    "doiUrl": "https://doi.org/10.1109/IJCNN48605.2020.9206679"
+  },
+  {
+    "type": "Conferência",
+    "year": "2020",
+    "title": "How Does Computer Animation Affect Our Perception of Emotions in Video Summarization?",
+    "authors": "KOLLING, C.; ARAUJO, V.; BARROS, R. C.; MUSSE, S.",
+    "source": "In: Proceedings of the International Symposium on Visual Computing (ISVC 2020).",
+    "doiUrl": "https://doi.org/10.1007/978-3-030-64559-5_29"
   }
 ]
