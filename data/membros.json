@@ -148,6 +148,24 @@
       "scholar": "",
       "lattes": "https://lattes.cnpq.br/5557999232970428",
       "linkedin": "https://www.linkedin.com/in/arthur-sudbrack-ibarra-88399423a/"
+    },
+    {
+      "imgUrl": "./img/luan.jpeg",
+      "name": "Luan da Silva Nunes",
+      "role": { "pt": "Mestrando", "en": "" },
+      "topic": "Graph Neural Network ",
+      "scholar": "",
+      "lattes": "https://lattes.cnpq.br/2481733494356180",
+      "linkedin": "https://www.linkedin.com/in/nunesluan/"
+    },
+    {
+      "imgUrl": "./img/traunig.jpeg",
+      "name": "Eduardo Enes Traunig",
+      "role": { "pt": "Mestrando", "en": "MSc student" },
+      "topic": "Clustering · Medical Imaging · Computer Vision",
+      "scholar": "",
+      "lattes": "http://lattes.cnpq.br/1755536111026290",
+      "linkedin": "https://www.linkedin.com/in/eduardo-traunig/"
     }
   ],
   "alunos_graduacao": [
