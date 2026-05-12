@@ -139,6 +139,15 @@
       "lattes": "http://lattes.cnpq.br/4683965954238969",
       "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner",
       "scholar": ""
+    },
+    {
+      "imgUrl": "./img/ibarra.jpeg",
+      "name": "Arthur Sudbrack Ibarra",
+      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "topic": "Machine Learning · Deep Learning",
+      "scholar": "",
+      "lattes": "https://lattes.cnpq.br/5557999232970428",
+      "linkedin": "https://www.linkedin.com/in/arthur-sudbrack-ibarra-88399423a/"
     }
   ],
   "alunos_graduacao": [
