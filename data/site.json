@@ -1,0 +1,188 @@
+{
+  "brand": {
+    "short": "MALTA Lab",
+    "long": {
+      "pt": "Machine Learning Theory and Applications Lab",
+      "en": "Machine Learning Theory and Applications Lab"
+    },
+    "affiliationLine": {
+      "pt": "Grupo de Pesquisa · Escola Politécnica · PUCRS",
+      "en": "Research Group · School of Technology · PUCRS"
+    },
+    "defaultLang": "pt"
+  },
+
+  "nav": [
+    { "href": "#inicio",      "label": { "pt": "Início",       "en": "Home" } },
+    { "href": "#sobre",       "label": { "pt": "Sobre",        "en": "About" } },
+    { "href": "#pesquisa",    "label": { "pt": "Pesquisa",     "en": "Research" } },
+    { "href": "#membros",     "label": { "pt": "Equipe",       "en": "Team" } },
+    { "href": "#publicacoes", "label": { "pt": "Publicações",  "en": "Publications" } },
+    { "href": "#noticias",    "label": { "pt": "Notícias",     "en": "News" } },
+    { "href": "#contato",     "label": { "pt": "Contato",      "en": "Contact" } }
+  ],
+
+  "hero": {
+    "tagline": {
+      "pt": "Grupo de Pesquisa da Escola Politécnica · Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)",
+      "en": "Research Group of the School of Technology · Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)"
+    },
+    "ctas": [
+      {
+        "href": "#pesquisa",
+        "label": { "pt": "Conheça nossa pesquisa", "en": "Explore our research" },
+        "kind": "primary"
+      },
+      {
+        "href": "#publicacoes",
+        "label": { "pt": "Publicações recentes", "en": "Recent publications" },
+        "kind": "secondary"
+      }
+    ]
+  },
+
+  "sobre": {
+    "eyebrow": { "pt": "Sobre o Laboratório", "en": "About the Lab" },
+    "title": {
+      "pt": "Pesquisa em Aprendizado de Máquina com impacto científico e clínico",
+      "en": "Machine Learning research with scientific and clinical impact"
+    },
+    "body": {
+      "pt": "O MALTA Lab (Machine Learning Theory and Applications Lab) é um grupo de pesquisa da Escola Politécnica da PUCRS dedicado ao estudo e à aplicação de aprendizado de máquina em problemas de alto impacto científico e social. Atuamos em Processamento de Linguagem Natural, Visão Computacional, IA Aplicada à Saúde e IA Confiável, com publicações em ACM Computing Surveys, AAAI, IEEE ISBI, IJCNN, BRACIS, IGARSS, BIBE, WACV e npj Parkinson's Disease.",
+      "en": "MALTA Lab (Machine Learning Theory and Applications Lab) is a research group at the School of Technology of PUCRS, devoted to machine learning research with high scientific and social impact. We work on Natural Language Processing, Computer Vision, AI Applied to Healthcare, and Trustworthy AI, with publications in ACM Computing Surveys, AAAI, IEEE ISBI, IJCNN, BRACIS, IGARSS, BIBE, WACV, and npj Parkinson's Disease."
+    },
+    "venues": [
+      "AAAI", "ACM CSUR", "IEEE ISBI", "IJCNN",
+      "BRACIS", "IGARSS", "BIBE", "WACV",
+      "npj Parkinson's", "SPIE MI"
+    ],
+    "highlights": [
+      {
+        "title": { "pt": "Excelência científica",    "en": "Scientific excellence" },
+        "body":  {
+          "pt": "Publicações em veículos de elite — A* em IA (AAAI, IJCNN, WACV) e Q1 em saúde (ACM CSUR, npj PD).",
+          "en": "Publications in top venues — A* in AI (AAAI, IJCNN, WACV) and Q1 in health (ACM CSUR, npj PD)."
+        }
+      },
+      {
+        "title": { "pt": "IA aplicada à saúde",      "en": "AI applied to healthcare" },
+        "body":  {
+          "pt": "Diagnóstico precoce de Parkinson, análise de mamografias e radiografias de COVID-19, em parceria com hospitais e centros clínicos.",
+          "en": "Early Parkinson's diagnosis, mammography and COVID-19 chest-X-ray analysis, partnering with hospitals and clinical centres."
+        }
+      },
+      {
+        "title": { "pt": "PLN em português brasileiro", "en": "NLP for Brazilian Portuguese" },
+        "body":  {
+          "pt": "Detecção de desinformação, fact-checking e reconhecimento de LIBRAS — recursos abertos para o português falado no Brasil.",
+          "en": "Misinformation detection, fact-checking, and LIBRAS recognition — open resources for Brazilian Portuguese."
+        }
+      }
+    ]
+  },
+
+  "pesquisaSection": {
+    "eyebrow": { "pt": "O que fazemos",        "en": "What we work on" },
+    "title":   { "pt": "Linhas de Pesquisa",   "en": "Research Areas" },
+    "body": {
+      "pt": "Seis eixos temáticos, do desenvolvimento de arquiteturas de deep learning à aplicação responsável de IA em saúde, linguagem e visão.",
+      "en": "Six thematic areas, from designing deep learning architectures to the responsible application of AI in health, language, and vision."
+    }
+  },
+
+  "membrosSection": {
+    "eyebrow": { "pt": "Nossa Equipe",                "en": "Our Team" },
+    "title":   { "pt": "Pesquisadores e Estudantes",  "en": "Researchers and Students" },
+    "labels": {
+      "coordenadores":     { "pt": "Coordenação",          "en": "Coordination" },
+      "alunos":            { "pt": "Pós-Graduação",        "en": "Graduate Students" },
+      "alunos_graduacao":  { "pt": "Iniciação Científica", "en": "Undergraduate Researchers" }
+    }
+  },
+
+  "publicacoesSection": {
+    "eyebrow": { "pt": "Produção Científica",      "en": "Scientific Output" },
+    "title":   { "pt": "Publicações",              "en": "Publications" },
+    "body": {
+      "pt": "Lista completa de trabalhos publicados por membros do laboratório em conferências e periódicos. Filtre por ano ou por tipo.",
+      "en": "Full list of works published by lab members at conferences and journals. Filter by year or type."
+    },
+    "labels": {
+      "filterYear":   { "pt": "Ano",        "en": "Year" },
+      "filterType":   { "pt": "Tipo",       "en": "Type" },
+      "filterAll":    { "pt": "Todos",      "en": "All" },
+      "showing":      { "pt": "Mostrando",  "en": "Showing" },
+      "of":           { "pt": "de",         "en": "of" },
+      "viewDOI":      { "pt": "DOI",        "en": "DOI" }
+    }
+  },
+
+  "noticiasSection": {
+    "eyebrow": { "pt": "Atualizações",  "en": "Updates" },
+    "title":   { "pt": "Notícias",      "en": "News" },
+    "body": {
+      "pt": "Artigos aceitos, talks, defesas e novos recursos abertos.",
+      "en": "Accepted papers, talks, defences, and newly released resources."
+    }
+  },
+
+  "contato": {
+    "eyebrow": { "pt": "Fale Conosco",   "en": "Get in Touch" },
+    "title":   { "pt": "Entre em Contato", "en": "Contact Us" },
+    "body": {
+      "pt": "Tem interesse em colaborar, ingressar no grupo ou saber mais sobre nossos projetos? Escreva para nós.",
+      "en": "Interested in collaborating, joining the group, or learning more about our projects? Reach out."
+    },
+    "address": {
+      "label": { "pt": "Endereço", "en": "Address" },
+      "lines": {
+        "pt": [
+          "PUCRS · Escola Politécnica",
+          "Av. Ipiranga, 6681 · Prédio 32",
+          "Porto Alegre, RS · 90619-900 · Brasil"
+        ],
+        "en": [
+          "PUCRS · School of Technology",
+          "Av. Ipiranga, 6681 · Building 32",
+          "Porto Alegre, RS · 90619-900 · Brazil"
+        ]
+      }
+    },
+    "emails": [
+      {
+        "label": { "pt": "Assuntos gerais",       "en": "General enquiries" },
+        "value": "malta.lab@pucrs.br"
+      },
+      {
+        "label": { "pt": "Admissões pós-graduação", "en": "Graduate admissions" },
+        "value": "pos.comp@pucrs.br"
+      }
+    ],
+    "social": [
+      { "label": "GitHub",   "href": "" },
+      { "label": "LinkedIn", "href": "" }
+    ]
+  },
+
+  "footer": {
+    "tagline": {
+      "pt": "Machine Learning Theory and Applications Lab",
+      "en": "Machine Learning Theory and Applications Lab"
+    },
+    "copyright": {
+      "pt": "© 2025 MALTA Lab · Todos os direitos reservados.",
+      "en": "© 2025 MALTA Lab · All rights reserved."
+    },
+    "institutionalLink": {
+      "label": { "pt": "PUCRS · Escola Politécnica", "en": "PUCRS · School of Technology" },
+      "href": "https://www.pucrs.br"
+    }
+  },
+
+  "meta": {
+    "description": {
+      "pt": "MALTA Lab — Grupo de pesquisa em Aprendizado de Máquina da Escola Politécnica da PUCRS. PLN, Visão Computacional, IA na Saúde e IA Confiável.",
+      "en": "MALTA Lab — Machine Learning research group at the School of Technology, PUCRS. NLP, Computer Vision, AI in Healthcare and Trustworthy AI."
+    }
+  }
+}

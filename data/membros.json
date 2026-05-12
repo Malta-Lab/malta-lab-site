@@ -3,114 +3,137 @@
     {
       "imgUrl": "./img/rodrigo.jpeg",
       "name": "Prof. Dr. Rodrigo Coelho Barros",
-      "role": "Coordenador do MALTA Lab",
-      "specialty": "Coordenador de Pesquisa na Kunumi | Especialista em Machine Learning e Deep Learning.",
-      "lattes": "#",
-      "linkedin": "#"
+      "role": {
+        "pt": "Coordenador do MALTA Lab",
+        "en": "MALTA Lab Coordinator"
+      },
+      "specialty": {
+        "pt": "Machine Learning · Deep Learning",
+        "en": "Machine Learning · Deep Learning"
+      },
+      "lattes": "",
+      "linkedin": "",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/lucas.jpg",
-      "name": "Prof. Dr. Lucas S. Kupssinskû",
-      "role": "Vice Coordenador",
-      "specialty": "Deep Learning | Machine Learning | CV | NLP",
+      "name": "Prof. Dr. Lucas S. Kupssinskü",
+      "role": {
+        "pt": "Vice-Coordenador",
+        "en": "Deputy Coordinator"
+      },
+      "specialty": {
+        "pt": "Deep Learning · Machine Learning · CV · NLP",
+        "en": "Deep Learning · Machine Learning · CV · NLP"
+      },
       "lattes": "http://lattes.cnpq.br/7949995756060059",
-      "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/"
+      "linkedin": "https://www.linkedin.com/in/lucas-kupssinskü-239820124/",
+      "scholar": ""
     }
   ],
+
   "alunos": [
     {
       "imgUrl": "./img/parraga.png",
-      "name": "Me. Otávio Parraga",
-      "role": "Doutorando",
-      "topic": "NLP | LLMs | Activation Engineering | Fairness",
+      "name": "Otávio Parraga",
+      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "topic": "NLP · LLMs · Activation Engineering · Fairness",
       "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
-      "lattes": "http://lattes.cnpq.br/5668566915713518"
+      "lattes": "http://lattes.cnpq.br/5668566915713518",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/marcelo.jpg",
       "name": "Marcelo M. Delucis",
-      "role": "Doutorando",
-      "topic": "NLP | LLMs | Misinformation Detection | Computer Vision | Healthcare",
+      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "topic": "NLP · LLMs · Misinformation · CV · Healthcare",
       "lattes": "http://lattes.cnpq.br/9944471444662969",
       "scholar": "https://scholar.google.com/citations?user=ZdDSinAAAAAJ&hl=pt-BR",
       "linkedin": "https://www.linkedin.com/in/marcelomussi/"
     },
     {
-      "imgUrl": "https://placehold.co/200x200/1e1b4b/a5b4fc?text=MSc",
+      "imgUrl": "",
       "name": "Christian Mattjie de Oliveira",
-      "role": "Doutorando",
-      "topic": "Clustering | Medical Imaging | Computer Vision",
+      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "topic": "Clustering · Medical Imaging · Computer Vision",
       "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
       "lattes": "http://lattes.cnpq.br/7402982950960470",
       "linkedin": "https://www.linkedin.com/in/christianmattjie/"
     },
     {
+      "imgUrl": "./img/rafa.jpeg",
+      "name": "Rafaela Ravazio",
+      "role": { "pt": "Doutoranda", "en": "PhD candidate" },
+      "topic": "Clustering · Medical Imaging · Bioinformatics",
+      "lattes": "https://lattes.cnpq.br/6522477912976706",
+      "linkedin": "https://www.linkedin.com/in/rafaelaravazio/",
+      "scholar": ""
+    },
+    {
       "imgUrl": "./img/lucas_fraga.png",
       "name": "Lucas M. Fraga",
-      "role": "Mestrando",
-      "topic": "Misinformation Detection | NLP | LLMs",
+      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "topic": "Misinformation Detection · NLP · LLMs",
       "lattes": "http://lattes.cnpq.br/4680421690073859",
-      "linkedin": "https://www.linkedin.com/in/lucasfrag/"
+      "linkedin": "https://www.linkedin.com/in/lucasfrag/",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/raissa.jpg",
       "name": "Raíssa Xavier Contassot",
-      "role": "Mestranda",
+      "role": { "pt": "Mestranda", "en": "MSc candidate" },
       "topic": "Medical Imaging",
       "linkedin": "https://www.linkedin.com/in/raíssa-xavier-contassot/",
-      "lattes": "http://lattes.cnpq.br/2873185245435465"
+      "lattes": "http://lattes.cnpq.br/2873185245435465",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/jerusa.png",
       "name": "Jerusa Finatto",
-      "role": "Mestranda",
-      "topic": "Speech Analysis | Clustering | Medical Imaging",
+      "role": { "pt": "Mestranda", "en": "MSc candidate" },
+      "topic": "Speech Analysis · Clustering · Medical Imaging",
       "lattes": "http://lattes.cnpq.br/8623671040783621",
       "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
-      "linkedin": "www.linkedin.com/in/jerusa-finatto-02021852"
+      "linkedin": "https://www.linkedin.com/in/jerusa-finatto-02021852/"
     },
     {
       "imgUrl": "./img/joana.png",
       "name": "Joana Pasquali",
-      "role": "Mestranda",
-      "topic": "Deep Learning | Machine Unlearning",
+      "role": { "pt": "Mestranda", "en": "MSc candidate" },
+      "topic": "Deep Learning · Machine Unlearning",
       "lattes": "http://lattes.cnpq.br/6522477912976706",
-      "linkedin": "linkedin.com/in/jmpasquali",
+      "linkedin": "https://www.linkedin.com/in/jmpasquali/",
       "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
     },
     {
       "imgUrl": "./img/abitante.JPG",
       "name": "João Vitor Boer Abitante",
-      "role": "Mestrando",
-      "topic": "Deep Learning | Machine Unlearning | Quantization | Reinforcement Learning",
+      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "topic": "Deep Learning · Machine Unlearning · Quantization · RL",
       "lattes": "http://lattes.cnpq.br/8192678717960847",
-      "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/"
+      "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/wagner.jpeg",
       "name": "Pedro Prokath Wagner",
-      "role": "Mestrando",
-      "topic": "PLN | LLMs",
+      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "topic": "NLP · LLMs",
       "lattes": "http://lattes.cnpq.br/4683965954238969",
-      "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner"
-    },
-    {
-      "imgUrl": "./img/rafa.jpeg",
-      "name": "Rafaela Ravazio",
-      "role": "Doutoranda",
-      "topic": "Clustering | Medical Imaging | Bioinformatics",
-      "lattes": "https://lattes.cnpq.br/6522477912976706",
-      "linkedin": "https://www.linkedin.com/in/rafaelaravazio/"
+      "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner",
+      "scholar": ""
     }
   ],
+
   "alunos_graduacao": [
     {
-      "imgUrl": "https://placehold.co/200x200/1e1b4b/a5b4fc?text=Grad",
-      "name": "Nome do Aluno",
-      "role": "Iniciação Científica",
-      "topic": "Área de Interesse",
-      "linkedin": "#",
-      "lattes": "#"
+      "imgUrl": "./img/wagner.jpeg",
+      "name": "Pedro Prokath Wagner",
+      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "topic": "NLP · LLMs",
+      "lattes": "http://lattes.cnpq.br/4683965954238969",
+      "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner",
+      "scholar": ""
     }
-  ]
+]
 }

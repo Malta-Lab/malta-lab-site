@@ -1,0 +1,72 @@
+[
+  {
+    "date": "2025-09-22",
+    "kind": "publication",
+    "tag": { "pt": "BRACIS 2025", "en": "BRACIS 2025" },
+    "title": {
+      "pt": "Quatro artigos aceitos no BRACIS 2025",
+      "en": "Four papers accepted at BRACIS 2025"
+    },
+    "body": {
+      "pt": "Trabalhos sobre LIBRAS, debiasing em modelos de difusão, subtipagem odorífera em α-sinucleinopatia e mais foram apresentados na Brazilian Conference on Intelligent Systems.",
+      "en": "Works on LIBRAS recognition, debiasing diffusion models, odor subtyping in α-synucleinopathy and more were presented at the Brazilian Conference on Intelligent Systems."
+    },
+    "link": "#publicacoes"
+  },
+  {
+    "date": "2025-08-12",
+    "kind": "release",
+    "tag": { "pt": "STIL · PT-BR", "en": "STIL · PT-BR" },
+    "title": {
+      "pt": "Dataset de fact-checking em português brasileiro",
+      "en": "Brazilian-Portuguese fact-checking dataset released"
+    },
+    "body": {
+      "pt": "Apresentamos no STIL 2025 recursos e baselines para checagem automática de fatos em PT-BR.",
+      "en": "Resources and baselines for automated fact-checking in Brazilian Portuguese, presented at STIL 2025."
+    },
+    "link": "https://doi.org/10.5753/stil.2025.37820"
+  },
+  {
+    "date": "2025-06-10",
+    "kind": "publication",
+    "tag": { "pt": "ACM CSUR", "en": "ACM CSUR" },
+    "title": {
+      "pt": "Survey de Fairness em Deep Learning na ACM Computing Surveys",
+      "en": "Fairness in Deep Learning survey published in ACM Computing Surveys"
+    },
+    "body": {
+      "pt": "Levantamento abrangente sobre equidade em pesquisa de visão e linguagem, publicado em um dos periódicos mais prestigiados da área.",
+      "en": "A comprehensive survey of fairness in vision and language research, published in one of the field's flagship journals."
+    },
+    "link": "https://doi.org/10.1145/3637549"
+  },
+  {
+    "date": "2025-03-04",
+    "kind": "publication",
+    "tag": { "pt": "npj Parkinson's", "en": "npj Parkinson's" },
+    "title": {
+      "pt": "Hiposmia em Parkinson publicado na npj Parkinson's Disease",
+      "en": "Hyposmia in Parkinson's published in npj Parkinson's Disease"
+    },
+    "body": {
+      "pt": "Estudo sobre perda olfativa seletiva como marcador precoce da Doença de Parkinson, em colaboração internacional.",
+      "en": "Selective odour loss as an early Parkinson's marker, in international collaboration."
+    },
+    "link": "https://doi.org/10.1038/s41531-025-00922-3"
+  },
+  {
+    "date": "2024-02-25",
+    "kind": "publication",
+    "tag": { "pt": "AAAI 2024", "en": "AAAI 2024" },
+    "title": {
+      "pt": "LERMO apresentado no AAAI 2024",
+      "en": "LERMO presented at AAAI 2024"
+    },
+    "body": {
+      "pt": "Web game para reconhecimento de Língua Brasileira de Sinais com IA, apresentado na principal conferência de Inteligência Artificial.",
+      "en": "An AI-powered web game for Brazilian Sign Language recognition, presented at the premier AI conference."
+    },
+    "link": "https://doi.org/10.1609/aaai.v38i21.30384"
+  }
+]

@@ -1,845 +1,242 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALTA Lab | PUCRS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MALTA Lab · PUCRS</title>
+  <meta name="description" content="MALTA Lab — Machine Learning Theory and Applications Lab, PUCRS." />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="MALTA Lab · PUCRS" />
+  <meta property="og:description" content="Machine Learning Theory and Applications Lab — PUCRS." />
+  <meta property="og:type" content="website" />
 
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <style>
-        /* Define a fonte Inter como padrão */
-        body {
-            font-family: 'Figtree', sans-serif;
-        }
-
-        /* Efeito de sublinhado animado para links da navbar */
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-            color: #5A6270;
-            /* stone-600 equivalent */
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #ff4b3e;
-            /* Kunumi red-orange accent */
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        /* Estilo para o fundo de partículas */
-        #particles-js-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* Coloca o fundo atrás de todo o conteúdo */
-        }
-
-        .nav-link-mobile {
-            transition: background-color 0.2s ease-out;
-        }
-
-        .nav-link-mobile:hover {
-            background-color: #D0CAC5;
-            /* warm hover */
-        }
-
-        /* === Kunumi Light Theme Color Overrides === */
-        /* Nav hover colors */
-        .nav-link:hover { color: #30353B !important; }
-        #mobile-menu-button:hover { color: #30353B !important; }
-
-        /* Override built-in Tailwind text colors for light theme */
-        .text-white { color: #30353B !important; }
-        .text-gray-100, .text-gray-200 { color: #30353B !important; }
-        .text-gray-300 { color: #5A6270 !important; }
-        .text-gray-400 { color: #8A9099 !important; }
-        .text-gray-500 { color: #A0A8B0 !important; }
-
-        /* Exceptions: keep white text on primary (red) backgrounds */
-        .bg-primary-500, .bg-primary-600, .bg-primary-700 { color: #ffffff !important; }
-    </style>
-
-    <!-- Configuração do Tailwind (opcional, mas bom para definir a fonte) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Figtree', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            '50': '#fff1f0',
-                            '100': '#ffe0de',
-                            '200': '#ffc5c2',
-                            '300': '#ff9b97',
-                            '400': '#ff6b66',
-                            '500': '#ff4b3e', // Red-orange accent (Kunumi)
-                            '600': '#ed2d1f',
-                            '700': '#c81e11',
-                            '800': '#a51d13',
-                            '900': '#881f13',
-                            '950': '#4b0c07',
-                        },
-                        darkblue: {
-                            '900': '#F3EFED', /* warm off-white - main background */
-                            '800': '#EAE6E2', /* slightly darker background */
-                            '700': '#E2DDD8', /* card/surface background */
-                            '600': '#D0CAC5', /* border/divider */
-                        }
-                    },
-                },
-            },
-        };
-    </script>
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
-<body class="text-gray-200 antialiased bg-darkblue-900">
+<body>
 
-    <!-- ========== Contêiner do Fundo de Partículas ========== -->
-    <div id="particles-js-container"></div>
+  <!-- Particle background (decorative, never captures pointer events) -->
+  <div id="particles-js-container" aria-hidden="true"></div>
 
-    <!-- ========== Header ========== -->
-    <header class="bg-darkblue-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 w-full">
-        <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo --><a href="#inicio" class="text-2xl font-bold text-primary-500">
-                    MALTA Lab
-                </a>
+  <!-- Fallback message if data fails to load -->
+  <div id="app-error" hidden style="position:fixed;top:0;left:0;right:0;background:#C8362A;color:#fff;padding:8px;text-align:center;z-index:100;font-size:14px;">
+    Failed to load lab data. Please refresh the page.
+  </div>
 
-                <!-- Links de Navegação (Desktop) -->
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#inicio" class="font-medium nav-link text-gray-300 hover:text-white">Início</a>
-                    <a href="#sobre" class="font-medium nav-link text-gray-300 hover:text-white">Sobre</a>
-                    <a href="#pesquisa" class="font-medium nav-link text-gray-300 hover:text-white">Pesquisa</a>
-                    <a href="#membros" class="font-medium nav-link text-gray-300 hover:text-white">Membros</a>
-                    <a href="#publicacoes" class="font-medium nav-link text-gray-300 hover:text-white">Publicações</a>
-                    <a href="#contato" class="font-medium nav-link text-gray-300 hover:text-white">Contato</a>
-                </div>
+  <!-- ========== Header ========== -->
+  <header class="site-header">
+    <nav class="container-narrow" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.85rem 1rem;">
+      <a href="#inicio" id="brand" class="brand-mark" aria-label="MALTA Lab"></a>
 
-                <!-- Botão de Menu (Mobile) -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
+      <div id="nav-desktop" class="nav-desktop" style="display:none;align-items:center;gap:1.1rem;"></div>
 
-        <!-- Menu (Mobile) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-darkblue-800 shadow-lg absolute w-full z-40">
-            <div class="flex flex-col space-y-1 px-4 pt-2 pb-4">
-                <a href="#inicio"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Início</a>
-                <a href="#sobre"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Sobre</a>
-                <a href="#pesquisa"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Pesquisa</a>
-                <a href="#membros"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Membros</a>
-                <a href="#publicacoes"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Publicações</a>
-                <a href="#contato"
-                    class="block py-2 px-3 rounded-md text-base font-medium text-gray-300 nav-link-mobile hover:bg-darkblue-700">Contato</a>
-            </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <div id="theme-toggle" class="lang-toggle" role="group" aria-label="Theme"></div>
+        <div id="lang-toggle" class="lang-toggle" role="group" aria-label="Language"></div>
+        <button id="mobile-menu-button" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu">
+      <div id="mobile-menu-list" class="container-narrow" style="padding:0.5rem 1rem 1rem;"></div>
+    </div>
+  </header>
+
+  <!-- ========== Hero ========== -->
+  <main>
+    <section id="inicio" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:5rem 1rem 4rem;">
+      <div class="container-narrow" style="text-align:center;">
+        <img id="hero-logo" src="./img/logo.png" alt="MALTA — Machine Learning Theory and Applications Lab"
+             style="max-width:520px;width:100%;height:auto;margin:0 auto;display:block;" />
+        <p id="hero-tagline" style="margin-top:1.75rem;color:var(--ink-soft);font-size:1.05rem;line-height:1.55;max-width:600px;margin-inline:auto;"></p>
+
+        <div id="hero-stats" class="stats-row" style="margin-top:2rem;"></div>
+
+        <div id="hero-ctas" style="margin-top:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;"></div>
+      </div>
+    </section>
+
+    <!-- ========== Sobre — 2-column for visual variety (item 10) ========== -->
+    <section id="sobre" class="section">
+      <div class="container-narrow">
+        <div class="about-grid">
+          <div>
+            <span class="eyebrow" id="sobre-eyebrow"></span>
+            <h2 id="sobre-title" class="h-display" style="font-size:clamp(1.8rem,3.2vw,2.4rem);margin-top:0.5rem;line-height:1.15;"></h2>
+            <p id="sobre-body" style="margin-top:1.25rem;color:var(--ink-soft);font-size:1.05rem;line-height:1.65;"></p>
+            <div id="sobre-venues" class="venue-cloud"></div>
+          </div>
+          <div id="sobre-highlights" class="highlight-list"></div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- ========== Seção Principal (Início) ========== -->
-    <main id="inicio">
-        <section class="relative h-screen flex items-center justify-center text-center bg-transparent overflow-hidden">
-            <!-- Fundos anteriores removidos para mostrar o particles.js -->
-
-            <div class="relative z-10 p-4">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Título de texto removido e substituído pela imagem -->
-                    <img src="img/logo.png" alt="MALTA - Machine Learning Theory and Applications Lab Logo"
-                        class="mx-auto w-full h-auto" style="max-width: 600px;">
-
-                    <!-- O subtítulo (MAchine Learning...) foi removido, pois já está na imagem -->
-
-                    <p class="mt-6 text-lg md:text-xl text-gray-400">
-                        Grupo de Pesquisa da Escola Politécnica
-                        <br class="hidden sm:block">
-                        Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)
-                    </p>
-                    <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#sobre"
-                            class="inline-block px-8 py-3 bg-primary-500 text-white font-semibold rounded-lg shadow-md hover:bg-primary-600 transition duration-300">
-                            Saiba Mais
-                        </a>
-                        <a href="#pesquisa"
-                            class="inline-block px-8 py-3 bg-darkblue-700 text-gray-100 font-semibold rounded-lg shadow-md hover:bg-darkblue-600 transition duration-300">
-                            Nossa Pesquisa
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== Sobre ========== -->
-        <section id="sobre" class="py-20 md:py-28">
-            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Sobre o Laboratório
-                    </h2>
-                    <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                        Quem Somos
-                    </p>
-                    <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        O MALTA Lab (MAchine Learning Technologies and Applications Laboratory) é um grupo de pesquisa
-                        da Escola Politécnica da PUCRS focado no avanço e na aplicação de tecnologias de aprendizado de
-                        máquina. Nossa missão é conduzir pesquisas de ponta, formar recursos humanos altamente
-                        qualificados e desenvolver soluções inovadoras que impactem positivamente a sociedade e a
-                        indústria.
-                    </p>
-                </div>
-
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div
-                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
-                            </path>
-                        </svg>
-                        <h3 class="mt-6 text-xl font-semibold text-white">Missão</h3>
-                        <p class="mt-2 text-base text-gray-400">
-                            Desenvolver pesquisa de vanguarda em IA e Machine Learning, com foco em problemas complexos
-                            e de alto impacto.
-                        </p>
-                    </div>
-                    <div
-                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        <h3 class="mt-6 text-xl font-semibold text-white">Inovação</h3>
-                        <p class="mt-2 text-base text-gray-400">
-                            Aplicar técnicas avançadas para criar soluções tecnológicas inovadoras em diversas áreas,
-                            como saúde, finanças e cidades inteligentes.
-                        </p>
-                    </div>
-                    <div
-                        class="bg-darkblue-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <svg class="w-12 h-12 mx-auto text-primary-400" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-2.124M6 18H1m5-2v2a3 3 0 01-5.356-2.124M12 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM3 21h18M12 11V7m0 11a3 3 0 01-3-3v-1m3 4v-4m0 0a3 3 0 013-3v0m-3 3c-1.657 0-3 1.343-3 3v1m6-4v1a3 3 0 01-3 3z">
-                            </path>
-                        </svg>
-                        <h3 class="mt-6 text-xl font-semibold text-white">Formação</h3>
-                        <p class="mt-2 text-base text-gray-400">
-                            Formar mestres, doutores e pesquisadores aptos a liderar a transformação digital e os
-                            desafios da Inteligência Artificial.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== Linhas de Pesquisa ========== -->
-        <section id="pesquisa" class="py-20 md:py-28">
-            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">O que fazemos</h2>
-                    <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                        Linhas de Pesquisa
-                    </p>
-                    <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Nossas atividades de pesquisa estão concentradas em áreas-chave de Machine Learning, buscando
-                        tanto o avanço teórico quanto a aplicação prática.
-                    </p>
-                </div>
-
-                <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
-                <div id="research-lines-container" class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- O JavaScript irá popular esta área -->
-                    <div class="text-center text-gray-400 col-span-3">Carregando linhas de pesquisa...</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== Membros ========== -->
-        <section id="membros" class="py-20 md:py-28">
-            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Nossa Equipe</h2>
-                    <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                        Conheça nossos Pesquisadores
-                    </p>
-                </div>
-
-                <!-- Coordenadores -->
-                <div class="mt-16">
-                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Coordenadores</h3>
-                    <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
-                    <div id="coordenadores-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- O JavaScript irá popular esta área -->
-                        <div class="text-center text-gray-400 col-span-3">Carregando coordenadores...</div>
-                    </div>
-                </div>
-
-                <!-- Alunos de Pós-Graduação -->
-                <div class="mt-16">
-                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Alunos de Pós-Graduação
-                    </h3>
-                    <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
-                    <div id="alunos-container"
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <!-- O JavaScript irá popular esta área -->
-                        <div class="text-center text-gray-400 col-span-4">Carregando alunos...</div>
-                    </div>
-                </div>
-
-                <!-- Alunos de Graduação -->
-                <div class="mt-16">
-                    <h3 class="text-2xl font-semibold text-white mb-8 text-center sm:text-left">Alunos de Graduação</h3>
-                    <div id="alunos-graduacao-container"
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <div class="text-center text-gray-400 col-span-4">Carregando alunos de graduação...</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== Publicações ========== -->
-        <section id="publicacoes" class="py-20 md:py-28">
-            <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Produção Científica
-                    </h2>
-                    <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                        Publicações Recentes
-                    </p>
-                    <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Confira alguns dos trabalhos mais recentes publicados por membros do nosso laboratório em
-                        conferências e periódicos de prestígio.
-                    </p>
-                </div>
-
-                <!-- O conteúdo estático foi removido daqui e será gerado pelo JS -->
-                <div id="publications-container" class="mt-16 space-y-8">
-                    <div class="text-center text-gray-400">Carregando publicações...</div>
-                </div>
-
-                <!-- Paginação -->
-                <div id="publications-pagination" class="mt-10 flex flex-wrap justify-center items-center gap-2 hidden">
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== Contato ========== -->
-        <section id="contato" class="py-20 md:py-28">
-            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-base font-semibold text-primary-400 tracking-wide uppercase">Fale Conosco</h2>
-                    <p class="mt-2 text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                        Entre em Contato
-                    </p>
-                    <p class="mt-6 text-lg text-gray-300 leading-relaxed">
-                        Tem interesse em colaborar, ingressar no grupo ou saber mais sobre nossos projetos? Nos envie
-                        uma mensagem.
-                    </p>
-                </div>
-
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Informações de Contato -->
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Endereço</h3>
-                            <p class="mt-2 text-base text-gray-400">
-                                PUCRS - Escola Politécnica<br>
-                                Av. Ipiranga, 6681 - Prédio 32 (Sala a definir)<br>
-                                Porto Alegre, RS, 90619-900, Brasil
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Email</h3>
-                            <p class="mt-2 text-base text-gray-400">
-                                Para assuntos gerais: <a href="mailto:malta.lab@pucrs.br"
-                                    class="text-primary-400 hover:underline">malta.lab@pucrs.br</a>
-                            </p>
-                            <p class="mt-1 text-base text-gray-400">
-                                Para admissões: <a href="mailto:pos.comp@pucrs.br"
-                                    class="text-primary-400 hover:underline">pos.comp@pucrs.br</a>
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Redes Sociais</h3>
-                            <div class="flex space-x-4 mt-2">
-                                <a href="#" class="text-gray-400 hover:text-primary-400">LinkedIn</a>
-                                <a href="#" class="text-gray-400 hover:text-primary-400">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Formulário de Contato -->
-                    <form action="#" method="POST" class="bg-darkblue-700 p-8 rounded-lg shadow-lg space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-200">Nome</label>
-                            <input type="text" name="name" id="name" required
-                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-200">Email</label>
-                            <input type="email" name="email" id="email" required
-                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-200">Assunto</label>
-                            <input type="text" name="subject" id="subject" required
-                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-200">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" required
-                                class="mt-1 block w-full px-4 py-3 border border-darkblue-600 bg-darkblue-800 text-white rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 text-base"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit"
-                                class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-300">
-                                Enviar Mensagem
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ========== Footer ========== -->
-    <footer class="bg-transparent text-gray-400 border-t border-darkblue-700">
-        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold text-white">MALTA Lab</h3>
-                    <p class="text-sm text-gray-500">MAchine Learning Technologies and Applications Laboratory</p>
-                </div>
-                <div class="text-sm">
-                    <p>&copy; 2024 MALTA Lab - Todos os direitos reservados.</p>
-                    <p class="mt-1 text-gray-500">
-                        <a href="https://www.pucrs.br" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-stone-900">PUCRS</a> - Escola Politécnica
-                    </p>
-                </div>
-            </div>
+    <!-- ========== Linhas de Pesquisa ========== -->
+    <section id="pesquisa" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
+      <div class="container-narrow">
+        <header class="section-header">
+          <span class="eyebrow" id="pesquisa-eyebrow"></span>
+          <h2 id="pesquisa-title"></h2>
+          <p id="pesquisa-body"></p>
+        </header>
+        <div id="pesquisa-grid" class="research-grid">
+          <p class="loading">…</p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- ========== Script (Mobile Menu) ========== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+    <!-- ========== Membros ========== -->
+    <section id="membros" class="section">
+      <div class="container-narrow">
+        <header class="section-header">
+          <span class="eyebrow" id="membros-eyebrow"></span>
+          <h2 id="membros-title"></h2>
+        </header>
 
-            // Alternar menu ao clicar no botão
-            menuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
+        <h3 id="membros-coord-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem;"></h3>
+        <div id="coord-grid" class="coord-grid">
+          <p class="loading">…</p>
+        </div>
 
-            // Fechar menu ao clicar em um link
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-        });
-    </script>
+        <h3 id="membros-pos-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin:3rem 0 1.25rem;"></h3>
+        <div id="alunos-grid" class="student-grid">
+          <p class="loading">…</p>
+        </div>
 
-    <!-- ========== SCRIPT DE CARREGAMENTO DE DADOS DINÂMICOS ========== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        <div id="alunos-graduacao-wrap" hidden>
+          <h3 id="membros-grad-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin:3rem 0 1.25rem;"></h3>
+          <div id="alunos-graduacao-grid" class="student-grid"></div>
+        </div>
+      </div>
+    </section>
 
-            // --- 2. FUNÇÕES DE RENDERIZAÇÃO ---
+    <!-- ========== Publicações (filters, not pagination — item 11) ========== -->
+    <section id="publicacoes" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
+      <div class="container-narrow" style="max-width:980px;">
+        <header class="section-header">
+          <span class="eyebrow" id="pubs-eyebrow"></span>
+          <h2 id="pubs-title"></h2>
+          <p id="pubs-body"></p>
+        </header>
 
-            function renderResearchLines(lines) {
-                const container = document.getElementById('research-lines-container');
-                if (!container) return;
+        <div class="pub-controls">
+          <div class="pub-filter-group">
+            <span class="label" id="pub-year-label"></span>
+            <div id="pub-year-chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+          </div>
+          <div class="pub-filter-group">
+            <span class="label" id="pub-type-label"></span>
+            <div id="pub-type-chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+          </div>
+          <span class="pub-meta" id="pub-count"></span>
+        </div>
 
-                container.innerHTML = ''; // Limpa o conteúdo estático/de loading
-                lines.forEach(line => {
-                    const lineHtml = `
-                        <div class="bg-darkblue-800 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 transform hover:-translate-y-2">
-                            <div class="p-8">
-                                <div class="inline-flex items-center justify-center h-12 w-12 rounded-md bg-primary-100 text-primary-600">
-                                    ${line.iconSvg}
-                                </div>
-                                <h3 class="mt-6 text-xl font-semibold text-stone-900">${line.title}</h3>
-                                <p class="mt-3 text-base text-gray-400">${line.description}</p>
-                            </div>
-                        </div>
-                    `;
-                    container.innerHTML += lineHtml;
-                });
-            }
+        <div id="pub-list" class="pub-list">
+          <p class="loading">…</p>
+        </div>
+      </div>
+    </section>
 
-            function renderMembers(members) {
-                const coordContainer = document.getElementById('coordenadores-container');
-                const alunosContainer = document.getElementById('alunos-container');
-                const gradContainer = document.getElementById('alunos-graduacao-container');
+    <!-- ========== Notícias (item 20) ========== -->
+    <section id="noticias" class="section">
+      <div class="container-narrow" style="max-width:820px;">
+        <header class="section-header">
+          <span class="eyebrow" id="noticias-eyebrow"></span>
+          <h2 id="noticias-title"></h2>
+          <p id="noticias-body"></p>
+        </header>
+        <div id="noticias-list" class="news-list">
+          <p class="loading">…</p>
+        </div>
+      </div>
+    </section>
 
-                if (!coordContainer || !alunosContainer) return;
+    <!-- ========== Contato ========== -->
+    <section id="contato" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
+      <div class="container-narrow">
+        <header class="section-header">
+          <span class="eyebrow" id="contato-eyebrow"></span>
+          <h2 id="contato-title"></h2>
+          <p id="contato-body"></p>
+        </header>
 
-                coordContainer.innerHTML = ''; // Limpa o conteúdo
-                alunosContainer.innerHTML = ''; // Limpa o conteúdo
-                if (gradContainer) gradContainer.innerHTML = ''; // Limpa o conteúdo de graduação
+        <div class="contact-grid">
+          <div>
+            <div class="contact-block" style="margin-bottom:2rem;">
+              <h3 id="addr-label"></h3>
+              <div id="addr-lines"></div>
+            </div>
+            <div id="social-wrap" class="contact-block" hidden>
+              <h3 id="social-label"></h3>
+              <div id="social-links" style="display:flex;gap:1.25rem;"></div>
+            </div>
+          </div>
 
-                const linkClasses = "text-stone-500 hover:text-primary-600 transition-colors duration-200";
+          <div class="contact-cta">
+            <div id="emails" class="stack"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-                members.coordenadores.forEach(member => {
-                    // --- Lógica de links condicionais para Coordenadores ---
-                    let coordLinksHtml = '';
-                    if (member.lattes && member.lattes !== '#') {
-                        coordLinksHtml += `<a href="${member.lattes}" class="${linkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
-                    }
-                    if (member.linkedin && member.linkedin !== '#') {
-                        coordLinksHtml += `<a href="${member.linkedin}" class="${linkClasses}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
-                    }
-                    if (member.scholar && member.scholar !== '#') {
-                        coordLinksHtml += `<a href="${member.scholar}" class="${linkClasses}" target="_blank" rel="noopener noreferrer">Scholar</a>`;
-                    }
+  <!-- ========== Footer ========== -->
+  <footer>
+    <div class="container-narrow" style="padding:2.5rem 1rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;">
+      <div>
+        <strong style="color:var(--ink);font-size:1rem;">MALTA Lab</strong>
+        <p id="footer-tagline" style="font-size:0.85rem;color:var(--ink-mute);"></p>
+      </div>
+      <div style="font-size:0.85rem;text-align:right;">
+        <p id="footer-copy"></p>
+        <p style="margin-top:0.25rem;">
+          <a id="footer-link" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--ink-mute);text-decoration:none;border-bottom:1px dotted var(--border-strong);"></a>
+        </p>
+      </div>
+    </div>
+  </footer>
 
-                    const memberHtml = `
-                        <div class="text-center bg-darkblue-700 rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 h-full flex flex-col justify-between">
-                            <div>
-                                <img class="w-32 h-32 rounded-full mx-auto shadow-md border-2 border-primary-500 object-cover" src="${member.imgUrl}" alt="Foto de ${member.name}">
-                                <h4 class="mt-4 text-xl font-semibold text-stone-900">${member.name}</h4>
-                                <p class="text-primary-600 font-medium">${member.role}</p>
-                                <p class="mt-2 text-sm text-gray-400">${member.specialty}</p>
-                            </div>
-                            ${coordLinksHtml ? `<div class="mt-4 pt-4 border-t border-darkblue-600 flex justify-center space-x-4">${coordLinksHtml}</div>` : ''}
-                        </div>
-                    `;
-                    coordContainer.innerHTML += memberHtml;
-                });
+  <!-- Inline rules that piggy-back on tokens already in styles.css -->
+  <style>
+    @media (min-width: 880px) {
+      #nav-desktop { display: flex !important; }
+      .mobile-menu-btn { display: none !important; }
+    }
+    .mobile-menu-btn {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--ink-soft); padding: 6px 10px;
+      border-radius: var(--radius-sm); cursor: pointer;
+    }
+    .mobile-menu-btn:hover { color: var(--ink); }
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.is-open { display: block; }
+    @media (min-width: 880px) {
+      #mobile-menu { display: none !important; }
+    }
+    /* Brand subtitle: only shows on wide screens so it never crowds the nav */
+    .brand-mark .brand-sub { display: none; }
+    @media (min-width: 1180px) {
+      .brand-mark .brand-sub { display: inline; }
+    }
+  </style>
 
-                members.alunos.forEach(aluno => {
-                    // --- INÍCIO DA MODIFICAÇÃO ---
+  <!-- particles.js (decorative; pointer events off, init is in app.js so it can follow the theme) -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-                    // 1. Criar HTML para links condicionalmente
-                    let linksHtml = '';
-                    const alunoLinkClasses = "text-stone-500 hover:text-primary-600 text-sm transition-colors duration-200";
-
-                    // Verifica se 'lattes' existe, não é nulo, e não é um placeholder '#'
-                    if (aluno.lattes && aluno.lattes !== '#') {
-                        linksHtml += `<a href="${aluno.lattes}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
-                    }
-
-                    // Verifica se 'linkedin' existe, não é nulo, e não é um placeholder '#'
-                    if (aluno.linkedin && aluno.linkedin !== '#') {
-                        linksHtml += `<a href="${aluno.linkedin}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
-                    }
-
-                    // Verifica se 'scholar' existe, não é nulo, e não é um placeholder '#'
-                    if (aluno.scholar && aluno.scholar !== '#') {
-                        linksHtml += `<a href="${aluno.scholar}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Scholar</a>`;
-                    }
-
-                    // 2. Montar o card final
-                    // Adicionado 'flex flex-col justify-between h-full' para alinhamento vertical
-                    const alunoHtml = `
-                        <div class="text-center bg-darkblue-700 rounded-lg shadow-md p-5 transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between h-full">
-                            <div>
-                                <img class="w-24 h-24 rounded-full mx-auto border border-primary-600 object-cover" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
-                                <h4 class="mt-3 text-lg font-semibold text-stone-900">${aluno.name}</h4>
-                                <p class="text-primary-600 text-sm">${aluno.role}</p>
-                                <p class="mt-1 text-xs text-stone-500">${aluno.topic}</p>
-                            </div>
-                            ${linksHtml ? `<div class="mt-3 pt-3 border-t border-darkblue-600 flex justify-center space-x-4">${linksHtml}</div>` : ''}
-                        </div>
-                    `;
-                    // --- FIM DA MODIFICAÇÃO ---
-
-                    alunosContainer.innerHTML += alunoHtml;
-                });
-
-                // Renderiza alunos de graduação se houver container e dados
-                if (gradContainer && members.alunos_graduacao) {
-                    members.alunos_graduacao.forEach(aluno => {
-                        let linksHtml = '';
-                        const alunoLinkClasses = "text-stone-500 hover:text-primary-600 text-sm transition-colors duration-200";
-
-                        if (aluno.lattes && aluno.lattes !== '#') {
-                            linksHtml += `<a href="${aluno.lattes}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">Lattes</a>`;
-                        }
-                        if (aluno.linkedin && aluno.linkedin !== '#') {
-                            linksHtml += `<a href="${aluno.linkedin}" class="${alunoLinkClasses}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
-                        }
-
-                        const alunoHtml = `
-                            <div class="text-center bg-darkblue-700 rounded-lg shadow-md p-5 transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between h-full">
-                                <div>
-                                    <img class="w-24 h-24 rounded-full mx-auto border border-primary-600 object-cover" src="${aluno.imgUrl}" alt="Foto de ${aluno.name}">
-                                    <h4 class="mt-3 text-lg font-semibold text-stone-900">${aluno.name}</h4>
-                                    <p class="text-primary-600 text-sm">${aluno.role}</p>
-                                    <p class="mt-1 text-xs text-stone-500">${aluno.topic}</p>
-                                </div>
-                                ${linksHtml ? `<div class="mt-3 pt-3 border-t border-darkblue-600 flex justify-center space-x-4">${linksHtml}</div>` : ''}
-                            </div>
-                        `;
-                        gradContainer.innerHTML += alunoHtml;
-                    });
-                }
-            }
-
-            // --- Publicações: estado de paginação ---
-            const PUBS_PER_PAGE = 5;
-            let allPublications = [];
-            let currentPubPage = 1;
-
-            function renderPublications(publications) {
-                allPublications = publications;
-                currentPubPage = 1;
-                renderPubPage(currentPubPage);
-            }
-
-            function renderPubPage(page) {
-                const container = document.getElementById('publications-container');
-                const pagination = document.getElementById('publications-pagination');
-                if (!container || !pagination) return;
-
-                const totalPages = Math.ceil(allPublications.length / PUBS_PER_PAGE);
-                const start = (page - 1) * PUBS_PER_PAGE;
-                const slice = allPublications.slice(start, start + PUBS_PER_PAGE);
-
-                container.innerHTML = '';
-                slice.forEach(pub => {
-                    const pubHtml = `
-                        <div class="bg-darkblue-800 p-6 rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                            <p class="text-sm text-gray-500">${pub.type} | ${pub.year}</p>
-                            <h3 class="mt-2 text-lg font-semibold text-stone-900">${pub.title}</h3>
-                            <p class="mt-2 text-base text-stone-500">${pub.authors}</p>
-                            <p class="mt-1 text-base text-stone-500 italic">${pub.source}</p>
-                            <a href="${pub.doiUrl}" class="mt-3 inline-block text-primary-600 font-medium hover:text-primary-500" target="_blank" rel="noopener noreferrer">Ver [DOI]</a>
-                        </div>
-                    `;
-                    container.innerHTML += pubHtml;
-                });
-
-                // Renderiza controles de paginação
-                pagination.classList.remove('hidden');
-                pagination.innerHTML = '';
-
-                const btnBase = 'px-4 py-2 rounded-lg font-semibold transition duration-200 text-sm';
-                const btnActive = `${btnBase} bg-primary-500 text-white shadow-md`;
-                const btnInactive = `${btnBase} bg-darkblue-700 text-gray-300 hover:bg-darkblue-600`;
-                const btnDisabled = `${btnBase} bg-darkblue-700 text-gray-500 cursor-not-allowed opacity-50`;
-
-                // Botão « Anterior
-                const prevBtn = document.createElement('button');
-                prevBtn.textContent = '«';
-                prevBtn.title = 'Página anterior';
-                prevBtn.className = page === 1 ? btnDisabled : btnInactive;
-                prevBtn.disabled = page === 1;
-                prevBtn.addEventListener('click', () => goToPubPage(page - 1));
-                pagination.appendChild(prevBtn);
-
-                // Botões numerados
-                for (let i = 1; i <= totalPages; i++) {
-                    const btn = document.createElement('button');
-                    btn.textContent = i === totalPages ? 'Último' : String(i);
-                    btn.className = i === page ? btnActive : btnInactive;
-                    btn.addEventListener('click', () => goToPubPage(i));
-                    pagination.appendChild(btn);
-                }
-
-                // Botão » Próximo
-                const nextBtn = document.createElement('button');
-                nextBtn.textContent = '»';
-                nextBtn.title = 'Próxima página';
-                nextBtn.className = page === totalPages ? btnDisabled : btnInactive;
-                nextBtn.disabled = page === totalPages;
-                nextBtn.addEventListener('click', () => goToPubPage(page + 1));
-                pagination.appendChild(nextBtn);
-            }
-
-            function goToPubPage(page) {
-                const totalPages = Math.ceil(allPublications.length / PUBS_PER_PAGE);
-                if (page < 1 || page > totalPages) return;
-                currentPubPage = page;
-                renderPubPage(page);
-                document.getElementById('publicacoes').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            // --- 3. FUNÇÃO DE INICIALIZAÇÃO (MOCK) ---
-            function loadMockData() {
-                // Descomente as linhas abaixo se não estiver usando 'loadAllData'
-                // renderResearchLines(mockPesquisa);
-                // renderMembers(mockMembros);
-                // renderPublications(mockPublicacoes);
-            }
-            // loadMockData(); // Comente ou remova ao usar fetch
-
-
-            // --- 4. FUNÇÃO DE CARREGAMENTO REAL (Fetch) ---
-            async function loadAllData() {
-                try {
-                    const [resPesquisa, resMembros, resPublicacoes] = await Promise.all([
-                        fetch('./data/pesquisa.json'),  // Caminho para seu arquivo JSON
-                        fetch('./data/membros.json'),    // Caminho para seu arquivo JSON
-                        fetch('./data/publicacoes.json') // Caminho para seu arquivo JSON
-                    ]);
-
-                    if (!resPesquisa.ok || !resMembros.ok || !resPublicacoes.ok) {
-                        throw new Error('Falha ao carregar um ou mais arquivos JSON');
-                    }
-
-                    const pesquisa = await resPesquisa.json();
-                    const membros = await resMembros.json();
-                    const publicacoes = await resPublicacoes.json();
-
-                    // Renderiza o conteúdo com os dados dos arquivos
-                    renderResearchLines(pesquisa);
-                    renderMembers(membros);
-                    renderPublications(publicacoes);
-
-                } catch (error) {
-                    console.error("Erro ao carregar dados dos arquivos JSON:", error);
-                    // Opcional: Mostrar uma mensagem de erro na UI
-                    document.getElementById('research-lines-container').innerHTML = '<p class="text-red-600 col-span-3 text-center">Erro ao carregar linhas de pesquisa.</p>';
-                    document.getElementById('coordenadores-container').innerHTML = '<p class="text-red-600 col-span-3 text-center">Erro ao carregar coordenadores.</p>';
-                    document.getElementById('alunos-container').innerHTML = '<p class="text-red-600 col-span-4 text-center">Erro ao carregar alunos.</p>';
-                    if (document.getElementById('alunos-graduacao-container')) {
-                        document.getElementById('alunos-graduacao-container').innerHTML = '<p class="text-red-600 col-span-4 text-center">Erro ao carregar alunos de graduação.</p>';
-                    }
-                    document.getElementById('publications-container').innerHTML = '<p class="text-red-600 text-center">Erro ao carregar publicações.</p>';
-                }
-            }
-
-            // Para usar, comente 'loadMockData()' e descomente a linha abaixo:
-            loadAllData();
-
-
-        });
-    </script>
-
-    <!-- ========== SCRIPT (Particles.js) ========== -->
-    <!-- Carrega a biblioteca -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <!-- Inicializa e configura o particles.js -->
-    <script>
-        particlesJS(
-            "particles-js-container", // O ID do contêiner
-            {
-                "particles": {
-                    "number": {
-                        "value": 100, // Quantidade de "nós"
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#30353B" // Dark charcoal nodes for light background
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.25,
-                        "random": true
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true
-                    },
-                    "line_linked": {
-                        "enable": true, // Habilita as "arestas" do grafo
-                        "distance": 150,
-                        "color": "#D0CAC5", // Warm border color for light background
-                        "opacity": 0.5,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 3, // Velocidade de movimento dos nós
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true, // Habilita a interação com o mouse
-                            "mode": "grab" // Modo "pegar" (cria linhas com o mouse)
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push" // Adiciona nós ao clicar
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_opacity": 0.7
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            }
-        );
-    </script>
+  <!-- App -->
+  <script src="./js/app.js" defer></script>
 
 </body>
-
 </html>
