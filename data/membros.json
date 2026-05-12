@@ -143,7 +143,10 @@
     {
       "imgUrl": "./img/ibarra.jpeg",
       "name": "Arthur Sudbrack Ibarra",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
       "topic": "Machine Learning · Deep Learning",
       "scholar": "",
       "lattes": "https://lattes.cnpq.br/5557999232970428",
@@ -152,7 +155,10 @@
     {
       "imgUrl": "./img/luan.jpeg",
       "name": "Luan da Silva Nunes",
-      "role": { "pt": "Mestrando", "en": "" },
+      "role": {
+        "pt": "Mestrando",
+        "en": ""
+      },
       "topic": "Graph Neural Network ",
       "scholar": "",
       "lattes": "https://lattes.cnpq.br/2481733494356180",
@@ -161,11 +167,26 @@
     {
       "imgUrl": "./img/traunig.jpeg",
       "name": "Eduardo Enes Traunig",
-      "role": { "pt": "Mestrando", "en": "MSc student" },
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc student"
+      },
       "topic": "Clustering · Medical Imaging · Computer Vision",
       "scholar": "",
       "lattes": "http://lattes.cnpq.br/1755536111026290",
       "linkedin": "https://www.linkedin.com/in/eduardo-traunig/"
+    },
+    {
+      "imgUrl": "./img/turani.jpeg",
+      "name": "Vinicius Conte Turani",
+      "role": {
+        "pt": "Mestrando",
+        "en": "Master's candidate"
+      },
+      "topic": "Machine Unlearning · NLP · LLMs",
+      "scholar": "https://scholar.google.com.br/citations?view_op=new_articles&hl=pt-BR&imq=Vinicius+Conte+Turani#",
+      "lattes": "http://lattes.cnpq.br/",
+      "linkedin": "https://www.linkedin.com/in/vinícius-c-turani"
     }
   ],
   "alunos_graduacao": [
