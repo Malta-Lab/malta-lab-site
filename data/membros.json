@@ -31,12 +31,14 @@
       "scholar": ""
     }
   ],
-
   "alunos": [
     {
       "imgUrl": "./img/parraga.png",
       "name": "Otávio Parraga",
-      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "role": {
+        "pt": "Doutorando",
+        "en": "PhD candidate"
+      },
       "topic": "NLP · LLMs · Activation Engineering · Fairness",
       "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
       "lattes": "http://lattes.cnpq.br/5668566915713518",
@@ -45,7 +47,10 @@
     {
       "imgUrl": "./img/marcelo.jpg",
       "name": "Marcelo M. Delucis",
-      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "role": {
+        "pt": "Doutorando",
+        "en": "PhD candidate"
+      },
       "topic": "NLP · LLMs · Misinformation · CV · Healthcare",
       "lattes": "http://lattes.cnpq.br/9944471444662969",
       "scholar": "https://scholar.google.com/citations?user=ZdDSinAAAAAJ&hl=pt-BR",
@@ -54,7 +59,10 @@
     {
       "imgUrl": "",
       "name": "Christian Mattjie de Oliveira",
-      "role": { "pt": "Doutorando", "en": "PhD candidate" },
+      "role": {
+        "pt": "Doutorando",
+        "en": "PhD candidate"
+      },
       "topic": "Clustering · Medical Imaging · Computer Vision",
       "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
       "lattes": "http://lattes.cnpq.br/7402982950960470",
@@ -63,7 +71,10 @@
     {
       "imgUrl": "./img/rafa.jpeg",
       "name": "Rafaela Ravazio",
-      "role": { "pt": "Doutoranda", "en": "PhD candidate" },
+      "role": {
+        "pt": "Doutoranda",
+        "en": "PhD candidate"
+      },
       "topic": "Clustering · Medical Imaging · Bioinformatics",
       "lattes": "https://lattes.cnpq.br/6522477912976706",
       "linkedin": "https://www.linkedin.com/in/rafaelaravazio/",
@@ -72,34 +83,34 @@
     {
       "imgUrl": "./img/lucas_fraga.png",
       "name": "Lucas M. Fraga",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
       "topic": "Misinformation Detection · NLP · LLMs",
       "lattes": "http://lattes.cnpq.br/4680421690073859",
       "linkedin": "https://www.linkedin.com/in/lucasfrag/",
       "scholar": ""
     },
     {
-      "imgUrl": "./img/raissa.jpg",
+      "imgUrl": "./img/raissa.jpeg",
       "name": "Raíssa Xavier Contassot",
-      "role": { "pt": "Mestranda", "en": "MSc candidate" },
-      "topic": "Medical Imaging",
-      "linkedin": "https://www.linkedin.com/in/raíssa-xavier-contassot/",
+      "role": {
+        "pt": "Mestranda",
+        "en": "MSc Student"
+      },
+      "topic": "Medical Imaging · Computer Vision · Diffusion Models",
+      "scholar": "https://scholar.google.com/citations?user=9CLCNp8AAAAJ&hl=pt-BR",
       "lattes": "http://lattes.cnpq.br/2873185245435465",
-      "scholar": ""
-    },
-    {
-      "imgUrl": "./img/jerusa.png",
-      "name": "Jerusa Finatto",
-      "role": { "pt": "Mestranda", "en": "MSc candidate" },
-      "topic": "Speech Analysis · Clustering · Medical Imaging",
-      "lattes": "http://lattes.cnpq.br/8623671040783621",
-      "scholar": "https://scholar.google.com/citations?user=Fd1igksAAAAJ&hl=pt-BR",
-      "linkedin": "https://www.linkedin.com/in/jerusa-finatto-02021852/"
+      "linkedin": "https://www.linkedin.com/in/ra%C3%ADssa-xavier-contassot/"
     },
     {
       "imgUrl": "./img/joana.png",
       "name": "Joana Pasquali",
-      "role": { "pt": "Mestranda", "en": "MSc candidate" },
+      "role": {
+        "pt": "Doutoranda",
+        "en": "PhD Candidate"
+      },
       "topic": "Deep Learning · Machine Unlearning",
       "lattes": "http://lattes.cnpq.br/6522477912976706",
       "linkedin": "https://www.linkedin.com/in/jmpasquali/",
@@ -108,8 +119,11 @@
     {
       "imgUrl": "./img/abitante.JPG",
       "name": "João Vitor Boer Abitante",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
-      "topic": "Deep Learning · Machine Unlearning · Quantization · RL",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
+      "topic": "Deep Learning · Machine Unlearning",
       "lattes": "http://lattes.cnpq.br/8192678717960847",
       "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/",
       "scholar": ""
@@ -117,23 +131,75 @@
     {
       "imgUrl": "./img/wagner.jpeg",
       "name": "Pedro Prokath Wagner",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
       "topic": "NLP · LLMs",
       "lattes": "http://lattes.cnpq.br/4683965954238969",
       "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner",
       "scholar": ""
     }
   ],
-
   "alunos_graduacao": [
     {
-      "imgUrl": "./img/wagner.jpeg",
-      "name": "Pedro Prokath Wagner",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
-      "topic": "NLP · LLMs",
-      "lattes": "http://lattes.cnpq.br/4683965954238969",
-      "linkedin": "https://br.linkedin.com/in/pedro-prokath-wagner",
-      "scholar": ""
+      "imgUrl": "./img/yasmin.png",
+      "name": "Yasmin Cardozo Aguirre",
+      "role": {
+        "pt": "Iniciação Científica",
+        "en": "Undergraduate Researchers"
+      },
+      "topic": "Machine Learning · Deep Learning",
+      "scholar": "https://scholar.google.com/citations?hl=en&user=rdMuAokAAAAJ",
+      "lattes": "http://lattes.cnpq.br/8464337074401045",
+      "linkedin": "https://www.linkedin.com/in/4gu1rr3/"
+    },
+    {
+      "imgUrl": "./img/fachel.jpg",
+      "name": "Arthur Domingues Fachel Nunes",
+      "role": {
+        "pt": "Auxiliar de Pesquisa",
+        "en": "Undergraduate Research Assistant"
+      },
+      "topic": "LLM · NLP",
+      "scholar": "https://scholar.google.com.br/citations?hl=pt-BR&view_op=list_works&gmla=AIqSsVsg4uvFEpIDafXtGtdw4ZSbovIhOq07Cze1pYHrYwyyv6qh5hN4US6zIoB3zB2pHFC8JmFLGxVXdrSwrw3mUbmGW1ju&user=thjXvbUAAAAJ",
+      "lattes": "",
+      "linkedin": "https://www.linkedin.com/in/arthur-fachel-801218176/"
+    },
+    {
+      "imgUrl": "./img/diogo.jpeg",
+      "name": "Diogo Luiz Zago",
+      "role": {
+        "pt": "Iniciação Científica",
+        "en": "Under Graduate Student"
+      },
+      "topic": "Medical Imaging · Computer Vision",
+      "lattes": "http://lattes.cnpq.br/0174505155460982",
+      "linkedin": "https://www.linkedin.com/in/diogo-luiz-zago/"
+    },
+    {
+      "imgUrl": "./img/druschel.jpg",
+      "name": "João Pedro Druschel Martins",
+      "role": {
+        "pt": "Iniciação Científica",
+        "en": "Undergraduate Student"
+      },
+      "topic": "NLP · Supervised Learning · CRM ",
+      "scholar": "https://scholar.google.com.br/citations?hl=pt-BR&authuser=1&user=FYO9oswAAAAJ",
+      "lattes": "http://lattes.cnpq.br/6759493018979658",
+      "linkedin": "https://www.linkedin.com/in/joão-pedro-druschel-martins-740815317?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+    },
+    {
+      "imgUrl": "./img/guto.jpeg",
+      "name": "Augusto Ochoa Ughini",
+      "role": {
+        "pt": "Iniciação Científica",
+        "en": "Undergraduate Student"
+      },
+      "topic": "Medical Imaging · Computer Vision",
+      "scholar": "https://scholar.google.com/citations?hl=pt-BR&user=y0KLSU8AAAAJ&authuser=2&scilu=&scisig=AFPfF8cAAAAAagNs1xnXHc9ySl-N_jlNZH6CmQw&gmla=AIqSsVtWDZ9e64bTVLP5Yt7w3noNmpHmsHl-hZtRIhCEUOfrXQ0aDrlKoELOolMSVAPpmOYvbSNYlD0WMDnWEfGztp01fJ3xZaZ2aKFpdLWfb5CEWQ&sciund=4944046418084975404",
+      "lattes": "http://lattes.cnpq.br/6819871244203937",
+      "linkedin": "https://www.linkedin.com/in/augusto-ochoa/"
     }
-]
+  ]
 }
