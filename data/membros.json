@@ -198,7 +198,7 @@
       "linkedin": "https://www.linkedin.com/in/ramironb/"
     },
     {
-      "imgUrl": "./img/germano.jpg",
+      "imgUrl": "./img/germano.jpeg",
       "name": "Arthur Merode Germano",
       "role": { "pt": "Mestrando", "en": "MSc candidate" },
       "topic": "Deep Learning · Graph Neural Network",
