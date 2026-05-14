@@ -33,16 +33,28 @@
   ],
   "alunos": [
     {
-      "imgUrl": "./img/parraga.png",
-      "name": "Otávio Parraga",
+      "imgUrl": "",
+      "name": "Christian Mattjie de Oliveira",
       "role": {
-        "pt": "Doutorando",
-        "en": "PhD candidate"
+        "pt": "Pós-Doutorando",
+        "en": "Postdoctoral Researcher"
       },
-      "topic": "NLP · LLMs · Activation Engineering · Fairness",
-      "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
-      "lattes": "http://lattes.cnpq.br/5668566915713518",
-      "scholar": ""
+      "topic": "Clustering · Medical Imaging · Computer Vision",
+      "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
+      "lattes": "http://lattes.cnpq.br/7402982950960470",
+      "linkedin": "https://www.linkedin.com/in/christianmattjie/"
+    },
+    {
+      "imgUrl": "./img/joana.png",
+      "name": "Joana Pasquali",
+      "role": {
+        "pt": "Doutoranda",
+        "en": "PhD Candidate"
+      },
+      "topic": "Deep Learning · Machine Unlearning",
+      "lattes": "http://lattes.cnpq.br/6522477912976706",
+      "linkedin": "https://www.linkedin.com/in/jmpasquali/",
+      "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
     },
     {
       "imgUrl": "./img/marcelo.jpg",
@@ -57,16 +69,16 @@
       "linkedin": "https://www.linkedin.com/in/marcelomussi/"
     },
     {
-      "imgUrl": "",
-      "name": "Christian Mattjie de Oliveira",
+      "imgUrl": "./img/parraga.png",
+      "name": "Otávio Parraga",
       "role": {
         "pt": "Doutorando",
         "en": "PhD candidate"
       },
-      "topic": "Clustering · Medical Imaging · Computer Vision",
-      "scholar": "https://scholar.google.com/citations?user=TluKk1UAAAAJ&hl",
-      "lattes": "http://lattes.cnpq.br/7402982950960470",
-      "linkedin": "https://www.linkedin.com/in/christianmattjie/"
+      "topic": "NLP · LLMs · Activation Engineering · Fairness",
+      "linkedin": "https://www.linkedin.com/in/ot%C3%A1vio-parraga-435813181/",
+      "lattes": "http://lattes.cnpq.br/5668566915713518",
+      "scholar": ""
     },
     {
       "imgUrl": "./img/rafa.jpeg",
@@ -78,6 +90,65 @@
       "topic": "Clustering · Medical Imaging · Bioinformatics",
       "lattes": "https://lattes.cnpq.br/6522477912976706",
       "linkedin": "https://www.linkedin.com/in/rafaelaravazio/",
+      "scholar": ""
+    },
+    {
+      "imgUrl": "./img/bia.jpg",
+      "name": "Arthur S. Bianchessi",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc Student"
+      },
+      "topic": "Deep Learning Architectures",
+      "lattes": "http://lattes.cnpq.br/9087171051993343",
+      "linkedin": "www.linkedin.com/in/arthur-s-bianchessi"
+    },
+    {
+      "imgUrl": "./img/germano.jpeg",
+      "name": "Arthur Merode Germano",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
+      "topic": "Deep Learning · Graph Neural Network",
+      "scholar": "",
+      "lattes": "http://lattes.cnpq.br/8833309570394042",
+      "linkedin": "https://www.linkedin.com/in/arthur-germano-628650225/"
+    },
+    {
+      "imgUrl": "./img/ibarra.jpeg",
+      "name": "Arthur Sudbrack Ibarra",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
+      "topic": "Machine Learning · Deep Learning",
+      "scholar": "",
+      "lattes": "https://lattes.cnpq.br/5557999232970428",
+      "linkedin": "https://www.linkedin.com/in/arthur-sudbrack-ibarra-88399423a/"
+    },
+    {
+      "imgUrl": "./img/traunig.jpeg",
+      "name": "Eduardo Enes Traunig",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc student"
+      },
+      "topic": "Clustering · Medical Imaging · Computer Vision",
+      "scholar": "",
+      "lattes": "http://lattes.cnpq.br/1755536111026290",
+      "linkedin": "https://www.linkedin.com/in/eduardo-traunig/"
+    },
+    {
+      "imgUrl": "./img/abitante.JPG",
+      "name": "João Vitor Boer Abitante",
+      "role": {
+        "pt": "Mestrando",
+        "en": "MSc candidate"
+      },
+      "topic": "Deep Learning · Machine Unlearning",
+      "lattes": "http://lattes.cnpq.br/8192678717960847",
+      "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/",
       "scholar": ""
     },
     {
@@ -93,40 +164,16 @@
       "scholar": ""
     },
     {
-      "imgUrl": "./img/raissa.jpeg",
-      "name": "Raíssa Xavier Contassot",
-      "role": {
-        "pt": "Mestranda",
-        "en": "MSc Student"
-      },
-      "topic": "Medical Imaging · Computer Vision · Diffusion Models",
-      "scholar": "https://scholar.google.com/citations?user=9CLCNp8AAAAJ&hl=pt-BR",
-      "lattes": "http://lattes.cnpq.br/2873185245435465",
-      "linkedin": "https://www.linkedin.com/in/ra%C3%ADssa-xavier-contassot/"
-    },
-    {
-      "imgUrl": "./img/joana.png",
-      "name": "Joana Pasquali",
-      "role": {
-        "pt": "Doutoranda",
-        "en": "PhD Candidate"
-      },
-      "topic": "Deep Learning · Machine Unlearning",
-      "lattes": "http://lattes.cnpq.br/6522477912976706",
-      "linkedin": "https://www.linkedin.com/in/jmpasquali/",
-      "scholar": "https://scholar.google.com.br/citations?user=bXVnGnkAAAAJ&hl"
-    },
-    {
-      "imgUrl": "./img/abitante.JPG",
-      "name": "João Vitor Boer Abitante",
+      "imgUrl": "./img/luan.jpeg",
+      "name": "Luan da Silva Nunes",
       "role": {
         "pt": "Mestrando",
-        "en": "MSc candidate"
+        "en": ""
       },
-      "topic": "Deep Learning · Machine Unlearning",
-      "lattes": "http://lattes.cnpq.br/8192678717960847",
-      "linkedin": "https://www.linkedin.com/in/joaovitorboerabitante/",
-      "scholar": ""
+      "topic": "Graph Neural Network ",
+      "scholar": "",
+      "lattes": "https://lattes.cnpq.br/2481733494356180",
+      "linkedin": "https://www.linkedin.com/in/nunesluan/"
     },
     {
       "imgUrl": "./img/wagner.jpeg",
@@ -141,40 +188,28 @@
       "scholar": ""
     },
     {
-      "imgUrl": "./img/ibarra.jpeg",
-      "name": "Arthur Sudbrack Ibarra",
+      "imgUrl": "./img/raissa.jpeg",
+      "name": "Raíssa Xavier Contassot",
       "role": {
-        "pt": "Mestrando",
-        "en": "MSc candidate"
+        "pt": "Mestranda",
+        "en": "MSc Student"
       },
-      "topic": "Machine Learning · Deep Learning",
-      "scholar": "",
-      "lattes": "https://lattes.cnpq.br/5557999232970428",
-      "linkedin": "https://www.linkedin.com/in/arthur-sudbrack-ibarra-88399423a/"
+      "topic": "Medical Imaging · Computer Vision · Diffusion Models",
+      "scholar": "https://scholar.google.com/citations?user=9CLCNp8AAAAJ&hl=pt-BR",
+      "lattes": "http://lattes.cnpq.br/2873185245435465",
+      "linkedin": "https://www.linkedin.com/in/ra%C3%ADssa-xavier-contassot/"
     },
     {
-      "imgUrl": "./img/luan.jpeg",
-      "name": "Luan da Silva Nunes",
+      "imgUrl": "./img/ramiro.jpeg",
+      "name": "Ramiro Nilson Barros",
       "role": {
         "pt": "Mestrando",
-        "en": ""
+        "en": "MSc Student"
       },
-      "topic": "Graph Neural Network ",
-      "scholar": "",
-      "lattes": "https://lattes.cnpq.br/2481733494356180",
-      "linkedin": "https://www.linkedin.com/in/nunesluan/"
-    },
-    {
-      "imgUrl": "./img/traunig.jpeg",
-      "name": "Eduardo Enes Traunig",
-      "role": {
-        "pt": "Mestrando",
-        "en": "MSc student"
-      },
-      "topic": "Clustering · Medical Imaging · Computer Vision",
-      "scholar": "",
-      "lattes": "http://lattes.cnpq.br/1755536111026290",
-      "linkedin": "https://www.linkedin.com/in/eduardo-traunig/"
+      "topic": "Deep Learning · Continual Learning · NLP",
+      "scholar": "https://scholar.google.com/citations?user=gX9BVdcAAAAJ",
+      "lattes": "http://lattes.cnpq.br/5596228198471762",
+      "linkedin": "https://www.linkedin.com/in/ramironb/"
     },
     {
       "imgUrl": "./img/turani.jpeg",
@@ -187,24 +222,6 @@
       "scholar": "https://scholar.google.com.br/citations?view_op=new_articles&hl=pt-BR&imq=Vinicius+Conte+Turani#",
       "lattes": "http://lattes.cnpq.br/",
       "linkedin": "https://www.linkedin.com/in/vinícius-c-turani"
-    },
-    {
-      "imgUrl": "./img/ramiro.jpeg",
-      "name": "Ramiro Nilson Barros",
-      "role": { "pt": "Mestrando", "en": "MSc Student" },
-      "topic": "Deep Learning · Continual Learning · NLP",
-      "scholar": "https://scholar.google.com/citations?user=gX9BVdcAAAAJ",
-      "lattes": "http://lattes.cnpq.br/5596228198471762",
-      "linkedin": "https://www.linkedin.com/in/ramironb/"
-    },
-    {
-      "imgUrl": "./img/germano.jpeg",
-      "name": "Arthur Merode Germano",
-      "role": { "pt": "Mestrando", "en": "MSc candidate" },
-      "topic": "Deep Learning · Graph Neural Network",
-      "scholar": "",
-      "lattes": "http://lattes.cnpq.br/8833309570394042",
-      "linkedin": "https://www.linkedin.com/in/arthur-germano-628650225/"
     }
   ],
   "alunos_graduacao": [
