@@ -33,7 +33,7 @@
   ],
   "alunos": [
     {
-      "imgUrl": "",
+      "imgUrl": "./img/christian.jpeg",
       "name": "Christian Mattjie de Oliveira",
       "role": {
         "pt": "Pós-Doutorando",
