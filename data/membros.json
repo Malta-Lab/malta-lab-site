@@ -81,6 +81,18 @@
       "scholar": ""
     },
     {
+      "imgUrl": "./img/wagner.jpeg",
+      "name": "Pedro Prokath Wagner",
+      "role": {
+        "pt": "Doutorando",
+        "en": "PhD Candidate"
+      },
+      "topic": "NLP · LLMs",
+      "lattes": "http://lattes.cnpq.br/4683965954238969",
+      "linkedin": "https://www.linkedin.com/in/pedro-prokath-wagner",
+      "scholar": ""
+    },
+    {
       "imgUrl": "./img/rafa.jpeg",
       "name": "Rafaela Ravazio",
       "role": {
@@ -174,18 +186,6 @@
       "scholar": "",
       "lattes": "https://lattes.cnpq.br/2481733494356180",
       "linkedin": "https://www.linkedin.com/in/nunesluan/"
-    },
-    {
-      "imgUrl": "./img/wagner.jpeg",
-      "name": "Pedro Prokath Wagner",
-      "role": {
-        "pt": "Mestrando",
-        "en": "MSc Student"
-      },
-      "topic": "NLP · LLMs",
-      "lattes": "http://lattes.cnpq.br/4683965954238969",
-      "linkedin": "https://www.linkedin.com/in/pedro-prokath-wagner",
-      "scholar": ""
     },
     {
       "imgUrl": "./img/raissa.jpeg",
