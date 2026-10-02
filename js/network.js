@@ -80,10 +80,11 @@
 
   function buildNodes() {
     const count = Math.round(Math.min(Math.max((w * h) / 9000, 44), 160));
+    let dealt = 0;                // clustered points are dealt in turn, so clusters stay even
     nodes = Array.from({ length: count }, (_, i) => {
       const loose = i % 10 < 3;   // 30% loose points
       return {
-        k: loose ? -1 : i % K,
+        k: loose ? -1 : dealt++ % K,
         u: Math.random(), v: Math.random(),
         ox: gauss(), oy: gauss(),
         r: loose ? rand(1.2, 2) : rand(2, 3.8),
@@ -156,7 +157,8 @@
         const dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
         if (d2 > link2) continue;
         const strength = 1 - Math.sqrt(d2) / link;
-        const k = (a.k === b.k && a.k >= 0) ? a.k : K;
+        // A point from a cluster that no longer exists links like a loose one
+        const k = (a.k === b.k && a.k >= 0 && a.k < K) ? a.k : K;
         buckets[k * LEVELS + Math.min(LEVELS - 1, Math.floor(strength * LEVELS))].push(a, b);
       }
     }
@@ -256,8 +258,10 @@
     if (n === K) return;
     K = n;
     weight.length = 0;
-    refresh();
+    if (focus != null && focus >= K) focus = null;
+    // Rebuild before refresh() draws, so no point belongs to a dropped cluster
     if (canvas && w) { buildCenters(); buildNodes(); }
+    refresh();
   }
 
   function highlight(k) {
@@ -276,6 +280,13 @@
 
     let timer = 0;
     window.addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(resize, 120); });
+    // Moving to a screen of another density changes the DPR without a resize event
+    const watchDpr = () => {
+      if (!window.matchMedia) return;
+      window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`)
+        .addEventListener?.("change", () => { resize(); watchDpr(); }, { once: true });
+    };
+    watchDpr();
     document.addEventListener("visibilitychange", () => { if (!document.hidden) kick(); });
     reduceMotion.addEventListener?.("change", () => { pointer = null; kick(); });
 
