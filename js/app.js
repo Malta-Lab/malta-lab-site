@@ -44,12 +44,13 @@
     return (first + last).toUpperCase();
   }
 
-  /** Render a photo: <img> if URL, else initials block. */
+  /** Render a photo: <img> if URL, else initials block.
+   *  alt="" because the member's name is printed right below the photo. */
   function photoHtml(imgUrl, name) {
     if (imgUrl && imgUrl.trim() && !imgUrl.includes("placehold")) {
-      return `<img src="${imgUrl}" alt="${name}" loading="lazy">`;
+      return `<img src="${esc(imgUrl)}" alt="" loading="lazy">`;
     }
-    return `<span aria-hidden="true">${initialsFor(name)}</span>`;
+    return `<span aria-hidden="true">${esc(initialsFor(name))}</span>`;
   }
 
   /** Escape user text → HTML. */
@@ -231,11 +232,11 @@
     const navDesktop = $("#nav-desktop");
     const navMobile  = $("#mobile-menu-list");
     const linksHtml = site.nav.map(item =>
-      `<a class="nav-link" href="${item.href}">${esc(t(item.label))}</a>`
+      `<a class="nav-link" href="${esc(item.href)}">${esc(t(item.label))}</a>`
     ).join("");
     navDesktop.innerHTML = linksHtml;
     navMobile.innerHTML = site.nav.map(item =>
-      `<a href="${item.href}">${esc(t(item.label))}</a>`
+      `<a href="${esc(item.href)}">${esc(t(item.label))}</a>`
     ).join("");
 
     // Language toggle (label = language name, in that language; visible text stays PT/EN)
@@ -258,7 +259,7 @@
 
     // CTAs
     $("#hero-ctas").innerHTML = h.ctas.map(c =>
-      `<a href="${c.href}" class="btn btn-${c.kind === "primary" ? "primary" : "secondary"}">${esc(t(c.label))}</a>`
+      `<a href="${esc(c.href)}" class="btn btn-${c.kind === "primary" ? "primary" : "secondary"}">${esc(t(c.label))}</a>`
     ).join("");
 
     // Stats
@@ -334,9 +335,9 @@
     const linkClass = "member-link";
     const renderLinks = (mem) => {
       const links = [];
-      if (mem.lattes)   links.push(`<a href="${mem.lattes}"   target="_blank" rel="noopener noreferrer" class="${linkClass}">Lattes</a>`);
-      if (mem.linkedin) links.push(`<a href="${mem.linkedin}" target="_blank" rel="noopener noreferrer" class="${linkClass}">LinkedIn</a>`);
-      if (mem.scholar)  links.push(`<a href="${mem.scholar}"  target="_blank" rel="noopener noreferrer" class="${linkClass}">Scholar</a>`);
+      if (mem.lattes)   links.push(`<a href="${esc(mem.lattes)}"   target="_blank" rel="noopener noreferrer" class="${linkClass}">Lattes</a>`);
+      if (mem.linkedin) links.push(`<a href="${esc(mem.linkedin)}" target="_blank" rel="noopener noreferrer" class="${linkClass}">LinkedIn</a>`);
+      if (mem.scholar)  links.push(`<a href="${esc(mem.scholar)}"  target="_blank" rel="noopener noreferrer" class="${linkClass}">Scholar</a>`);
       return links.length
         ? `<div class="member-links">${links.join("")}</div>` : "";
     };
