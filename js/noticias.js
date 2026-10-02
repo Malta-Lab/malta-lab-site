@@ -233,6 +233,11 @@
       }
     });
 
+    // In a quote, a last paragraph starting with "—" names who said it
+    $$("blockquote > p:last-child", root).forEach(p => {
+      if (/^\s*(—|--)/.test(p.textContent) && p.previousElementSibling) p.classList.add("quote-attribution");
+    });
+
     let count = 0;
     $$("p", root).forEach(p => {
       const imgs = $$("img", p);
@@ -334,10 +339,10 @@
       cover.hidden = false;
       cover.classList.remove("is-small");
       cover.querySelector(".article-cover-media").innerHTML = mediaHtml(n, { eager: true });
-      const capText = t(n.coverAlt);
+      const capText = t(n.coverAlt), credit = t(n.coverCredit);
       const cap = cover.querySelector("figcaption");
-      cap.textContent = capText;
-      cap.hidden = !capText;
+      cap.innerHTML = esc(capText) + (credit ? ` <span class="figure-credit">${esc(credit)}</span>` : "");
+      cap.hidden = !capText && !credit;
       guardCrop(cover.querySelector("img"));
     } else {
       cover.hidden = true;

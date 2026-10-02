@@ -230,7 +230,7 @@
 /* On wide screens, cover and galleries break out of the text column (up to 960px) */
 @media (min-width: 800px) {
   .article-cover,
-  .article-gallery {
+  .article-gallery:not([data-count="2"]) {
     width: min(960px, calc(100vw - 4rem));
     position: relative;
     left: 50%;
@@ -249,7 +249,10 @@
   justify-content: center;
 }
 .article-cover-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.article-cover-media.is-small img { width: auto; height: auto; object-fit: contain; }
+/* Cover too small to crop sharply: show it whole, centred, without an empty frame */
+.article-cover-media.is-small { aspect-ratio: auto; background: none; border: 0; }
+.article-cover-media.is-small img { width: auto; height: auto; object-fit: contain; border-radius: var(--radius); }
+.article-cover:has(.is-small) figcaption { text-align: center; }
 .article-cover figcaption {
   max-width: 720px;
   margin: 0.75rem auto 0;
@@ -311,6 +314,12 @@
   line-height: 1.55;
 }
 .article-body blockquote p:last-child { margin-bottom: 0; }
+.article-body blockquote .quote-attribution {
+  margin-top: 0.75em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
 .article-body hr { border: 0; border-top: 1px solid var(--border); margin: 3em 0; }
 .article-body code {
   font-size: 0.88em;

@@ -34,6 +34,7 @@ sem acentos nem espaços: `2026-10-21-bracis-2026`. A notícia fica em
   Para criar outra, adicione-a em `newsCategories` no `data/site.json`.
 - `summary`: uma ou duas frases. Aparece na lista, na página inicial e logo abaixo do título.
 - `cover`, `coverAlt`: opcionais. Sem capa, o card mostra a data em destaque.
+- `coverCredit` (opcional): crédito da foto de capa, por exemplo `"Foto: Giordano Toldo/PUCRS"`.
 - `coverPosition` (opcional): qual parte da foto manter quando a capa é recortada,
   por exemplo `"center 30%"` para manter o terço de cima (rostos). O padrão é o centro.
 
@@ -55,12 +56,16 @@ O MALTA Lab participou do **BRACIS 2026**, em Cuiabá, com seis artigos.
 ![Marcelo Delucis apresentando o trabalho sobre LIBRAS](img/noticias/2026-10-21-bracis-2026/palestra.jpg "Foto: Lucas Kupssinskü")
 
 > Uma citação de alguém do evento fica em destaque assim.
+>
+> — Nome da pessoa, cargo
 ```
 
 - **Foto sozinha em uma linha** vira uma figura numerada ("Fig. 1") com legenda.
   O texto entre `[ ]` é a legenda; o texto entre aspas no final, opcional, é o crédito.
 - **Várias fotos no mesmo parágrafo** (uma por linha, sem linha em branco entre elas)
   viram uma galeria. Clicar em qualquer foto abre a imagem em tamanho grande.
+- Galerias de **duas** fotos ficam na largura do texto; com três ou mais, a galeria fica mais larga.
+- Numa citação (`>`), uma última linha começando com "—" vira a atribuição, em letra menor.
 - Escreva as legendas no idioma de cada arquivo.
 
 ## 3. Fotos nítidas
