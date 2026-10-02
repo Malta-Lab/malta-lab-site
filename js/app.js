@@ -1,39 +1,15 @@
 /* ============================================================
- * MALTA Lab — application
- *   - Loads all content from /data/*.json
- *   - Bilingual (PT / EN) with localStorage persistence
+ * MALTA Lab — home page
+ *   - Renders every home section from /data/*.json
  *   - Publication filters by year + type
+ *   - Shared header/footer/theme/language live in core.js
  * ============================================================ */
 
 (function () {
   "use strict";
 
-  // ---- State ----
-  const state = {
-    lang: localStorage.getItem("malta_lang") || null,
-    theme: localStorage.getItem("malta_theme") || null,
-    data: { site: null, pesquisa: null, membros: null, publicacoes: null, noticias: null },
-    pubFilter: { year: "all", type: "all" }
-  };
-
-  // ---- Tiny helpers ----
-  const $  = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
-  /** Pick the right value for the current language.
-   *  - If `v` is a string, return it as-is.
-   *  - If `v` is an object with `pt`/`en`, return v[lang] (fallback to other lang or "").
-   *  - If `v` is undefined/null, return "".
-   */
-  function t(v) {
-    if (v == null) return "";
-    if (typeof v === "string" || typeof v === "number") return String(v);
-    const lang = state.lang;
-    if (v[lang]) return v[lang];
-    if (v.pt) return v.pt;
-    if (v.en) return v.en;
-    return "";
-  }
+  const { state, $, $$, t, esc, fmtDate } = window.MALTA;
+  const pubFilter = { year: "all", type: "all" };
 
   /** Initials avatar HTML for a member with no photo. */
   function initialsFor(name) {
@@ -53,144 +29,8 @@
     return `<span aria-hidden="true">${esc(initialsFor(name))}</span>`;
   }
 
-  /** Escape user text → HTML. */
-  function esc(s) {
-    return String(s ?? "").replace(/[&<>"]/g, c =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  }
-
-  /** ISO date → localised short date. */
-  function fmtDate(iso) {
-    const d = new Date(iso);
-    if (isNaN(d)) return iso;
-    const loc = state.lang === "en" ? "en-US" : "pt-BR";
-    return d.toLocaleDateString(loc, { day: "2-digit", month: "short", year: "numeric" });
-  }
-
-  // ---- Data loading ----
-  async function loadAllData() {
-    const fetchJson = (p) => fetch(p, { cache: "no-cache" }).then(r => {
-      if (!r.ok) throw new Error(`Failed to load ${p}`);
-      return r.json();
-    });
-
-    try {
-      const [site, pesquisa, membros, publicacoes, noticias] = await Promise.all([
-        fetchJson("./data/site.json"),
-        fetchJson("./data/pesquisa.json"),
-        fetchJson("./data/membros.json"),
-        fetchJson("./data/publicacoes.json"),
-        fetchJson("./data/noticias.json"),
-      ]);
-      state.data = { site, pesquisa, membros, publicacoes, noticias };
-
-      // Resolve language: stored > site default > navigator
-      if (!state.lang) {
-        const def = site?.brand?.defaultLang || (navigator.language || "pt").slice(0, 2);
-        state.lang = (def === "en") ? "en" : "pt";
-      }
-
-      applyLangAttr();
-      renderAll();
-    } catch (err) {
-      console.error("MALTA Lab — data load error", err);
-      $("#app-error").hidden = false;
-    }
-  }
-
   // ---- Renderers ----
-  /** Reflect the current language on <html lang>. */
-  function applyLangAttr() {
-    document.documentElement.setAttribute("lang", state.lang === "en" ? "en" : "pt-BR");
-  }
-
-  function setLang(lang) {
-    state.lang = lang;
-    localStorage.setItem("malta_lang", lang);
-    applyLangAttr();
-    renderAll();
-  }
-
-  // ---- Theme (light / dark) ----
-  const SUN_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-  const MOON_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-
-  function resolveTheme() {
-    if (state.theme === "light" || state.theme === "dark") return state.theme;
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
-    return "light";
-  }
-
-  function applyTheme() {
-    const t = resolveTheme();
-    document.documentElement.setAttribute("data-theme", t);
-    // Swap hero logo
-    const logo = document.getElementById("hero-logo");
-    if (logo) logo.src = t === "dark" ? "./img/logow.png" : "./img/logo.png";
-    // Swap Kunumi logo (negativo = light ink for dark backgrounds)
-    const kunumi = document.getElementById("kunumi-logo");
-    if (kunumi) kunumi.src = t === "dark" ? "./img/kunumi_negativo.png" : "./img/kunumi_positivo.png";
-    // Re-init particles so dot/line colors match the theme
-    initParticles();
-  }
-
-  function setTheme(theme) {
-    state.theme = theme;
-    localStorage.setItem("malta_theme", theme);
-    applyTheme();
-    renderThemeToggle();
-  }
-
-  function renderThemeToggle() {
-    const tog = $("#theme-toggle");
-    if (!tog) return;
-    const cur = resolveTheme();
-    tog.innerHTML = [
-      { id: "light", svg: SUN_SVG,  label: state.lang === "en" ? "Light" : "Claro" },
-      { id: "dark",  svg: MOON_SVG, label: state.lang === "en" ? "Dark"  : "Escuro" }
-    ].map(o =>
-      `<button data-theme="${o.id}" class="${cur === o.id ? "is-active" : ""}" aria-pressed="${cur === o.id}" aria-label="${o.label}" title="${o.label}">${o.svg}</button>`
-    ).join("");
-    tog.querySelectorAll("button").forEach(b =>
-      b.addEventListener("click", () => setTheme(b.dataset.theme))
-    );
-  }
-
-  // ---- Particles (re-initable; reads CSS vars so it follows the theme) ----
-  function initParticles() {
-    if (!window.particlesJS) return;
-    const css = getComputedStyle(document.documentElement);
-    const dot  = css.getPropertyValue("--particle-dot").trim()  || "#5B6470";
-    const line = css.getPropertyValue("--particle-line").trim() || "#B8B0A8";
-
-    // Destroy any prior instance(s)
-    if (window.pJSDom && window.pJSDom.length) {
-      try {
-        window.pJSDom.forEach(p => p.pJS.fn.vendors.destroypJS());
-      } catch (e) { /* noop */ }
-      window.pJSDom = [];
-    }
-
-    particlesJS("particles-js-container", {
-      particles: {
-        number: { value: 60, density: { enable: true, value_area: 900 } },
-        color: { value: dot },
-        shape: { type: "circle" },
-        opacity: { value: 0.18, random: true },
-        size: { value: 2.5, random: true },
-        line_linked: { enable: true, distance: 160, color: line, opacity: 0.28, width: 1 },
-        move: { enable: true, speed: 1.2, direction: "none", random: true, out_mode: "out" }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
-      },
-      retina_detect: true
-    });
-  }
-
-  function renderAll() {
-    renderHeader();
+  function renderHome() {
     renderHero();
     renderSobre();
     renderPesquisa();
@@ -198,9 +38,7 @@
     renderPublicacoes();
     renderNoticias();
     renderContato();
-    renderFooter();
     renderMeta();
-    renderThemeToggle();
   }
 
   function renderMeta() {
@@ -214,40 +52,6 @@
     }
     m.content = t(meta.description);
     document.title = "MALTA Lab · PUCRS";
-  }
-
-  function renderHeader() {
-    const { site } = state.data;
-    if (!site) return;
-
-    // Brand
-    const brand = $("#brand");
-    brand.innerHTML = `
-      <span>${esc(site.brand.short)}</span>
-      <span class="brand-sub">${esc(t(site.brand.affiliationLine))}</span>
-    `;
-    brand.setAttribute("aria-label", t(site.brand.long));
-
-    // Nav (desktop + mobile)
-    const navDesktop = $("#nav-desktop");
-    const navMobile  = $("#mobile-menu-list");
-    const linksHtml = site.nav.map(item =>
-      `<a class="nav-link" href="${esc(item.href)}">${esc(t(item.label))}</a>`
-    ).join("");
-    navDesktop.innerHTML = linksHtml;
-    navMobile.innerHTML = site.nav.map(item =>
-      `<a href="${esc(item.href)}">${esc(t(item.label))}</a>`
-    ).join("");
-
-    // Language toggle (label = language name, in that language; visible text stays PT/EN)
-    const langNames = { pt: "Português", en: "English" };
-    const tog = $("#lang-toggle");
-    tog.innerHTML = ["pt", "en"].map(l =>
-      `<button data-lang="${l}" class="${state.lang === l ? "is-active" : ""}" aria-pressed="${state.lang === l}" aria-label="${langNames[l]}" lang="${l === "en" ? "en" : "pt-BR"}">${l.toUpperCase()}</button>`
-    ).join("");
-    tog.querySelectorAll("button").forEach(b =>
-      b.addEventListener("click", () => setLang(b.dataset.lang))
-    );
   }
 
   function renderHero() {
@@ -402,8 +206,8 @@
       return allChip + rest;
     };
 
-    $("#pub-year-chips").innerHTML = buildChips("year", years, state.pubFilter.year);
-    $("#pub-type-chips").innerHTML = buildChips("type", types, state.pubFilter.type, typeLabel);
+    $("#pub-year-chips").innerHTML = buildChips("year", years, pubFilter.year);
+    $("#pub-type-chips").innerHTML = buildChips("type", types, pubFilter.type, typeLabel);
     $("#pub-year-label").textContent = t(lab.filterYear);
     $("#pub-type-label").textContent = t(lab.filterType);
 
@@ -412,7 +216,7 @@
       btn.addEventListener("click", () => {
         const { kind, value } = btn.dataset;
         const hadFocus = document.activeElement === btn;
-        state.pubFilter[kind] = value;
+        pubFilter[kind] = value;
         renderPublicacoes();
         // Chips are rebuilt on every render: move focus to the matching new chip
         if (hadFocus) {
@@ -424,8 +228,8 @@
 
     // Filter publications
     const filtered = pubs.filter(p =>
-      (state.pubFilter.year === "all" || p.year === state.pubFilter.year) &&
-      (state.pubFilter.type === "all" || p.type === state.pubFilter.type)
+      (pubFilter.year === "all" || p.year === pubFilter.year) &&
+      (pubFilter.type === "all" || p.type === pubFilter.type)
     );
 
     $("#pub-count").textContent =
@@ -512,47 +316,15 @@
     }
   }
 
-  function renderFooter() {
-    const f = state.data.site?.footer;
-    if (!f) return;
-    $("#footer-tagline").textContent = t(f.tagline);
-    // {year} token keeps the copyright current without yearly edits
-    $("#footer-copy").textContent = t(f.copyright).replace("{year}", new Date().getFullYear());
-    const link = $("#footer-link");
-    link.textContent = t(f.institutionalLink.label);
-    link.href = t(f.institutionalLink.href);
-  }
-
   // ---- Boot ----
-  // (Initial data-theme is set pre-paint by the inline script in index.html <head>)
-  document.addEventListener("DOMContentLoaded", () => {
-    // Mobile menu toggle
-    const menuBtn = $("#mobile-menu-button");
-    const menu    = $("#mobile-menu");
-    if (menuBtn) {
-      // Keep aria-expanded in sync with the .is-open class
-      const setMenuOpen = (open) => {
-        menu.classList.toggle("is-open", open);
-        menuBtn.setAttribute("aria-expanded", String(open));
-      };
-      menuBtn.addEventListener("click", () => setMenuOpen(!menu.classList.contains("is-open")));
-      menu.addEventListener("click", e => {
-        if (e.target.tagName === "A") setMenuOpen(false);
-      });
-      // Escape closes the menu and returns focus to the button
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && menu.classList.contains("is-open")) {
-          setMenuOpen(false);
-          menuBtn.focus();
-        }
-      });
-    }
-    // Apply theme + particles once particlesJS is loaded
-    if (window.particlesJS) {
-      applyTheme();
-    } else {
-      window.addEventListener("load", applyTheme);
-    }
-    loadAllData();
+  window.MALTA.start({
+    page: "home",
+    data: {
+      pesquisa:    "./data/pesquisa.json",
+      membros:     "./data/membros.json",
+      publicacoes: "./data/publicacoes.json",
+      noticias:    "./data/noticias.json"
+    },
+    render: renderHome
   });
 })();

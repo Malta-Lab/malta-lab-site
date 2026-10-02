@@ -224,36 +224,11 @@
     </div>
   </footer>
 
-  <!-- Inline rules that piggy-back on tokens already in styles.css -->
-  <style>
-    @media (min-width: 880px) {
-      #nav-desktop { display: flex !important; }
-      .mobile-menu-btn { display: none !important; }
-    }
-    .mobile-menu-btn {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--ink-soft); padding: 6px 10px;
-      border-radius: var(--radius-sm); cursor: pointer;
-    }
-    .mobile-menu-btn:hover { color: var(--ink); }
-    #mobile-menu {
-      display: none;
-    }
-    #mobile-menu.is-open { display: block; }
-    @media (min-width: 880px) {
-      #mobile-menu { display: none !important; }
-    }
-    /* Brand subtitle: only shows on wide screens so it never crowds the nav */
-    .brand-mark .brand-sub { display: none; }
-    @media (min-width: 1180px) {
-      .brand-mark .brand-sub { display: inline; }
-    }
-  </style>
-
-  <!-- particles.js (decorative; pointer events off, init is in app.js so it can follow the theme) -->
+  <!-- particles.js (decorative; pointer events off, init is in core.js so it can follow the theme) -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <!-- App -->
+  <script src="./js/core.js" defer></script>
   <script src="./js/app.js" defer></script>
 
 </body>
