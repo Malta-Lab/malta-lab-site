@@ -372,7 +372,8 @@ section { scroll-margin-top: var(--header-h); }
   align-items: end;
 }
 @media (min-width: 980px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 4rem; }
+  /* Wide enough for the longest area name (PT or EN) on one line */
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: 4rem; }
 }
 
 .wordmark { display: block; font-weight: inherit; }
@@ -381,10 +382,14 @@ section { scroll-margin-top: var(--header-h); }
   font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 650;
-  font-size: clamp(4.25rem, 15.5vw, 10.75rem);
+  font-size: clamp(4rem, 15.5vw, 10.75rem);
   line-height: 0.8;
   letter-spacing: 0.005em;
   color: var(--ink);
+}
+/* Beside the 340px legend: MALTA is about 4.2em wide, so this keeps it in its column */
+@media (min-width: 980px) {
+  .wordmark-word { font-size: min(10.75rem, 23.5vw - 109px); }
 }
 .wordmark-bar {
   display: block;
@@ -432,6 +437,10 @@ section { scroll-margin-top: var(--header-h); }
   gap: 0.75rem;
   margin-top: 2rem;
 }
+/* Phones: stacked CTAs of equal width */
+@media (max-width: 479px) {
+  .hero-ctas { display: grid; }
+}
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
@@ -440,7 +449,10 @@ section { scroll-margin-top: var(--header-h); }
   margin-top: 2.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
-  max-width: 640px;
+}
+/* Below 980px the rule runs full width, like the legend under it */
+@media (min-width: 980px) {
+  .hero-stats { max-width: 640px; }
 }
 .hero-stat-list { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
 .hero-stat {
@@ -463,6 +475,11 @@ section { scroll-margin-top: var(--header-h); }
 .kunumi-mark { display: inline-flex; margin-left: auto; opacity: .85; transition: opacity .2s ease; }
 .kunumi-mark:hover { opacity: 1; }
 .kunumi-mark img { width: auto; height: 32px; }
+/* Phones: tighter stats, and Kunumi starts at the left when it wraps */
+@media (max-width: 599px) {
+  .hero-stats, .hero-stat-list { column-gap: 1.25rem; }
+  .kunumi-mark { margin-left: 0; }
+}
 
 /* Legend: maps each colour in the background to a research area */
 .hero-legend {
@@ -483,7 +500,7 @@ section { scroll-margin-top: var(--header-h); }
 .legend-list { margin: 0; padding: 0; list-style: none; }
 .legend-list a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.7rem;
   padding: 0.38rem 0;
   color: var(--ink-soft);
@@ -494,8 +511,23 @@ section { scroll-margin-top: var(--header-h); }
   transition: color .15s ease;
 }
 .legend-list a:hover, .legend-list a:focus-visible { color: var(--ink); }
+/* Centre the swatch on the first line of a wrapped label */
+.legend-list .swatch { margin-top: calc((1.3em - 10px) / 2); }
 @media (max-width: 979px) {
   .legend-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); column-gap: 1.25rem; }
+}
+/* Only devices that can hover get the hint */
+.legend-hint { display: none; }
+@media (hover: hover) {
+  .legend-hint {
+    display: block;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+    color: var(--ink-mute);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
 }
 
 /* A cluster colour, with a soft halo like a point in the plot */
