@@ -505,16 +505,7 @@
   }
 
   // ---- Boot ----
-  // Apply theme as early as possible to avoid a flash of wrong colors
-  (function bootTheme() {
-    const stored = localStorage.getItem("malta_theme");
-    let initial = stored;
-    if (initial !== "light" && initial !== "dark") {
-      initial = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-    }
-    document.documentElement.setAttribute("data-theme", initial);
-  })();
-
+  // (Initial data-theme is set pre-paint by the inline script in index.html <head>)
   document.addEventListener("DOMContentLoaded", () => {
     // Mobile menu toggle
     const menuBtn = $("#mobile-menu-button");

@@ -17,6 +17,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./css/styles.css" />
+
+  <!-- Apply saved / system theme before first paint (avoids a flash of wrong colors) -->
+  <script>
+    (function () {
+      let initial = null;
+      try { initial = localStorage.getItem("malta_theme"); } catch (e) { /* storage blocked */ }
+      if (initial !== "light" && initial !== "dark") {
+        initial = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", initial);
+    })();
+  </script>
 </head>
 
 <body>
