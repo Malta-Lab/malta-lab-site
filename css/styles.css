@@ -599,13 +599,12 @@ section { scroll-margin-top: var(--header-h); }
   gap: 1rem;
   padding: 1.35rem 1.4rem;
 }
+/* A neutral rule, not a dot: dots belong to the legend's clusters */
 .highlight-list .card .dot {
-  width: 9px;
-  height: 9px;
-  margin-top: 0.45rem;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  width: 16px;
+  height: 2px;
+  margin-top: 0.65rem;
+  background: var(--ink-mute);
 }
 .highlight-list h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
 .highlight-list p { margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.55; }
@@ -730,7 +729,7 @@ section { scroll-margin-top: var(--header-h); }
 .member-name { font-size: 1rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
 .member-role {
   margin-top: 0.3rem;
-  color: var(--accent);
+  color: var(--ink-mute);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
@@ -771,6 +770,7 @@ section { scroll-margin-top: var(--header-h); }
 .member-card.coord .member-photo { grid-row: 1 / span 2; width: 120px; height: 120px; margin: 6px; }
 .member-card.coord .member-info { align-items: flex-start; }
 .member-card.coord .member-name { font-size: 1.2rem; }
+.member-card.coord .member-role { color: var(--accent-text, var(--accent)); }
 .member-card.coord .member-links { justify-content: flex-start; }
 @media (max-width: 479px) {
   .member-card.coord { grid-template-columns: 1fr; text-align: center; }
@@ -880,7 +880,7 @@ section { scroll-margin-top: var(--header-h); }
 .pub-doi {
   align-self: center;
   padding: 0.3rem 0;
-  color: var(--accent);
+  color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 500;
