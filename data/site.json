@@ -114,6 +114,8 @@
       "showing":      { "pt": "Mostrando",  "en": "Showing" },
       "of":           { "pt": "de",         "en": "of" },
       "viewDOI":      { "pt": "DOI",        "en": "DOI" },
+      "viewLink":     { "pt": "Link",       "en": "Link" },
+      "showAll":      { "pt": "Mostrar todas as {n} publicações", "en": "Show all {n} publications" },
       "typeNames": {
         "Periódico":   { "pt": "Periódico",   "en": "Journal" },
         "Conferência": { "pt": "Conferência", "en": "Conference" }

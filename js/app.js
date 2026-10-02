@@ -10,7 +10,7 @@
   "use strict";
 
   const { state, $, $$, t, esc, fmtDate } = window.MALTA;
-  const pubFilter = { year: "all", type: "all" };
+  const pubFilter = { year: "all", type: "all", showAll: false };
 
   /** Initials avatar HTML for a member with no photo. */
   function initialsFor(name) {
@@ -243,8 +243,14 @@
       (pubFilter.type === "all" || p.type === pubFilter.type)
     );
 
+    // With no filter active, only the latest rows show until "show all" is pressed
+    const LIMIT = 10;
+    const collapsed = pubFilter.year === "all" && pubFilter.type === "all" &&
+      !pubFilter.showAll && filtered.length > LIMIT;
+    const visible = collapsed ? filtered.slice(0, LIMIT) : filtered;
+
     $("#pub-count").textContent =
-      `${t(lab.showing)} ${filtered.length} ${t(lab.of)} ${pubs.length}`;
+      `${t(lab.showing)} ${visible.length} ${t(lab.of)} ${pubs.length}`;
 
     // Render list
     const typeClass = (typ) => {
@@ -253,21 +259,97 @@
       return "type-conferencia";
     };
 
+    // Authors come as ABNT ("PARRAGA, O.; MÓRE, M. D."): print them in normal case
+    // and bold the ones that are lab members (surname + every initial must agree)
+    const PARTICLES = new Set(["de", "da", "do", "das", "dos", "e", "di", "del", "du", "der", "van", "von"]);
+    const fold = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const norm = (s) => fold(s).replace(/[\s-]+/g, " ").trim();
+    // "TEIXEIRA-DOS-SANTOS" → "Teixeira-dos-Santos", "DE OLIVEIRA" → "de Oliveira"
+    const surnameCase = (s) => s.toLowerCase().replace(/[^\s\-'’]+/g, w =>
+      PARTICLES.has(w) ? w : w[0].toUpperCase() + w.slice(1));
+
+    // Every way a member can be cited: a later word (or run of words) of the name
+    // as the surname, with the initials of the given names before it
+    const members = ["coordenadores", "alunos", "alunos_graduacao"]
+      .flatMap(g => state.data.membros?.[g] || []);
+    const memberKeys = members.flatMap(mem => {
+      const words = mem.name.replace(/^(?:(?:Prof|Profa|Dr|Dra)\.?\s+)+/, "").trim().split(/\s+/).map(fold);
+      const keys = [];
+      for (let j = 1; j < words.length; j++) {
+        if (words[j].endsWith(".")) continue;
+        const given = words.slice(0, j).filter(w => !PARTICLES.has(w)).map(w => w[0]);
+        for (let k = j; k < words.length && !words[k].endsWith("."); k++) {
+          if (!PARTICLES.has(words[k])) keys.push({ mem, surname: norm(words.slice(j, k + 1).join(" ")), given });
+        }
+      }
+      return keys;
+    });
+    // The paper may give fewer initials than the member's name, never different ones
+    const memberFor = (surname, initials) => {
+      const given = (initials.match(/\p{L}+/gu) || [])
+        .filter(w => !PARTICLES.has(fold(w))).map(w => fold(w)[0]);
+      const hits = new Set(memberKeys.filter(k =>
+        k.surname === norm(surname) && given.length && given.length <= k.given.length &&
+        given.every((g, i) => g === k.given[i])
+      ).map(k => k.mem));
+      return hits.size === 1 ? [...hits][0] : null;   // ambiguous → not bold
+    };
+    const authorsHtml = (list) => (list || "").split(";").map(a => a.trim()).filter(Boolean).map(a => {
+      const m = /^([^,]+),\s*(.+)$/.exec(a);
+      if (!m) return esc(a);                          // e.g. "et al."
+      // Non-breaking spaces keep the initials on the surname's line
+      const name = esc(`${surnameCase(m[1].trim())},\u00a0${m[2].trim().replace(/\s+/g, "\u00a0")}`);
+      return memberFor(m[1], m[2]) ? `<strong>${name}</strong>` : name;
+    }).join("; ");
+
+    // Link out only when there is a real URL; call it "DOI" only when it is one
+    const linkHtml = (href) => {
+      let url;
+      try { url = new URL(href); } catch (e) { return ""; }
+      if (!/^https?:$/.test(url.protocol)) return "";
+      const label = /^(dx\.)?doi\.org$/i.test(url.hostname) ? lab.viewDOI : lab.viewLink;
+      return `<a class="pub-doi" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(t(label))} ↗</a>`;
+    };
+
     // The year prints once at the top of each group (repeats are screen-reader only)
-    $("#pub-list").innerHTML = filtered.map((p, i) => `
-      <article class="pub-row${i === 0 || filtered[i - 1].year !== p.year ? " is-year-start" : ""}">
+    $("#pub-list").innerHTML = visible.map((p, i) => `
+      <article class="pub-row${i === 0 || visible[i - 1].year !== p.year ? " is-year-start" : ""}">
         <div class="pub-badges">
           <span class="pub-badge year">${esc(p.year)}</span>
           <span class="pub-badge ${typeClass(p.type)}">${esc(typeLabel(p.type))}</span>
         </div>
         <div class="pub-main">
           <h3>${esc(p.title)}</h3>
-          <div class="authors">${esc(p.authors)}</div>
+          <div class="authors">${authorsHtml(p.authors)}</div>
           <div class="source">${esc(p.source)}</div>
         </div>
-        <a class="pub-doi" href="${esc(p.doiUrl)}" target="_blank" rel="noopener noreferrer">${esc(t(lab.viewDOI))} ↗</a>
+        ${linkHtml(p.doiUrl)}
       </article>
     `).join("") || `<p class="loading">${state.lang === "en" ? "No publications match these filters." : "Nenhuma publicação corresponde a estes filtros."}</p>`;
+
+    // "Show all" button below the sheet
+    let more = $("#pub-more");
+    if (!more) {
+      more = document.createElement("div");
+      more.id = "pub-more";
+      more.className = "pub-more";
+      $("#pub-list").after(more);
+    }
+    more.innerHTML = collapsed
+      ? `<button type="button" class="btn btn-secondary" aria-controls="pub-list">${esc(t(lab.showAll).replace("{n}", filtered.length))}</button>`
+      : "";
+    if (collapsed) {
+      $("button", more).addEventListener("click", () => {
+        pubFilter.showAll = true;
+        renderPublicacoes();
+        // The button is gone: continue from the first newly shown row
+        const next = $$("#pub-list .pub-row")[LIMIT];
+        if (next) {
+          next.setAttribute("tabindex", "-1");
+          next.focus();
+        }
+      });
+    }
   }
 
   function renderNoticias() {
