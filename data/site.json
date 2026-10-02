@@ -60,8 +60,8 @@
       {
         "title": { "pt": "Excelência científica",    "en": "Scientific excellence" },
         "body":  {
-          "pt": "Publicações em veículos de elite — A* em IA (AAAI, IJCNN, WACV) e Q1 em saúde (ACM CSUR, npj PD).",
-          "en": "Publications in top venues — A* in AI (AAAI, IJCNN, WACV) and Q1 in health (ACM CSUR, npj PD)."
+          "pt": "Publicações em veículos de destaque — conferências A* e A no CORE (AAAI, WACV) e periódicos Q1 (ACM CSUR, npj Parkinson's Disease).",
+          "en": "Publications in top venues — CORE A* and A conferences (AAAI, WACV) and Q1 journals (ACM CSUR, npj Parkinson's Disease)."
         }
       },
       {
@@ -74,8 +74,8 @@
       {
         "title": { "pt": "PLN em português brasileiro", "en": "NLP for Brazilian Portuguese" },
         "body":  {
-          "pt": "Detecção de desinformação, fact-checking e reconhecimento de LIBRAS — recursos abertos para o português falado no Brasil.",
-          "en": "Misinformation detection, fact-checking, and LIBRAS recognition — open resources for Brazilian Portuguese."
+          "pt": "Detecção de desinformação, fact-checking e reconhecimento de LIBRAS — recursos abertos para o português brasileiro e a LIBRAS.",
+          "en": "Misinformation detection, fact-checking, and LIBRAS recognition — open resources for Brazilian Portuguese and LIBRAS."
         }
       }
     ]
