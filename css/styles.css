@@ -549,6 +549,22 @@ section { scroll-margin-top: var(--header-h); }
 }
 .eyebrow:empty { display: none; }
 
+/* Home sections are numbered in their eyebrow: "01 — Sobre". The dash
+   moves to a background so the number can be the content, and the empty
+   alt text (/ "") keeps the decorative number out of the accessible name. */
+.hero { counter-reset: home-section; }
+.hero ~ .section { counter-increment: home-section; }
+.hero ~ .section .eyebrow::before {
+  content: counter(home-section, decimal-leading-zero);
+  content: counter(home-section, decimal-leading-zero) / "";
+  width: auto;
+  height: auto;
+  padding-right: calc(18px + 0.6rem);
+  background: linear-gradient(var(--accent), var(--accent)) right center / 18px 2px no-repeat;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Panels sit on the network; most of the page is one */
 .card {
   padding: 1.5rem;
@@ -646,9 +662,13 @@ section { scroll-margin-top: var(--header-h); }
 .research-card:hover::before, .research-card:target::before { transform: scaleX(1); }
 .research-card .swatch { margin-top: 0.4rem; }
 .research-card h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
+  font-family: var(--font-display);
+  font-stretch: 106%;
+  font-size: 1.25rem;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 .research-card p { color: var(--ink-soft); font-size: 0.97rem; line-height: 1.6; }
 
@@ -1013,6 +1033,9 @@ section { scroll-margin-top: var(--header-h); }
   line-height: 1.25;
   letter-spacing: -0.01em;
   text-wrap: balance;
+}
+@media (max-width: 599px) {
+  .news-item h3 { font-size: 1.15rem; }
 }
 .news-item p { color: var(--ink-soft); line-height: 1.6; }
 .news-item .news-title-link { color: inherit; text-decoration: none; }
