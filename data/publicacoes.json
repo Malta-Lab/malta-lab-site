@@ -1,5 +1,53 @@
 [
   {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "Diffused Embeddings: Exploring Sentence Representations from DLMs",
+    "authors": "BARROS, R. N.; TURANI, V. C.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39882-6_27"
+  },
+  {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "Latent Fact-Checking: Detecting Misinformation Through Activation Engineering",
+    "authors": "BARCELOS, P. T.; PARRAGA, O.; DELUCIS, M. M.; FRAGA, L. M.; KUPSSINSKÜ, L. S.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39882-6_44"
+  },
+  {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "Continual Learning for Sequential Personalization of Small Language Models: A Stability Monitoring Analysis",
+    "authors": "PAULA, T. S.; KUPSSINSKÜ, L. S.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39895-6_36"
+  },
+  {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "The Role of Contextual Grounding in Geoscience Benchmarks",
+    "authors": "FACHEL, A.; PARRAGA, O.; SPIGOLON, A. L. D.; DE BARROS, G.; GONZAGA, L.; VERONEZ, M. R.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39898-7_39"
+  },
+  {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "Anatomical Mask Conditioning for Low-Dose CT Denoising: An Architecture-Focused Investigation",
+    "authors": "ARGUELLO, K. K.; CONTASSOT, R.; OCHOA UGHINI, A.; KUPSSINSKÜ, L. S.; BARROS, R. C.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39898-7_40"
+  },
+  {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "FairMOP: Benchmarking Fairness-Utility Trade-Offs in Text-to-Image Models via Pareto Frontiers",
+    "authors": "BOCHERNITSAN, M. N.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Proceedings of the Brazilian Conference on Intelligent Systems (BRACIS 2026).",
+    "doiUrl": "https://doi.org/10.1007/978-3-032-39904-5_35"
+  },
+  {
     "type": "Periódico",
     "year": "2025",
     "title": "Fairness in Deep Learning: A Survey on Vision and Language Research",
