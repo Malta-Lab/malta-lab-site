@@ -66,6 +66,7 @@
     }
     // No photo: the date becomes the visual, set large like a calendar plate
     const d = parseDate(n.date);
+    if (isNaN(d)) return `<div class="news-dateplate" aria-hidden="true"></div>`;   // no date: just the plate
     const month = fmtDate(n.date, { month: "short" }).replace(".", "");
     return `
       <time class="news-dateplate" datetime="${esc(n.date)}">
@@ -76,11 +77,10 @@
 
   /** Category · date line; the date is left out when the date plate shows it. */
   function metaHtml(n) {
-    const date = n.cover
-      ? `<span class="news-sep" aria-hidden="true">·</span>
-      <time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time>` : "";
-    return `
-      <span class="news-cat">${esc(catName(n.category))}</span>${date}`;
+    const parts = [];
+    if (n.category) parts.push(`<span class="news-cat">${esc(catName(n.category))}</span>`);
+    if (n.cover && n.date) parts.push(`<time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time>`);
+    return parts.join(`<span class="news-sep" aria-hidden="true">·</span>`);
   }
 
   function setMeta(title, description) {
@@ -105,7 +105,7 @@
     setMeta(t(page?.title), t(page?.body));
 
     // Only offer categories that have at least one story
-    const present = Array.from(new Set(items.map(n => n.category)));
+    const present = Array.from(new Set(items.map(n => n.category).filter(Boolean)));
     if (category !== "all" && !present.includes(category)) category = "all";
     const order = Object.keys(site().newsCategories || {});
     present.sort((a, b) => order.indexOf(a) - order.indexOf(b));
@@ -148,7 +148,7 @@
       <article class="news-card${i === 0 ? " is-featured" : ""}${n.cover ? "" : " no-cover"}">
         <div class="news-card-media">${mediaHtml(n, { eager: i === 0 })}</div>
         <div class="news-card-body">
-          <div class="news-card-meta">${metaHtml(n)}</div>
+          ${metaHtml(n) && `<div class="news-card-meta">${metaHtml(n)}</div>`}
           <h2 class="news-card-title"><a href="${storyHref(n)}">${esc(t(n.title))}</a></h2>
           <p class="news-card-summary">${esc(t(n.summary))}</p>
         </div>
@@ -167,11 +167,15 @@
     const key = `${slug}.${lang}`;
     if (!bodyCache[key]) {
       const get = (l) => fetch(`noticias/${slug}.${l}.md`, { cache: "no-cache" })
-        .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); });
+        .then(r => {
+          if (!r.ok) throw Object.assign(new Error(`HTTP ${r.status}`), { status: r.status });
+          return r.text();
+        });
       bodyCache[key] = get(lang)
         .then(md => ({ md, lang }))
         .catch(err => {
-          if (lang === "pt") throw err;
+          // Only a missing file (404) means "no translation"; other failures are load errors
+          if (lang === "pt" || err.status !== 404) throw err;
           // English missing: fall back to Portuguese
           console.warn(`[MALTA] noticias/${slug}.en.md not found; showing Portuguese.`);
           return get("pt").then(md => ({ md, lang: "pt" }));
@@ -181,13 +185,14 @@
     return bodyCache[key];
   }
 
-  /** Markdown → sanitised DOM fragment. */
+  /** Markdown → sanitised DOM fragment. Without the parser or the sanitiser,
+   *  the source is shown as plain-text paragraphs: never unsanitised HTML. */
   function markdownToFragment(md) {
     const parse = window.marked?.parse || window.marked?.marked;
-    const html = parse ? parse(md, { gfm: true }) : `<p>${esc(md)}</p>`;
-    const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : esc(html);
     const tpl = document.createElement("template");
-    tpl.innerHTML = clean;
+    tpl.innerHTML = parse && window.DOMPurify
+      ? window.DOMPurify.sanitize(parse(md, { gfm: true }))
+      : md.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean).map(s => `<p>${esc(s)}</p>`).join("");
     return tpl.content;
   }
 
@@ -271,7 +276,13 @@
   function openLightbox(src, caption) {
     const box = $("#lightbox");
     if (!box || typeof box.showModal !== "function") { window.open(src, "_blank", "noopener"); return; }
-    const img = $("#lightbox-img");
+    // The <img> is created on first open: an img without a src is invalid HTML
+    let img = $("#lightbox-img");
+    if (!img) {
+      img = document.createElement("img");
+      img.id = "lightbox-img";
+      box.querySelector("figure").prepend(img);
+    }
     img.removeAttribute("style");
     img.src = src;
     img.alt = caption;
@@ -305,8 +316,17 @@
     });
   }
 
+  /** Category link above the title; hidden and unfocusable when there's none. */
+  function setCategoryLink(key) {
+    const a = $("#article-category");
+    a.hidden = !key;
+    a.textContent = key ? catName(key) : "";
+    if (key) a.href = `noticias.html?categoria=${encodeURIComponent(key)}`;
+    else a.removeAttribute("href");
+  }
+
   function renderNotFound() {
-    $("#article-category").textContent = "";
+    setCategoryLink(null);
     $("#article-date").textContent = "";
     $("#article-title").textContent = L("notFoundTitle");
     $("#article-summary").textContent = L("notFoundBody");
@@ -327,10 +347,9 @@
     if (!n) { renderNotFound(); return; }
     $("#article-share").hidden = false;
 
-    $("#article-category").textContent = catName(n.category);
-    $("#article-category").href = `noticias.html?categoria=${encodeURIComponent(n.category)}`;
+    setCategoryLink(n.category);
     const date = $("#article-date");
-    date.dateTime = n.date;
+    if (n.date) date.dateTime = n.date; else date.removeAttribute("datetime");
     date.textContent = fmtDate(n.date, { day: "numeric", month: "long", year: "numeric" });
     $("#article-title").textContent = t(n.title);
     $("#article-summary").textContent = t(n.summary);
@@ -339,8 +358,11 @@
     const cover = $("#article-cover");
     if (n.cover) {
       cover.hidden = false;
-      cover.classList.remove("is-small");
-      cover.querySelector(".article-cover-media").innerHTML = mediaHtml(n, { eager: true });
+      // Clear guardCrop's marks from a previous render (it sets them on the media box)
+      const media = cover.querySelector(".article-cover-media");
+      media.classList.remove("is-small");
+      media.style.removeProperty("--backdrop");
+      media.innerHTML = mediaHtml(n, { eager: true });
       const capText = t(n.coverAlt), credit = t(n.coverCredit);
       const cap = cover.querySelector("figcaption");
       cap.innerHTML = esc(capText) + (credit ? ` <span class="figure-credit">${esc(credit)}</span>` : "");
