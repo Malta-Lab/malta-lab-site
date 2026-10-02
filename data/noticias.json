@@ -4,12 +4,12 @@
     "kind": "publication",
     "tag": { "pt": "BRACIS 2025", "en": "BRACIS 2025" },
     "title": {
-      "pt": "Quatro artigos aceitos no BRACIS 2025",
-      "en": "Four papers accepted at BRACIS 2025"
+      "pt": "Três artigos aceitos no BRACIS 2025",
+      "en": "Three papers accepted at BRACIS 2025"
     },
     "body": {
-      "pt": "Trabalhos sobre LIBRAS, debiasing em modelos de difusão, subtipagem odorífera em α-sinucleinopatia e mais foram apresentados na Brazilian Conference on Intelligent Systems.",
-      "en": "Works on LIBRAS recognition, debiasing diffusion models, odor subtyping in α-synucleinopathy and more were presented at the Brazilian Conference on Intelligent Systems."
+      "pt": "Trabalhos sobre LIBRAS, debiasing em modelos de difusão e subtipagem odorífera em α-sinucleinopatia serão apresentados na Brazilian Conference on Intelligent Systems.",
+      "en": "Works on LIBRAS recognition, debiasing diffusion models, and odor subtyping in α-synucleinopathy will be presented at the Brazilian Conference on Intelligent Systems."
     },
     "link": "#publicacoes"
   },
@@ -22,13 +22,13 @@
       "en": "Brazilian-Portuguese fact-checking dataset released"
     },
     "body": {
-      "pt": "Apresentamos no STIL 2025 recursos e baselines para checagem automática de fatos em PT-BR.",
-      "en": "Resources and baselines for automated fact-checking in Brazilian Portuguese, presented at STIL 2025."
+      "pt": "Recursos e baselines para checagem automática de fatos em PT-BR, aceitos no STIL 2025.",
+      "en": "Resources and baselines for automated fact-checking in Brazilian Portuguese, accepted at STIL 2025."
     },
     "link": "https://doi.org/10.5753/stil.2025.37820"
   },
   {
-    "date": "2025-06-10",
+    "date": "2025-02-10",
     "kind": "publication",
     "tag": { "pt": "ACM CSUR", "en": "ACM CSUR" },
     "title": {
@@ -42,7 +42,7 @@
     "link": "https://doi.org/10.1145/3637549"
   },
   {
-    "date": "2025-03-04",
+    "date": "2025-04-04",
     "kind": "publication",
     "tag": { "pt": "npj Parkinson's", "en": "npj Parkinson's" },
     "title": {
