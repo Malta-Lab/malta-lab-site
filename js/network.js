@@ -3,8 +3,9 @@
  *   One cluster of points per research area, plus loose points that
  *   bridge them, drifting like an embedding plot. Points that come
  *   close link up, and the mouse pulls the nearest ones.
- *   Cluster colours are sampled from viridis and published as
- *   --area-0 … --area-N on <html>, so the legend matches the plot.
+ *   Cluster colours (the lab's reds and graphites) follow the theme
+ *   and are published as --area-0 … --area-N on <html>, so the
+ *   legend matches the plot.
  *
  *   MALTANetwork.setClusters(n)  one cluster per research area
  *   MALTANetwork.highlight(i)    light up cluster i (null = all)
@@ -14,15 +15,18 @@
 (function () {
   "use strict";
 
-  // matplotlib's viridis, 11 evenly spaced stops
-  const VIRIDIS = ["#440154", "#482475", "#414487", "#355f8d", "#2a788e", "#21918c",
-                   "#22a884", "#44bf70", "#7ad151", "#bddf26", "#fde725"];
-
-  // Per theme: the part of the map that stays visible on the paper colour,
-  // the colour of loose points / cross-cluster links, and drawing strength
+  // Per theme: one colour per cluster (three reds, three graphites, all
+  // from the site palette), the colour of loose points / cross-cluster
+  // links, and drawing strength
   const THEMES = {
-    light: { range: [0.02, 0.84], neutral: [87, 81, 112],  line: 0.72, node: 0.95, loose: 0.6 },
-    dark:  { range: [0.36, 1],    neutral: [162, 156, 182], line: 0.7,  node: 1,    loose: 0.55 }
+    light: {
+      clusters: ["#C8362A", "#7A1F18", "#E58A7E", "#1F2328", "#5B6470", "#8E97A1"],
+      neutral: [143, 136, 129], line: 0.62, node: 0.95, loose: 0.6
+    },
+    dark: {
+      clusters: ["#E84A3E", "#B23A30", "#F4A399", "#F2EDE8", "#C9C2BB", "#8A837C"],
+      neutral: [122, 116, 110], line: 0.6, node: 1, loose: 0.55
+    }
   };
 
   const LEVELS = 4;          // link opacity is bucketed so each frame is a few strokes
@@ -49,13 +53,6 @@
     while (!u) u = Math.random();
     while (!v) v = Math.random();
     return Math.max(-2.2, Math.min(2.2, Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v)));
-  }
-
-  function viridis(t) {
-    const x = Math.min(Math.max(t, 0), 1) * (VIRIDIS.length - 1);
-    const i = Math.min(Math.floor(x), VIRIDIS.length - 2), f = x - i;
-    const a = hexRgb(VIRIDIS[i]), b = hexRgb(VIRIDIS[i + 1]);
-    return a.map((v, k) => Math.round(v + (b[k] - v) * f));
   }
 
   const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
@@ -248,8 +245,7 @@
   function refresh() {
     const name = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     theme = THEMES[name];
-    const [lo, hi] = theme.range;
-    colors = Array.from({ length: K }, (_, k) => viridis(lo + (hi - lo) * (K === 1 ? 0 : k / (K - 1))));
+    colors = Array.from({ length: K }, (_, k) => hexRgb(theme.clusters[k % theme.clusters.length]));
     const root = document.documentElement.style;
     colors.forEach((c, k) => root.setProperty(`--area-${k}`, `rgb(${c.join(" ")})`));
     if (canvas) { if (raf) { cancelAnimationFrame(raf); raf = 0; } kick(); }

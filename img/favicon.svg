@@ -1,15 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- MALTA lockup at favicon size: an M over the viridis bar -->
+  <!-- MALTA lockup at favicon size: an M over the gradient bar -->
   <defs>
-    <linearGradient id="viridis" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#440154"/>
-      <stop offset=".25" stop-color="#3B528B"/>
-      <stop offset=".5" stop-color="#21918C"/>
-      <stop offset=".75" stop-color="#5EC962"/>
-      <stop offset="1" stop-color="#FDE725"/>
+    <linearGradient id="bar" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#F2EDE8"/>
+      <stop offset="1" stop-color="#E84A3E"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="12" fill="#1A1528"/>
-  <path d="M12 42V14h7.5L32 29.5 44.5 14H52v28h-7V25.5L32 41 19 25.5V42z" fill="#EDEBF5"/>
-  <rect x="12" y="47" width="40" height="5" rx="1" fill="url(#viridis)"/>
+  <rect width="64" height="64" rx="12" fill="#1F2328"/>
+  <path d="M12 42V14h7.5L32 29.5 44.5 14H52v28h-7V25.5L32 41 19 25.5V42z" fill="#F2EDE8"/>
+  <rect x="12" y="47" width="40" height="5" rx="1" fill="url(#bar)"/>
 </svg>

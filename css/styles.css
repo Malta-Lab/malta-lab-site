@@ -1,8 +1,8 @@
 /* ============================================================
  * MALTA Lab — styles
- * Identity: the page is a plot. The background network is an
- * embedding of the lab's research areas (js/network.js), coloured
- * with viridis; the UI around it stays in violet-tinted neutrals.
+ * The background network (js/network.js) is the identity: one
+ * cluster per research area, in the lab's red and graphite tones,
+ * on warm off-white paper.
  *
  *   Display  Archivo, expanded   (wordmark, headings)
  *   Body     Atkinson Hyperlegible Next
@@ -10,31 +10,30 @@
  * ============================================================ */
 
 :root {
-  /* Surfaces — the paper is seaborn's axes grey */
-  --paper:         #EAEAF2;
-  --surface:       rgb(255 255 255 / .9);   /* panels over the network */
-  --surface-solid: #FFFFFF;
-  --elev-1:        #F2F2F7;                 /* fills inside panels */
-  --elev-2:        #E1E1EB;
-  --border:        #D5D4E1;
-  --border-strong: #7F7B97;                 /* control outlines, 3:1 on paper */
+  /* Surface scale — warm off-white */
+  --paper:         #F3EFED;
+  --surface:       rgb(251 249 248 / .9);   /* panels over the network */
+  --surface-solid: #FBF9F8;
+  --elev-1:        #EAE6E2;                 /* fills inside panels */
+  --elev-2:        #E2DDD8;
+  --border:        #D0CAC5;
+  --border-strong: #B8B0A8;
 
-  /* Ink — violet-black, all AA on paper and white */
-  --ink:       #1A1528;
-  --ink-soft:  #423D52;   /* ~8.7:1 */
-  --ink-mute:  #575170;   /* ~6.2:1 */
-  --ink-quiet: #6A6584;   /* ~4.6:1 */
+  /* Ink scale — all hit WCAG AA on --paper */
+  --ink:       #1F2328;   /* body, headings */
+  --ink-soft:  #3F4750;   /* secondary copy   ~9:1 */
+  --ink-mute:  #5B6470;   /* muted captions   ~5.2:1 */
+  --ink-quiet: #6F7984;   /* tertiary, large text only */
 
-  /* Accent — the dark end of viridis */
-  --accent:       #440154;
-  --accent-hover: #5B1A75;
-  --accent-soft:  #ECE4F2;
-  --accent-ink:   #440154;
+  /* Brand accent */
+  --accent:       #C8362A;
+  --accent-hover: #A52A20;
+  --accent-soft:  #F4D9D5;
+  --accent-ink:   #7A1F18;
   --on-accent:    #FFFFFF;
 
-  /* The full colour map: the wordmark bar */
-  --spectrum: linear-gradient(90deg, #440154, #482475, #414487, #355F8D, #2A788E,
-              #21918C, #22A884, #44BF70, #7AD151, #BDDF26, #FDE725);
+  /* The wordmark bar: graphite into the brand red */
+  --spectrum: linear-gradient(90deg, var(--ink), var(--accent));
 
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Atkinson Hyperlegible Next", system-ui, sans-serif;
@@ -43,8 +42,8 @@
   --radius-sm: 3px;
   --radius:    6px;
   --radius-lg: 10px;
-  --shadow-1: 0 1px 2px rgb(26 21 40 / .06);
-  --shadow-2: 0 18px 40px -22px rgb(26 21 40 / .45);
+  --shadow-1: 0 1px 2px rgb(31 35 40 / .06);
+  --shadow-2: 0 18px 40px -22px rgb(31 35 40 / .4);
 
   --gutter: 1.25rem;
   --header-h: 4.25rem;
@@ -52,29 +51,29 @@
   color-scheme: light;
 }
 
+/* Dark theme overrides — warm near-black, not pure black */
 :root[data-theme="dark"] {
-  --paper:         #0F0D17;
-  --surface:       rgb(24 21 33 / .88);
-  --surface-solid: #181521;
-  --elev-1:        #211D2C;
-  --elev-2:        #2A2537;
-  --border:        #2E2A3B;
-  --border-strong: #716B8A;
+  --paper:         #1A1816;
+  --surface:       rgb(35 32 32 / .9);
+  --surface-solid: #232020;
+  --elev-1:        #2C2826;
+  --elev-2:        #34302D;
+  --border:        #3A3633;
+  --border-strong: #4D4843;
 
-  --ink:       #EDEBF5;
-  --ink-soft:  #C6C1D6;
-  --ink-mute:  #A29CB6;
-  --ink-quiet: #8C86A2;
+  --ink:       #F2EDE8;
+  --ink-soft:  #C9C2BB;
+  --ink-mute:  #9B948D;
+  --ink-quiet: #7A746E;
 
-  /* Accent — the same violet, lifted for dark paper */
-  --accent:       #C9B4F6;
-  --accent-hover: #DDD0FA;
-  --accent-soft:  #2A2140;
-  --accent-ink:   #DCCDFB;
-  --on-accent:    #0F0D17;
+  --accent:       #E84A3E;
+  --accent-hover: #F2655A;
+  --accent-soft:  #3A1A15;
+  --accent-ink:   #F4D9D5;
+  --on-accent:    #FFFFFF;
 
-  --shadow-1: 0 1px 2px rgb(0 0 0 / .4);
-  --shadow-2: 0 18px 40px -20px rgb(0 0 0 / .8);
+  --shadow-1: 0 1px 2px rgba(0,0,0,.25), 0 1px 3px rgba(0,0,0,.35);
+  --shadow-2: 0 18px 40px -20px rgb(0 0 0 / .75);
 
   color-scheme: dark;
 }

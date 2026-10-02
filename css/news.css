@@ -480,7 +480,7 @@
   max-height: 100vh;
   overflow: visible;
 }
-.lightbox::backdrop { background: rgb(15 13 23 / .9); }
+.lightbox::backdrop { background: rgba(12, 11, 10, 0.88); }
 .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; }
 .lightbox img { display: block; width: auto; height: auto; max-width: 92vw; max-height: 80vh; }
 .lightbox figcaption {
@@ -490,7 +490,7 @@
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #EDEBF5;
+  color: #E9E4DF;
 }
 .lightbox-close {
   position: fixed;

@@ -142,7 +142,7 @@
     const skip = $(".skip-link");
     if (skip) skip.textContent = state.lang === "en" ? "Skip to content" : "Pular para o conteúdo";
 
-    // Brand: the wordmark lockup (name over the viridis bar)
+    // Brand: the wordmark lockup (name over the gradient bar)
     const brand = $("#brand");
     brand.innerHTML = `
       <span class="brand-lockup"><span class="brand-word">${esc(site.brand.short)}</span><span class="brand-bar" aria-hidden="true"></span></span>
