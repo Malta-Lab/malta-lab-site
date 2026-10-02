@@ -390,16 +390,19 @@
     const types = Array.from(new Set(pubs.map(p => p.type)));
     const lab = sec.labels;
 
-    const buildChips = (kind, values, current) => {
+    // Display name for a type; data + filtering keep the raw PT key (e.g. "Periódico")
+    const typeLabel = (typ) => t(lab.typeNames?.[typ]) || typ;
+
+    const buildChips = (kind, values, current, label = (v) => v) => {
       const allChip = `<button class="chip ${current === "all" ? "is-active" : ""}" data-kind="${kind}" data-value="all" aria-pressed="${current === "all"}">${esc(t(lab.filterAll))}</button>`;
       const rest = values.map(v =>
-        `<button class="chip ${current === v ? "is-active" : ""}" data-kind="${kind}" data-value="${esc(v)}" aria-pressed="${current === v}">${esc(v)}</button>`
+        `<button class="chip ${current === v ? "is-active" : ""}" data-kind="${kind}" data-value="${esc(v)}" aria-pressed="${current === v}">${esc(label(v))}</button>`
       ).join("");
       return allChip + rest;
     };
 
     $("#pub-year-chips").innerHTML = buildChips("year", years, state.pubFilter.year);
-    $("#pub-type-chips").innerHTML = buildChips("type", types, state.pubFilter.type);
+    $("#pub-type-chips").innerHTML = buildChips("type", types, state.pubFilter.type, typeLabel);
     $("#pub-year-label").textContent = t(lab.filterYear);
     $("#pub-type-label").textContent = t(lab.filterType);
 
@@ -438,7 +441,7 @@
       <article class="pub-row">
         <div class="pub-badges">
           <span class="pub-badge year">${esc(p.year)}</span>
-          <span class="pub-badge ${typeClass(p.type)}">${esc(p.type)}</span>
+          <span class="pub-badge ${typeClass(p.type)}">${esc(typeLabel(p.type))}</span>
         </div>
         <div class="pub-main">
           <h3>${esc(p.title)}</h3>

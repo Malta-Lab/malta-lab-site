@@ -113,7 +113,11 @@
       "filterAll":    { "pt": "Todos",      "en": "All" },
       "showing":      { "pt": "Mostrando",  "en": "Showing" },
       "of":           { "pt": "de",         "en": "of" },
-      "viewDOI":      { "pt": "DOI",        "en": "DOI" }
+      "viewDOI":      { "pt": "DOI",        "en": "DOI" },
+      "typeNames": {
+        "Periódico":   { "pt": "Periódico",   "en": "Journal" },
+        "Conferência": { "pt": "Conferência", "en": "Conference" }
+      }
     }
   },
 
