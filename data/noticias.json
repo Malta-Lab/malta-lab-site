@@ -74,7 +74,10 @@
       "pt": "A equipe do MALTA Lab no laboratório, na Escola Politécnica da PUCRS",
       "en": "The MALTA Lab team in the lab at the PUCRS School of Technology"
     },
-    "coverCredit": "Foto: Giordano Toldo/PUCRS",
+    "coverCredit": {
+      "pt": "Foto: Giordano Toldo/PUCRS",
+      "en": "Photo: Giordano Toldo/PUCRS"
+    },
     "title": {
       "pt": "MALTA fica em 4º lugar em desafio internacional de IA para imagens médicas",
       "en": "MALTA places 4th in an international AI challenge for medical imaging"
@@ -82,6 +85,65 @@
     "summary": {
       "pt": "No desafio mRALE, do MIDRC, a equipe criou um modelo para prever a gravidade da COVID-19 em radiografias de tórax. Foi a única instituição latino-americana premiada.",
       "en": "In the MIDRC mRALE challenge, the team built a model that predicts COVID-19 severity from chest X-rays. It was the only Latin American institution among the winners."
+    }
+  },
+  {
+    "slug": "2026-04-24-iclr-2026-bayesian-attention",
+    "date": "2026-04-24",
+    "category": "publicacao",
+    "cover": "img/noticias/2026-04-24-iclr-2026-bayesian-attention/poster-no-iclr.jpg",
+    "coverPosition": "center 35%",
+    "coverAlt": {
+      "pt": "Arthur S. Bianchessi e Rodrigo Barros diante do pôster do Bayesian Attention Mechanism no ICLR 2026",
+      "en": "Arthur S. Bianchessi and Rodrigo Barros at the Bayesian Attention Mechanism poster at ICLR 2026"
+    },
+    "coverCredit": {
+      "pt": "Foto: PUCRS Notícias (reprodução)",
+      "en": "Photo: PUCRS News (reproduced)"
+    },
+    "title": {
+      "pt": "Bayesian Attention Mechanism é apresentado no ICLR 2026",
+      "en": "Bayesian Attention Mechanism presented at ICLR 2026"
+    },
+    "summary": {
+      "pt": "Pesquisa que Arthur S. Bianchessi começou na graduação chegou a uma das principais conferências de IA, no Rio de Janeiro, e lida com textos 500 vezes mais longos que os do treino.",
+      "en": "Research Arthur S. Bianchessi began as an undergraduate reached one of the top AI conferences, in Rio de Janeiro, handling texts 500 times longer than those seen in training."
+    }
+  },
+  {
+    "slug": "2025-11-18-google-phd-fellowship-rafaela",
+    "date": "2025-11-18",
+    "category": "premio",
+    "cover": "img/noticias/2025-11-18-google-phd-fellowship-rafaela/rafaela-em-londres.jpg",
+    "coverPosition": "center 75%",
+    "coverAlt": {
+      "pt": "Rafaela Ravazio em Londres, durante o doutorado sanduíche",
+      "en": "Rafaela Ravazio in London, during her visiting PhD period"
+    },
+    "coverCredit": {
+      "pt": "Foto: arquivo pessoal",
+      "en": "Photo: personal archive"
+    },
+    "title": {
+      "pt": "Rafaela Ravazio recebe bolsa de doutorado do Google",
+      "en": "Rafaela Ravazio wins a Google PhD Fellowship"
+    },
+    "summary": {
+      "pt": "A doutoranda do MALTA foi selecionada no Google PhD Fellowship na área de Saúde, para pesquisar subtipos da Doença de Parkinson com IA e dados biomédicos.",
+      "en": "The MALTA PhD student was selected for the Google PhD Fellowship in Health, to study Parkinson's disease subtypes with AI and biomedical data."
+    }
+  },
+  {
+    "slug": "2023-04-24-libras-google-award",
+    "date": "2023-04-24",
+    "category": "premio",
+    "title": {
+      "pt": "Projeto de tradução de LIBRAS com IA é premiado pelo Google",
+      "en": "AI project for LIBRAS translation wins a Google award"
+    },
+    "summary": {
+      "pt": "O projeto do MALTA, que cria redes neurais para traduzir entre LIBRAS e português, foi contemplado pelo Google Award for Inclusion Research.",
+      "en": "MALTA's project, which builds neural networks to translate between LIBRAS and Portuguese, received a Google Award for Inclusion Research."
     }
   }
 ]
