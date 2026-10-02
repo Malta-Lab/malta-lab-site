@@ -150,13 +150,13 @@
         <div class="pub-controls">
           <div class="pub-filter-group">
             <span class="label" id="pub-year-label"></span>
-            <div id="pub-year-chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            <div id="pub-year-chips" role="group" aria-labelledby="pub-year-label" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
           </div>
           <div class="pub-filter-group">
             <span class="label" id="pub-type-label"></span>
-            <div id="pub-type-chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            <div id="pub-type-chips" role="group" aria-labelledby="pub-type-label" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
           </div>
-          <span class="pub-meta" id="pub-count"></span>
+          <span class="pub-meta" id="pub-count" aria-live="polite"></span>
         </div>
 
         <div id="pub-list" class="pub-list">

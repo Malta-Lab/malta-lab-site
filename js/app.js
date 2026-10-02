@@ -391,9 +391,9 @@
     const lab = sec.labels;
 
     const buildChips = (kind, values, current) => {
-      const allChip = `<button class="chip ${current === "all" ? "is-active" : ""}" data-kind="${kind}" data-value="all">${esc(t(lab.filterAll))}</button>`;
+      const allChip = `<button class="chip ${current === "all" ? "is-active" : ""}" data-kind="${kind}" data-value="all" aria-pressed="${current === "all"}">${esc(t(lab.filterAll))}</button>`;
       const rest = values.map(v =>
-        `<button class="chip ${current === v ? "is-active" : ""}" data-kind="${kind}" data-value="${esc(v)}">${esc(v)}</button>`
+        `<button class="chip ${current === v ? "is-active" : ""}" data-kind="${kind}" data-value="${esc(v)}" aria-pressed="${current === v}">${esc(v)}</button>`
       ).join("");
       return allChip + rest;
     };
@@ -406,8 +406,15 @@
     // Filter chip click handlers
     $$("#pub-year-chips .chip, #pub-type-chips .chip").forEach(btn => {
       btn.addEventListener("click", () => {
-        state.pubFilter[btn.dataset.kind] = btn.dataset.value;
+        const { kind, value } = btn.dataset;
+        const hadFocus = document.activeElement === btn;
+        state.pubFilter[kind] = value;
         renderPublicacoes();
+        // Chips are rebuilt on every render: move focus to the matching new chip
+        if (hadFocus) {
+          const next = $$(`#pub-${kind}-chips .chip`).find(c => c.dataset.value === value);
+          if (next) next.focus();
+        }
       });
     });
 
