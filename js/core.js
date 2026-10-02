@@ -117,6 +117,8 @@
     const tog = $("#theme-toggle");
     if (!tog) return;
     const cur = resolveTheme();
+    // Buttons are rebuilt on every render: keep keyboard focus on the matching new button
+    const refocus = tog.contains(document.activeElement) && document.activeElement.dataset.theme;
     tog.innerHTML = [
       { id: "light", svg: SUN_SVG,  label: state.lang === "en" ? "Light" : "Claro" },
       { id: "dark",  svg: MOON_SVG, label: state.lang === "en" ? "Dark"  : "Escuro" }
@@ -126,7 +128,16 @@
     tog.querySelectorAll("button").forEach(b =>
       b.addEventListener("click", () => setTheme(b.dataset.theme))
     );
+    if (refocus) $(`[data-theme="${refocus}"]`, tog).focus();
   }
+
+  // Follow live OS theme changes until the user picks a theme
+  const darkScheme = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  darkScheme?.addEventListener?.("change", () => {
+    if (state.theme) return;
+    applyTheme();
+    renderThemeToggle();
+  });
 
   // ---- Header / footer ----
   /** Section anchors (#pesquisa…) live on the home page; prefix them elsewhere. */
@@ -162,15 +173,19 @@
       `<a href="${esc(pageHref(item.href))}"${current(item) ? ' aria-current="true"' : ""}>${esc(t(item.label))}</a>`
     ).join("");
 
-    // Language toggle (label = language name, in that language; visible text stays PT/EN)
+    // Language toggle: the accessible name is the visible PT/EN (WCAG 2.5.3);
+    // the tooltip names the language, in that language
     const langNames = { pt: "Português", en: "English" };
     const tog = $("#lang-toggle");
+    // Buttons are rebuilt on every render: keep keyboard focus on the matching new button
+    const refocus = tog.contains(document.activeElement) && document.activeElement.dataset.lang;
     tog.innerHTML = ["pt", "en"].map(l =>
-      `<button data-lang="${l}" class="${state.lang === l ? "is-active" : ""}" aria-pressed="${state.lang === l}" aria-label="${langNames[l]}" lang="${l === "en" ? "en" : "pt-BR"}">${l.toUpperCase()}</button>`
+      `<button data-lang="${l}" class="${state.lang === l ? "is-active" : ""}" aria-pressed="${state.lang === l}" title="${langNames[l]}" lang="${l === "en" ? "en" : "pt-BR"}">${l.toUpperCase()}</button>`
     ).join("");
     tog.querySelectorAll("button").forEach(b =>
       b.addEventListener("click", () => setLang(b.dataset.lang))
     );
+    if (refocus) $(`[data-lang="${refocus}"]`, tog).focus();
   }
 
   function renderFooter() {
@@ -189,17 +204,47 @@
     if (state.render) state.render();
     renderFooter();
     renderThemeToggle();
+    renderLabels();
   }
+
+  // ---- Labels on the static markup (header + error banner) ----
+  // These also render before site.json loads, or when it fails: fall back to the browser language
+  const isEn = () => (state.lang || (navigator.language || "pt").slice(0, 2)) === "en";
+
+  function renderMenuLabel() {
+    const btn = $("#mobile-menu-button");
+    if (!btn) return;
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-label", isEn() ? (open ? "Close menu" : "Open menu") : (open ? "Fechar menu" : "Abrir menu"));
+  }
+
+  function renderLabels() {
+    const en = isEn();
+    const label = (sel, pt, enText) => { const el = $(sel); if (el) el.setAttribute("aria-label", en ? enText : pt); };
+    label(".site-header > nav", "Principal", "Main");
+    label("#theme-toggle", "Tema", "Theme");
+    label("#lang-toggle", "Idioma", "Language");
+    renderMenuLabel();
+    const err = $("#app-error");
+    if (err) err.textContent = en
+      ? "Failed to load lab data. Please refresh the page."
+      : "Não foi possível carregar os dados do laboratório. Recarregue a página.";
+  }
+
+  // The error path never reaches renderAll, so label the markup up front
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderLabels);
+  else renderLabels();
 
   // ---- Boot ----
   function initMobileMenu() {
     const menuBtn = $("#mobile-menu-button");
     const menu    = $("#mobile-menu");
     if (!menuBtn) return;
-    // Keep aria-expanded in sync with the .is-open class
+    // Keep aria-expanded (and the Open/Close label) in sync with the .is-open class
     const setMenuOpen = (open) => {
       menu.classList.toggle("is-open", open);
       menuBtn.setAttribute("aria-expanded", String(open));
+      renderMenuLabel();
     };
     menuBtn.addEventListener("click", () => setMenuOpen(!menu.classList.contains("is-open")));
     menu.addEventListener("click", e => {
