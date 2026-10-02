@@ -63,5 +63,25 @@
       "pt": "Web game para reconhecimento de Língua Brasileira de Sinais com IA, apresentado na principal conferência de Inteligência Artificial.",
       "en": "An AI-powered web game for Brazilian Sign Language recognition, presented at the premier AI conference."
     }
+  },
+  {
+    "slug": "2023-11-09-desafio-mrale-midrc",
+    "date": "2023-11-09",
+    "category": "premio",
+    "cover": "img/noticias/2023-11-09-desafio-mrale-midrc/equipe.jpg",
+    "coverPosition": "center 30%",
+    "coverAlt": {
+      "pt": "A equipe do MALTA Lab no laboratório, na Escola Politécnica da PUCRS",
+      "en": "The MALTA Lab team in the lab at the PUCRS School of Technology"
+    },
+    "coverCredit": "Foto: Giordano Toldo/PUCRS",
+    "title": {
+      "pt": "MALTA fica em 4º lugar em desafio internacional de IA para imagens médicas",
+      "en": "MALTA places 4th in an international AI challenge for medical imaging"
+    },
+    "summary": {
+      "pt": "No desafio mRALE, do MIDRC, a equipe criou um modelo para prever a gravidade da COVID-19 em radiografias de tórax. Foi a única instituição latino-americana premiada.",
+      "en": "In the MIDRC mRALE challenge, the team built a model that predicts COVID-19 severity from chest X-rays. It was the only Latin American institution among the winners."
+    }
   }
 ]
