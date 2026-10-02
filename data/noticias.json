@@ -52,19 +52,6 @@
     }
   },
   {
-    "slug": "2024-02-25-lermo-aaai-2024",
-    "date": "2024-02-25",
-    "category": "publicacao",
-    "title": {
-      "pt": "LERMO apresentado no AAAI 2024",
-      "en": "LERMO presented at AAAI 2024"
-    },
-    "summary": {
-      "pt": "Web game para reconhecimento de Língua Brasileira de Sinais com IA, apresentado na principal conferência de Inteligência Artificial.",
-      "en": "An AI-powered web game for Brazilian Sign Language recognition, presented at the premier AI conference."
-    }
-  },
-  {
     "slug": "2023-11-09-desafio-mrale-midrc",
     "date": "2023-11-09",
     "category": "premio",
@@ -131,19 +118,6 @@
     "summary": {
       "pt": "A doutoranda do MALTA foi selecionada no Google PhD Fellowship na área de Saúde, para pesquisar subtipos da Doença de Parkinson com IA e dados biomédicos.",
       "en": "The MALTA PhD student was selected for the Google PhD Fellowship in Health, to study Parkinson's disease subtypes with AI and biomedical data."
-    }
-  },
-  {
-    "slug": "2023-04-24-libras-google-award",
-    "date": "2023-04-24",
-    "category": "premio",
-    "title": {
-      "pt": "Projeto de tradução de LIBRAS com IA é premiado pelo Google",
-      "en": "AI project for LIBRAS translation wins a Google award"
-    },
-    "summary": {
-      "pt": "O projeto do MALTA, que cria redes neurais para traduzir entre LIBRAS e português, foi contemplado pelo Google Award for Inclusion Research.",
-      "en": "MALTA's project, which builds neural networks to translate between LIBRAS and Portuguese, received a Google Award for Inclusion Research."
     }
   }
 ]
