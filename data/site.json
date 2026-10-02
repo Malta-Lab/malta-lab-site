@@ -174,12 +174,12 @@
       "en": "Machine Learning Theory and Applications Lab"
     },
     "copyright": {
-      "pt": "© 2025 MALTA Lab · Todos os direitos reservados.",
-      "en": "© 2025 MALTA Lab · All rights reserved."
+      "pt": "© {year} MALTA Lab · Todos os direitos reservados.",
+      "en": "© {year} MALTA Lab · All rights reserved."
     },
     "institutionalLink": {
       "label": { "pt": "PUCRS · Escola Politécnica", "en": "PUCRS · School of Technology" },
-      "href": "https://www.pucrs.br"
+      "href":  { "pt": "https://portal.pucrs.br/ensino/escola-politecnica/", "en": "https://www.pucrs.br/technology/" }
     }
   },
 

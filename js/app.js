@@ -515,10 +515,11 @@
     const f = state.data.site?.footer;
     if (!f) return;
     $("#footer-tagline").textContent = t(f.tagline);
-    $("#footer-copy").textContent = t(f.copyright);
+    // {year} token keeps the copyright current without yearly edits
+    $("#footer-copy").textContent = t(f.copyright).replace("{year}", new Date().getFullYear());
     const link = $("#footer-link");
     link.textContent = t(f.institutionalLink.label);
-    link.href = f.institutionalLink.href;
+    link.href = t(f.institutionalLink.href);
   }
 
   // ---- Boot ----
