@@ -82,7 +82,13 @@
   opacity: 0.7;
 }
 
-/* No photo: the date is the image */
+/* No photo: the date sits on a window onto the background network */
+.news-card.no-cover { background: transparent; }
+.news-card.no-cover .news-card-body { flex: 1; background: var(--surface); }
+.news-card.no-cover .news-card-media {
+  background: transparent;
+  background: color-mix(in srgb, var(--paper) 25%, transparent);
+}
 .news-dateplate {
   position: absolute;
   inset: 0;
@@ -92,6 +98,7 @@
   padding: 1.25rem 1.4rem;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 2px var(--paper), 0 0 6px var(--paper), 0 0 12px var(--paper);
 }
 .news-dateplate::before {
   content: "";
@@ -337,20 +344,36 @@
 .article-body ul, .article-body ol { margin: 0 0 1.25em; padding-left: 1.3em; }
 .article-body li { margin: 0.35em 0; }
 .article-body li::marker { color: var(--accent); }
+/* Pull quote: display face with a hanging opening mark */
 .article-body blockquote {
+  position: relative;
   margin: 2em 0;
-  padding: 0.2em 0 0.2em 1.25em;
-  border-left: 3px solid var(--accent);
+  padding-left: 2rem;
   color: var(--ink);
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.55;
+  font-family: var(--font-display);
+  font-stretch: 106%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
 }
+.article-body blockquote::before {
+  content: "“";
+  position: absolute;
+  left: -0.04em;
+  top: -0.06em;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.article-body blockquote p { margin-bottom: 0.7em; }
 .article-body blockquote p:last-child { margin-bottom: 0; }
 .article-body blockquote .quote-attribution {
-  margin-top: 0.75em;
-  font-size: 0.9rem;
-  font-weight: 600;
+  margin-top: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--ink-mute);
 }
 .article-body hr { border: 0; border-top: 1px solid var(--border); margin: 3em 0; }
