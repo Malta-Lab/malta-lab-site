@@ -32,14 +32,12 @@
 
   // ---- Renderers ----
   function renderHome() {
-    renderHero();
-    renderSobre();
-    renderPesquisa();
-    renderMembros();
-    renderPublicacoes();
-    renderNoticias();
-    renderContato();
-    renderMeta();
+    // Each section renders on its own, so one that throws leaves the rest intact
+    [renderHero, renderSobre, renderPesquisa, renderMembros,
+     renderPublicacoes, renderNoticias, renderContato, renderMeta].forEach(render => {
+      try { render(); }
+      catch (err) { console.error(`MALTA Lab — ${render.name} failed`, err); }
+    });
   }
 
   function renderMeta() {
@@ -338,18 +336,24 @@
   // ---- Background highlight ----
   // Hovering or focusing a legend entry or research card lights up its cluster
   function initClusterHighlight() {
-    const target = (e) => e.target.closest && e.target.closest("[data-cluster]");
+    const cluster = (node) => (node && node.closest) ? node.closest("[data-cluster]") : null;
+    const show = (el) => {
+      if (window.MALTANetwork) window.MALTANetwork.highlight(el ? Number(el.dataset.cluster) : null);
+    };
     const on = (e) => {
-      const el = target(e);
-      if (el && window.MALTANetwork) window.MALTANetwork.highlight(Number(el.dataset.cluster));
+      const el = cluster(e.target);
+      if (el) show(el);
     };
+    // When a hover or focus ends, fall back to the entry that still has focus
     const off = (e) => {
-      const el = target(e);
+      const el = cluster(e.target);
       if (!el || (e.relatedTarget && el.contains(e.relatedTarget))) return;
-      if (window.MALTANetwork) window.MALTANetwork.highlight(null);
+      show(cluster(document.activeElement));
     };
-    document.addEventListener("mouseover", on);
-    document.addEventListener("mouseout", off);
+    // Mouse only: touch screens emulate hovers that would leave a highlight stuck
+    const mouseOnly = (handler) => (e) => { if (e.pointerType === "mouse") handler(e); };
+    document.addEventListener("pointerover", mouseOnly(on));
+    document.addEventListener("pointerout", mouseOnly(off));
     document.addEventListener("focusin", on);
     document.addEventListener("focusout", off);
   }

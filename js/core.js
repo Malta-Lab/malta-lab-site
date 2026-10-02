@@ -261,13 +261,17 @@
 
   async function loadData(paths) {
     try {
+      // Only site.json is required: a page file that fails is left undefined
       const names = Object.keys(paths);
-      const [site, ...rest] = await Promise.all([
+      const [site, results] = await Promise.all([
         fetchJson("./data/site.json"),
-        ...names.map(n => fetchJson(paths[n]))
+        Promise.allSettled(names.map(n => fetchJson(paths[n])))
       ]);
       state.data = { site };
-      names.forEach((n, i) => { state.data[n] = rest[i]; });
+      results.forEach((r, i) => {
+        if (r.status === "rejected") console.error("MALTA Lab — data load error", r.reason);
+        state.data[names[i]] = r.value;
+      });
 
       // Resolve language: stored > site default > navigator
       if (!state.lang) {
