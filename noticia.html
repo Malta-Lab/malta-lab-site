@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Notícia · MALTA Lab</title>
   <meta name="description" content="Notícia do MALTA Lab — Machine Learning Theory and Applications Lab, PUCRS." />
+  <meta name="theme-color" content="#EAEAF2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F0D17" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Notícia · MALTA Lab" />
   <meta property="og:description" content="Machine Learning Theory and Applications Lab — PUCRS." />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Archivo (display), Atkinson Hyperlegible Next (body) and Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Atkinson+Hyperlegible+Mono:wght@400..600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/news.css" />
@@ -34,22 +37,24 @@
 
 <body>
 
-  <!-- Particle background (decorative, never captures pointer events) -->
-  <div id="particles-js-container" aria-hidden="true"></div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Background network: one cluster per research area (decorative, never captures pointer events) -->
+  <canvas id="bg-network" aria-hidden="true"></canvas>
 
   <!-- Fallback message if data fails to load -->
-  <div id="app-error" hidden style="position:fixed;top:0;left:0;right:0;background:#C8362A;color:#fff;padding:8px;text-align:center;z-index:100;font-size:14px;">
+  <div id="app-error" class="app-error" hidden>
     Failed to load lab data. Please refresh the page.
   </div>
 
   <!-- ========== Header ========== -->
   <header class="site-header">
-    <nav class="container-narrow" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.85rem 1rem;">
+    <nav class="container-narrow header-bar">
       <a href="index.html#inicio" id="brand" class="brand-mark" aria-label="MALTA Lab"></a>
 
-      <div id="nav-desktop" class="nav-desktop" style="display:none;align-items:center;gap:1.1rem;"></div>
+      <div id="nav-desktop" class="nav-desktop"></div>
 
-      <div style="display:flex;align-items:center;gap:0.5rem;">
+      <div class="header-tools">
         <div id="theme-toggle" class="lang-toggle" role="group" aria-label="Theme"></div>
         <div id="lang-toggle" class="lang-toggle" role="group" aria-label="Language"></div>
         <button id="mobile-menu-button" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -61,11 +66,11 @@
     </nav>
 
     <div id="mobile-menu">
-      <div id="mobile-menu-list" class="container-narrow" style="padding:0.5rem 1rem 1rem;"></div>
+      <div id="mobile-menu-list" class="container-narrow mobile-menu-list"></div>
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
     <article id="news-article" class="section news-article">
       <div class="article-wrap">
         <a class="article-back" href="noticias.html"><span aria-hidden="true">←</span> <span class="article-back-label"></span></a>
@@ -112,29 +117,25 @@
   </main>
 
   <!-- ========== Footer ========== -->
-  <footer>
-    <div class="container-narrow" style="padding:2.5rem 1rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;">
-      <div>
-        <strong style="color:var(--ink);font-size:1rem;">MALTA Lab</strong>
-        <p id="footer-tagline" style="font-size:0.85rem;color:var(--ink-mute);"></p>
+  <footer class="site-footer">
+    <div class="container-narrow footer-bar">
+      <div class="footer-brand">
+        <span class="brand-lockup" aria-hidden="true"><span class="brand-word">MALTA Lab</span><span class="brand-bar"></span></span>
+        <p id="footer-tagline" class="footer-tagline"></p>
       </div>
-      <div style="font-size:0.85rem;text-align:right;">
+      <div class="footer-meta">
         <p id="footer-copy"></p>
-        <p style="margin-top:0.25rem;">
-          <a id="footer-link" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--ink-mute);text-decoration:none;border-bottom:1px dotted var(--border-strong);"></a>
-        </p>
+        <p><a id="footer-link" class="footer-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
       </div>
     </div>
   </footer>
-
-  <!-- particles.js (decorative; pointer events off, init is in core.js so it can follow the theme) -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <!-- Markdown → HTML, then sanitised before it touches the page -->
   <script src="https://cdn.jsdelivr.net/npm/marked@18.0.14/lib/marked.umd.js" integrity="sha384-2vpGtuKqJvFlwJqYnf/wUMuzUfhUnYBt9oay0e2yaFcq0Dh6/aEbQ8YAOeKGzlYo" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.16/dist/purify.min.js" integrity="sha384-a7SzOxErzJ3ZpQz0zJ32d67dSitNzPcbfybc/ykU9KJhMgZkwqfSxlhhdJRS+XGL" crossorigin="anonymous" defer></script>
 
   <!-- App -->
+  <script src="./js/network.js" defer></script>
   <script src="./js/core.js" defer></script>
   <script src="./js/noticias.js" defer></script>
 

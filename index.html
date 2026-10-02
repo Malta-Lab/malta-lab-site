@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MALTA Lab · PUCRS</title>
   <meta name="description" content="MALTA Lab — Machine Learning Theory and Applications Lab, PUCRS." />
+  <meta name="theme-color" content="#EAEAF2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F0D17" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="MALTA Lab · PUCRS" />
   <meta property="og:description" content="Machine Learning Theory and Applications Lab — PUCRS." />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Archivo (display), Atkinson Hyperlegible Next (body) and Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Atkinson+Hyperlegible+Mono:wght@400..600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./css/styles.css" />
 
@@ -32,23 +35,24 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Particle background (decorative, never captures pointer events) -->
-  <div id="particles-js-container" aria-hidden="true"></div>
+  <!-- Background network: one cluster per research area (decorative, never captures pointer events) -->
+  <canvas id="bg-network" aria-hidden="true"></canvas>
 
   <!-- Fallback message if data fails to load -->
-  <div id="app-error" hidden style="position:fixed;top:0;left:0;right:0;background:#C8362A;color:#fff;padding:8px;text-align:center;z-index:100;font-size:14px;">
+  <div id="app-error" class="app-error" hidden>
     Failed to load lab data. Please refresh the page.
   </div>
 
   <!-- ========== Header ========== -->
   <header class="site-header">
-    <nav class="container-narrow" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.85rem 1rem;">
+    <nav class="container-narrow header-bar">
       <a href="#inicio" id="brand" class="brand-mark" aria-label="MALTA Lab"></a>
 
-      <div id="nav-desktop" class="nav-desktop" style="display:none;align-items:center;gap:1.1rem;"></div>
+      <div id="nav-desktop" class="nav-desktop"></div>
 
-      <div style="display:flex;align-items:center;gap:0.5rem;">
+      <div class="header-tools">
         <div id="theme-toggle" class="lang-toggle" role="group" aria-label="Theme"></div>
         <div id="lang-toggle" class="lang-toggle" role="group" aria-label="Language"></div>
         <button id="mobile-menu-button" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -60,47 +64,55 @@
     </nav>
 
     <div id="mobile-menu">
-      <div id="mobile-menu-list" class="container-narrow" style="padding:0.5rem 1rem 1rem;"></div>
+      <div id="mobile-menu-list" class="container-narrow mobile-menu-list"></div>
     </div>
   </header>
 
-  <!-- ========== Hero ========== -->
-  <main>
-    <section id="inicio" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:5rem 1rem 4rem;">
-      <div class="container-narrow" style="text-align:center;">
-        <img id="hero-logo" src="./img/logo.png" alt="MALTA — Machine Learning Theory and Applications Lab"
-             style="max-width:520px;width:100%;height:auto;margin:0 auto;display:block;" />
+  <main id="conteudo">
+    <!-- ========== Hero: the wordmark, with the background as the figure ========== -->
+    <section id="inicio" class="hero">
+      <div class="container-narrow hero-grid">
+        <div class="hero-main">
+          <h1 class="wordmark">
+            <span class="wordmark-lockup">
+              <span class="wordmark-word">MALTA</span>
+              <span class="wordmark-bar" aria-hidden="true"></span>
+            </span>
+            <span class="wordmark-name" id="hero-name">Machine Learning Theory and Applications Lab</span>
+          </h1>
 
-        <a id="kunumi-link" href="https://www.kunuminst.org/" target="_blank" rel="noopener noreferrer" class="kunumi-mark" aria-label="Kunumi Institute">
-          <img id="kunumi-logo" src="./img/kunumi_positivo.png" alt="Kunumi Institute"
-               style="max-width:260px;width:100%;height:auto;margin:0.75rem auto 0;display:block;" />
-        </a>
+          <p id="hero-tagline" class="hero-tagline"></p>
 
-        <p id="hero-tagline" style="margin-top:1.75rem;color:var(--ink-soft);font-size:1.05rem;line-height:1.55;max-width:600px;margin-inline:auto;"></p>
+          <div id="hero-ctas" class="hero-ctas"></div>
 
-        <div id="hero-stats" class="stats-row" style="margin-top:2rem;"></div>
+          <div class="hero-stats">
+            <div id="hero-stats" class="hero-stat-list"></div>
+            <a id="kunumi-link" href="https://www.kunuminst.org/" target="_blank" rel="noopener noreferrer" class="kunumi-mark" aria-label="Kunumi Institute">
+              <img id="kunumi-logo" src="./img/kunumi_positivo.png" alt="Kunumi Institute" width="6728" height="2026" />
+            </a>
+          </div>
+        </div>
 
-        <div id="hero-ctas" style="margin-top:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;"></div>
+        <!-- Legend for the background: one colour per research area -->
+        <nav id="hero-legend" class="hero-legend" aria-labelledby="legend-title"></nav>
       </div>
     </section>
 
-    <!-- ========== Sobre — 2-column for visual variety (item 10) ========== -->
+    <!-- ========== Sobre ========== -->
     <section id="sobre" class="section">
-      <div class="container-narrow">
-        <div class="about-grid">
-          <div>
-            <span class="eyebrow" id="sobre-eyebrow"></span>
-            <h2 id="sobre-title" class="h-display" style="font-size:clamp(1.8rem,3.2vw,2.4rem);margin-top:0.5rem;line-height:1.15;"></h2>
-            <p id="sobre-body" style="margin-top:1.25rem;color:var(--ink-soft);font-size:1.05rem;line-height:1.65;"></p>
-            <div id="sobre-venues" class="venue-cloud"></div>
-          </div>
-          <div id="sobre-highlights" class="highlight-list"></div>
+      <div class="container-narrow about-grid">
+        <div class="about-copy">
+          <span class="eyebrow" id="sobre-eyebrow"></span>
+          <h2 id="sobre-title" class="h-display about-title"></h2>
+          <p id="sobre-body" class="about-body"></p>
+          <div id="sobre-venues" class="venue-cloud"></div>
         </div>
+        <div id="sobre-highlights" class="highlight-list"></div>
       </div>
     </section>
 
     <!-- ========== Linhas de Pesquisa ========== -->
-    <section id="pesquisa" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
+    <section id="pesquisa" class="section">
       <div class="container-narrow">
         <header class="section-header">
           <span class="eyebrow" id="pesquisa-eyebrow"></span>
@@ -121,26 +133,26 @@
           <h2 id="membros-title"></h2>
         </header>
 
-        <h3 id="membros-coord-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem;"></h3>
+        <h3 id="membros-coord-label" class="team-group-label is-first"></h3>
         <div id="coord-grid" class="coord-grid">
           <p class="loading">…</p>
         </div>
 
-        <h3 id="membros-pos-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin:3rem 0 1.25rem;"></h3>
+        <h3 id="membros-pos-label" class="team-group-label"></h3>
         <div id="alunos-grid" class="student-grid">
           <p class="loading">…</p>
         </div>
 
         <div id="alunos-graduacao-wrap" hidden>
-          <h3 id="membros-grad-label" style="font-size:1rem;font-weight:700;color:var(--ink-mute);letter-spacing:0.08em;text-transform:uppercase;margin:3rem 0 1.25rem;"></h3>
+          <h3 id="membros-grad-label" class="team-group-label"></h3>
           <div id="alunos-graduacao-grid" class="student-grid"></div>
         </div>
       </div>
     </section>
 
-    <!-- ========== Publicações (filters, not pagination — item 11) ========== -->
-    <section id="publicacoes" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
-      <div class="container-narrow" style="max-width:980px;">
+    <!-- ========== Publicações ========== -->
+    <section id="publicacoes" class="section">
+      <div class="container-narrow">
         <header class="section-header">
           <span class="eyebrow" id="pubs-eyebrow"></span>
           <h2 id="pubs-title"></h2>
@@ -150,11 +162,11 @@
         <div class="pub-controls">
           <div class="pub-filter-group">
             <span class="label" id="pub-year-label"></span>
-            <div id="pub-year-chips" role="group" aria-labelledby="pub-year-label" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            <div id="pub-year-chips" class="chip-row" role="group" aria-labelledby="pub-year-label"></div>
           </div>
           <div class="pub-filter-group">
             <span class="label" id="pub-type-label"></span>
-            <div id="pub-type-chips" role="group" aria-labelledby="pub-type-label" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            <div id="pub-type-chips" class="chip-row" role="group" aria-labelledby="pub-type-label"></div>
           </div>
           <span class="pub-meta" id="pub-count" aria-live="polite"></span>
         </div>
@@ -165,23 +177,25 @@
       </div>
     </section>
 
-    <!-- ========== Notícias (item 20) ========== -->
+    <!-- ========== Notícias ========== -->
     <section id="noticias" class="section">
-      <div class="container-narrow" style="max-width:820px;">
+      <div class="container-narrow news-layout">
         <header class="section-header">
           <span class="eyebrow" id="noticias-eyebrow"></span>
           <h2 id="noticias-title"></h2>
           <p id="noticias-body"></p>
         </header>
-        <div id="noticias-list" class="news-list">
-          <p class="loading">…</p>
+        <div class="card news-panel">
+          <div id="noticias-list" class="news-list">
+            <p class="loading">…</p>
+          </div>
         </div>
         <div id="noticias-more" class="news-more"></div>
       </div>
     </section>
 
     <!-- ========== Contato ========== -->
-    <section id="contato" class="section" style="background:var(--elev-1);border-block:1px solid var(--border);">
+    <section id="contato" class="section">
       <div class="container-narrow">
         <header class="section-header">
           <span class="eyebrow" id="contato-eyebrow"></span>
@@ -190,18 +204,18 @@
         </header>
 
         <div class="contact-grid">
-          <div>
-            <div class="contact-block" style="margin-bottom:2rem;">
+          <div class="card">
+            <div class="contact-block">
               <h3 id="addr-label"></h3>
               <div id="addr-lines"></div>
             </div>
             <div id="social-wrap" class="contact-block" hidden>
               <h3 id="social-label"></h3>
-              <div id="social-links" style="display:flex;gap:1.25rem;"></div>
+              <div id="social-links" class="social-links"></div>
             </div>
           </div>
 
-          <div class="contact-cta">
+          <div class="card contact-cta">
             <div id="emails" class="stack"></div>
           </div>
         </div>
@@ -210,25 +224,21 @@
   </main>
 
   <!-- ========== Footer ========== -->
-  <footer>
-    <div class="container-narrow" style="padding:2.5rem 1rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;">
-      <div>
-        <strong style="color:var(--ink);font-size:1rem;">MALTA Lab</strong>
-        <p id="footer-tagline" style="font-size:0.85rem;color:var(--ink-mute);"></p>
+  <footer class="site-footer">
+    <div class="container-narrow footer-bar">
+      <div class="footer-brand">
+        <span class="brand-lockup" aria-hidden="true"><span class="brand-word">MALTA Lab</span><span class="brand-bar"></span></span>
+        <p id="footer-tagline" class="footer-tagline"></p>
       </div>
-      <div style="font-size:0.85rem;text-align:right;">
+      <div class="footer-meta">
         <p id="footer-copy"></p>
-        <p style="margin-top:0.25rem;">
-          <a id="footer-link" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--ink-mute);text-decoration:none;border-bottom:1px dotted var(--border-strong);"></a>
-        </p>
+        <p><a id="footer-link" class="footer-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
       </div>
     </div>
   </footer>
 
-  <!-- particles.js (decorative; pointer events off, init is in core.js so it can follow the theme) -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
   <!-- App -->
+  <script src="./js/network.js" defer></script>
   <script src="./js/core.js" defer></script>
   <script src="./js/app.js" defer></script>
 

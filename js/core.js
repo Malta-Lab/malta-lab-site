@@ -3,6 +3,7 @@
  *   - Language + theme state with localStorage persistence
  *   - Header, footer, mobile menu, theme/language toggles
  *   - Data loading; each page passes its own JSON + renderer
+ *   - The background network lives in network.js
  *
  * Usage (from a page script):
  *   MALTA.start({ page: "home", data: { membros: "./data/membros.json" }, render });
@@ -98,14 +99,11 @@
   function applyTheme() {
     const t = resolveTheme();
     document.documentElement.setAttribute("data-theme", t);
-    // Swap hero logo (home only)
-    const logo = document.getElementById("hero-logo");
-    if (logo) logo.src = t === "dark" ? "./img/logow.png" : "./img/logo.png";
     // Swap Kunumi logo (negativo = light ink for dark backgrounds)
     const kunumi = document.getElementById("kunumi-logo");
     if (kunumi) kunumi.src = t === "dark" ? "./img/kunumi_negativo.png" : "./img/kunumi_positivo.png";
-    // Re-init particles so dot/line colors match the theme
-    initParticles();
+    // Network colours follow the theme
+    if (window.MALTANetwork) window.MALTANetwork.refresh();
   }
 
   function setTheme(theme) {
@@ -130,39 +128,6 @@
     );
   }
 
-  // ---- Particles (re-initable; reads CSS vars so it follows the theme) ----
-  function initParticles() {
-    if (!window.particlesJS) return;
-    const css = getComputedStyle(document.documentElement);
-    const dot  = css.getPropertyValue("--particle-dot").trim()  || "#5B6470";
-    const line = css.getPropertyValue("--particle-line").trim() || "#B8B0A8";
-
-    // Destroy any prior instance(s)
-    if (window.pJSDom && window.pJSDom.length) {
-      try {
-        window.pJSDom.forEach(p => p.pJS.fn.vendors.destroypJS());
-      } catch (e) { /* noop */ }
-      window.pJSDom = [];
-    }
-
-    particlesJS("particles-js-container", {
-      particles: {
-        number: { value: 60, density: { enable: true, value_area: 900 } },
-        color: { value: dot },
-        shape: { type: "circle" },
-        opacity: { value: 0.18, random: true },
-        size: { value: 2.5, random: true },
-        line_linked: { enable: true, distance: 160, color: line, opacity: 0.28, width: 1 },
-        move: { enable: true, speed: 1.2, direction: "none", random: true, out_mode: "out" }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
-      },
-      retina_detect: true
-    });
-  }
-
   // ---- Header / footer ----
   /** Section anchors (#pesquisa…) live on the home page; prefix them elsewhere. */
   function pageHref(href) {
@@ -174,10 +139,13 @@
     const { site } = state.data;
     if (!site) return;
 
-    // Brand
+    const skip = $(".skip-link");
+    if (skip) skip.textContent = state.lang === "en" ? "Skip to content" : "Pular para o conteúdo";
+
+    // Brand: the wordmark lockup (name over the viridis bar)
     const brand = $("#brand");
     brand.innerHTML = `
-      <span>${esc(site.brand.short)}</span>
+      <span class="brand-lockup"><span class="brand-word">${esc(site.brand.short)}</span><span class="brand-bar" aria-hidden="true"></span></span>
       <span class="brand-sub">${esc(t(site.brand.affiliationLine))}</span>
     `;
     brand.setAttribute("aria-label", t(site.brand.long));
@@ -277,12 +245,7 @@
     // (Initial data-theme is set pre-paint by the inline script in each page's <head>)
     document.addEventListener("DOMContentLoaded", () => {
       initMobileMenu();
-      // Apply theme + particles once particlesJS is loaded
-      if (window.particlesJS) {
-        applyTheme();
-      } else {
-        window.addEventListener("load", applyTheme);
-      }
+      applyTheme();
       loadData(data);
     });
   }

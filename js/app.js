@@ -2,6 +2,7 @@
  * MALTA Lab — home page
  *   - Renders every home section from /data/*.json
  *   - Publication filters by year + type
+ *   - Legend + research cards light up their cluster in the background
  *   - Shared header/footer/theme/language live in core.js
  * ============================================================ */
 
@@ -59,14 +60,16 @@
     if (!site) return;
 
     const h = site.hero;
+    $("#hero-name").textContent = t(site.brand.long);
     $("#hero-tagline").textContent = t(h.tagline);
 
     // CTAs
-    $("#hero-ctas").innerHTML = h.ctas.map(c =>
-      `<a href="${esc(c.href)}" class="btn btn-${c.kind === "primary" ? "primary" : "secondary"}">${esc(t(c.label))}</a>`
-    ).join("");
+    $("#hero-ctas").innerHTML = h.ctas.map(c => {
+      const primary = c.kind === "primary";
+      return `<a href="${esc(c.href)}" class="btn btn-${primary ? "primary" : "secondary"}">${esc(t(c.label))}${primary ? ' <span class="arrow" aria-hidden="true">→</span>' : ""}</a>`;
+    }).join("");
 
-    // Stats
+    // Stats (the research-area count heads the legend instead)
     const researcherCount =
       (membros?.coordenadores?.length || 0) +
       (membros?.alunos?.length || 0) +
@@ -75,14 +78,23 @@
     const stats = [
       { value: `${publicacoes?.length || 0}+`,
         label: state.lang === "en" ? "publications" : "publicações" },
-      { value: `${pesquisa?.length || 0}`,
-        label: state.lang === "en" ? "research areas" : "linhas de pesquisa" },
       { value: `${researcherCount}`,
         label: state.lang === "en" ? "researchers" : "pesquisadores" }
     ];
     $("#hero-stats").innerHTML = stats.map(s =>
-      `<span class="stat-chip"><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></span>`
+      `<span class="hero-stat"><strong>${esc(s.value)}</strong>${esc(s.label)}</span>`
     ).join("");
+
+    // Legend: each research area is one cluster of the background network
+    const areas = pesquisa || [];
+    $("#hero-legend").innerHTML = `
+      <p class="legend-title" id="legend-title">${esc(areas.length)} ${esc(state.lang === "en" ? "research areas" : "linhas de pesquisa")}</p>
+      <ul class="legend-list">
+        ${areas.map((l, i) => `
+          <li><a href="#area-${esc(l.id)}" data-cluster="${i}" style="--swatch: var(--area-${i})">
+            <span class="swatch" aria-hidden="true"></span>${esc(t(l.title))}
+          </a></li>`).join("")}
+      </ul>`;
   }
 
   function renderSobre() {
@@ -101,7 +113,7 @@
       <article class="card">
         <span class="dot" aria-hidden="true"></span>
         <div>
-          <h4>${esc(t(h.title))}</h4>
+          <h3>${esc(t(h.title))}</h3>
           <p>${esc(t(h.body))}</p>
         </div>
       </article>
@@ -116,9 +128,10 @@
       $("#pesquisa-title").textContent   = t(sec.title);
       $("#pesquisa-body").textContent    = t(sec.body);
     }
-    $("#pesquisa-grid").innerHTML = lines.map(l => `
-      <article class="research-card">
-        <div class="icon-tile" aria-hidden="true">${l.iconSvg}</div>
+    // The swatch is the area's colour in the background network
+    $("#pesquisa-grid").innerHTML = lines.map((l, i) => `
+      <article class="research-card" id="area-${esc(l.id)}" data-cluster="${i}" style="--swatch: var(--area-${i})">
+        <span class="swatch" aria-hidden="true"></span>
         <h3>${esc(t(l.title))}</h3>
         <p>${esc(t(l.description))}</p>
       </article>
@@ -148,8 +161,8 @@
 
     const cardHtml = (mem, role) => `
       <article class="member-card ${role}">
-        <div>
-          <div class="member-photo">${photoHtml(mem.imgUrl, mem.name)}</div>
+        <div class="member-photo">${photoHtml(mem.imgUrl, mem.name)}</div>
+        <div class="member-info">
           <div class="member-name">${esc(mem.name)}</div>
           <div class="member-role">${esc(t(mem.role))}</div>
           ${mem.topic ? `<p class="member-topic">${esc(t(mem.topic))}</p>` : ""}
@@ -242,8 +255,9 @@
       return "type-conferencia";
     };
 
-    $("#pub-list").innerHTML = filtered.map(p => `
-      <article class="pub-row">
+    // The year prints once at the top of each group (repeats are screen-reader only)
+    $("#pub-list").innerHTML = filtered.map((p, i) => `
+      <article class="pub-row${i === 0 || filtered[i - 1].year !== p.year ? " is-year-start" : ""}">
         <div class="pub-badges">
           <span class="pub-badge year">${esc(p.year)}</span>
           <span class="pub-badge ${typeClass(p.type)}">${esc(typeLabel(p.type))}</span>
@@ -321,6 +335,34 @@
     }
   }
 
+  // ---- Background highlight ----
+  // Hovering or focusing a legend entry or research card lights up its cluster
+  function initClusterHighlight() {
+    const target = (e) => e.target.closest && e.target.closest("[data-cluster]");
+    const on = (e) => {
+      const el = target(e);
+      if (el && window.MALTANetwork) window.MALTANetwork.highlight(Number(el.dataset.cluster));
+    };
+    const off = (e) => {
+      const el = target(e);
+      if (!el || (e.relatedTarget && el.contains(e.relatedTarget))) return;
+      if (window.MALTANetwork) window.MALTANetwork.highlight(null);
+    };
+    document.addEventListener("mouseover", on);
+    document.addEventListener("mouseout", off);
+    document.addEventListener("focusin", on);
+    document.addEventListener("focusout", off);
+  }
+
+  function renderHomeAndNetwork() {
+    if (window.MALTANetwork && state.data.pesquisa) {
+      window.MALTANetwork.setClusters(state.data.pesquisa.length);
+    }
+    renderHome();
+  }
+
+  document.addEventListener("DOMContentLoaded", initClusterHighlight);
+
   // ---- Boot ----
   window.MALTA.start({
     page: "home",
@@ -330,6 +372,6 @@
       publicacoes: "./data/publicacoes.json",
       noticias:    "./data/noticias.json"
     },
-    render: renderHome
+    render: renderHomeAndNetwork
   });
 })();
