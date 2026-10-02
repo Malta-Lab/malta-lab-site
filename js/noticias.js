@@ -49,6 +49,8 @@
       const needW = box.width * density(), needH = box.height * density();
       if (img.naturalWidth < needW * 0.9 || img.naturalHeight < needH * 0.9) {
         img.parentElement.classList.add("is-small");
+        // A blurred copy of the same photo fills the box behind it (CSS ::before)
+        img.parentElement.style.setProperty("--backdrop", `url("${(img.currentSrc || img.src).replace(/"/g, "%22")}")`);
         img.style.maxWidth  = `min(100%, ${Math.floor(img.naturalWidth  / density())}px)`;
         img.style.maxHeight = `min(100%, ${Math.floor(img.naturalHeight / density())}px)`;
         console.warn(`[MALTA] ${img.getAttribute("src")} (${img.naturalWidth}×${img.naturalHeight}px) is too small to fill a ${Math.round(box.width)}×${Math.round(box.height)} box sharply; showing it uncropped.`);

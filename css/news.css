@@ -64,8 +64,17 @@
   transition: transform .5s ease;
 }
 .news-card:hover .news-card-media img { transform: scale(1.03); }
-/* Photo too small to crop sharply: show it whole instead of stretching it */
-.news-card-media.is-small img { width: auto; height: auto; object-fit: contain; }
+/* Photo too small to crop sharply: show it whole instead of stretching it,
+   over a blurred copy of itself so the box doesn't look empty */
+.news-card-media.is-small img { position: relative; z-index: 1; width: auto; height: auto; object-fit: contain; box-shadow: 0 6px 24px rgba(0, 0, 0, .25); }
+.news-card-media.is-small::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background: var(--backdrop) center / cover no-repeat;
+  filter: blur(22px) saturate(1.15);
+  opacity: 0.7;
+}
 
 /* No photo: the date is the image */
 .news-dateplate {
@@ -162,7 +171,7 @@
   }
   /* The photo fills the box without driving the row height */
   .news-card.is-featured .news-card-media img { position: absolute; inset: 0; }
-  .news-card.is-featured .news-card-media.is-small img { position: static; }
+  .news-card.is-featured .news-card-media.is-small img { position: relative; inset: auto; }
   .news-card.is-featured .news-card-body { justify-content: center; padding: 2rem 2.25rem; gap: 0.8rem; }
 }
 
