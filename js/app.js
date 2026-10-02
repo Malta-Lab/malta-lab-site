@@ -120,6 +120,9 @@
     // Swap hero logo
     const logo = document.getElementById("hero-logo");
     if (logo) logo.src = t === "dark" ? "./img/logow.png" : "./img/logo.png";
+    // Swap Kunumi logo (negativo = light ink for dark backgrounds)
+    const kunumi = document.getElementById("kunumi-logo");
+    if (kunumi) kunumi.src = t === "dark" ? "./img/kunumi_negativo.png" : "./img/kunumi_positivo.png";
     // Re-init particles so dot/line colors match the theme
     initParticles();
   }
