@@ -1,5 +1,21 @@
 [
   {
+    "type": "Periódico",
+    "year": "2026",
+    "title": "A Comparative Evaluation of Open-Weight LLMs for Geoscientific Tasks",
+    "authors": "PARRAGA, O.; GARCEZ, V. H.; MARQUES, A.; SPIGOLON, A. L. D.; DE BARROS, G.; GONZAGA, L.; VERONEZ, M. R.; FACHEL, A.; DE OLIVEIRA, E. R.; BRUSKI, S. D.; BORGES, I. C.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 2026.",
+    "doiUrl": "https://doi.org/10.1109/JSTARS.2026.3739143"
+  },
+  {
+    "type": "Periódico",
+    "year": "2026",
+    "title": "Explainable Machine Learning to Understand the Social and Biological Determinants of Type 2 Diabetes in Mexico",
+    "authors": "CERVANTES-GUERRERO, M. D.; GALVÁN-TEJADA, C. E.; CRUZ, M.; GALVÁN-TEJADA, J. I.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "Revista de Investigación e Innovación en Ciencias de la Salud, 2026.",
+    "doiUrl": "https://doi.org/10.46634/riics.535"
+  },
+  {
     "type": "Conferência",
     "year": "2026",
     "title": "Diffused Embeddings: Exploring Sentence Representations from DLMs",
@@ -48,6 +64,14 @@
     "doiUrl": "https://doi.org/10.1007/978-3-032-39904-5_35"
   },
   {
+    "type": "Conferência",
+    "year": "2026",
+    "title": "Benchmarking LLMs in Geoscience: A Serverless Approach using GeoBench and AWS",
+    "authors": "PARRAGA, O.; FACHEL, A.; ANTUNES, R. S.; GONZAGA, L.; VERONEZ, M. R.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Anais do I Simpósio de Infraestrutura Digital/Nuvem para Pesquisa (Pesquisa@Nuvem 2026).",
+    "doiUrl": "https://doi.org/10.5753/pesquisanuvem.2026.22263"
+  },
+  {
     "type": "Periódico",
     "year": "2025",
     "title": "Fairness in Deep Learning: A Survey on Vision and Language Research",
@@ -70,6 +94,46 @@
     "authors": "BRZOSKOWSKI DOS SANTOS, V.; RAVAZIO, R.; TEIXEIRA-DOS-SANTOS, D.; SCHUMACHER SCHUH, A. F.; MATTJIE, C.; PASQUALI, J.; DE BORBA, M. D.; BARROS, R. C.; OLCHIK, M.",
     "source": "Clinical Parkinsonism & Related Disorders, 2025.",
     "doiUrl": "https://doi.org/10.1016/j.prdoa.2025.100373"
+  },
+  {
+    "type": "Periódico",
+    "year": "2025",
+    "title": "Evaluating the Role of α-Synuclein Seed Amplification as a Disease Progression Marker: Evidence and Uncertainties",
+    "authors": "BELETE, D.; MATTJIE, C.; HUXFORD, B.; BESTWICK, J. P.; NOYCE, A. J.; SIMONET, C.",
+    "source": "Movement Disorders Clinical Practice, 2025.",
+    "doiUrl": "https://doi.org/10.1002/mdc3.70434"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Resolvendo problemas? Sem problemas! Uma análise de ferramentas gamificadas com pontuação e ranqueamento no ensino de programação",
+    "authors": "FERREIRA, I.; WAGNER, P. P.; KUPSSINSKÜ, L. S.; SILVEIRA, M. S.",
+    "source": "In: Anais do XXXVI Simpósio Brasileiro de Informática na Educação (SBIE 2025).",
+    "doiUrl": "https://doi.org/10.5753/sbie.2025.12627"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Detection of Expiration Dates in Product Images Using YOLO",
+    "authors": "ANDREOTTI, L.; FRAGA, L. M.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Anais da I Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS 2025).",
+    "doiUrl": "https://doi.org/10.5753/eramiars.2025.16690"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "Evaluation of 3D Convolutional Neural Networks on Isolated Brazilian Sign Language Recognition",
+    "authors": "LAZZAROTTO, L. C.; DELUCIS, M. M.; BARCELOS, P. T.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Anais da I Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS 2025).",
+    "doiUrl": "https://doi.org/10.5753/eramiars.2025.16773"
+  },
+  {
+    "type": "Conferência",
+    "year": "2025",
+    "title": "A Comparative Analysis of CNN Models and Vision Transformers for Skin Lesion Classification",
+    "authors": "AGUIRRE, Y. C.; DE OLIVEIRA, A. B. S.; BARROS, R. C.; KUPSSINSKÜ, L. S.",
+    "source": "In: Anais da I Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS 2025).",
+    "doiUrl": "https://doi.org/10.5753/eramiars.2025.16623"
   },
   {
     "type": "Conferência",
