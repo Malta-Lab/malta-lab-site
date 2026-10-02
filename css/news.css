@@ -531,6 +531,8 @@
   cursor: pointer;
 }
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+/* The accent ring is too faint on the dark backdrop */
+.lightbox :focus-visible { outline-color: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
   .news-card, .news-card-media img, .article-gallery .figure-zoom img { transition: none; }

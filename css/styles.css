@@ -120,7 +120,6 @@ section { scroll-margin-top: var(--header-h); }
 
 /* Text that sits straight on the network gets a paper-coloured halo,
    like labels on a map or annotations on a plot */
-.on-plot,
 .section-header,
 .about-copy,
 .hero-main,
@@ -299,12 +298,14 @@ section { scroll-margin-top: var(--header-h); }
 
 .mobile-menu-btn {
   display: inline-flex;
+  flex-shrink: 0;
   padding: 6px 8px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--ink-soft);
 }
+.mobile-menu-btn svg { max-width: none; }   /* the reset would let flex squeeze it to 0 */
 .mobile-menu-btn:hover { color: var(--ink); }
 
 #mobile-menu {
@@ -312,7 +313,12 @@ section { scroll-margin-top: var(--header-h); }
   border-top: 1px solid var(--border);
   background: var(--paper);
 }
-#mobile-menu.is-open { display: block; }
+#mobile-menu.is-open {
+  display: block;
+  max-height: calc(100vh - var(--header-h));
+  max-height: calc(100dvh - var(--header-h));   /* reachable in landscape */
+  overflow-y: auto;
+}
 .mobile-menu-list { padding-block: 0.5rem 1rem; }
 #mobile-menu a {
   display: block;
@@ -328,6 +334,21 @@ section { scroll-margin-top: var(--header-h); }
 @media (min-width: 1000px) {
   .nav-desktop { display: flex; }
   .mobile-menu-btn, #mobile-menu, #mobile-menu.is-open { display: none; }
+}
+/* With the brand subtitle the row is full (the container stops at 1180px):
+   pull the nav towards the tools so the subtitle doesn't read as a link */
+@media (min-width: 1400px) {
+  .nav-desktop { gap: 1.1rem; margin-left: auto; }
+}
+/* Narrow phones: tighten the header row so it fits without side-scrolling */
+@media (max-width: 379px) {
+  .header-bar { gap: 0.5rem; }
+  .header-tools { gap: 0.25rem; }
+  .lang-toggle button { min-width: 26px; padding: 0 5px; }
+  .mobile-menu-btn { padding: 5px; }
+}
+@media (max-width: 339px) {
+  .brand-mark .brand-word { font-size: 0.95rem; }
 }
 
 /* -- buttons -------------------------------------------------- */
@@ -1130,6 +1151,9 @@ section { scroll-margin-top: var(--header-h); }
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   color: var(--ink-mute);
 }
+@supports not (background: color-mix(in srgb, red, blue)) {
+  .site-footer { background: var(--paper); }
+}
 .footer-bar {
   display: flex;
   flex-wrap: wrap;
@@ -1139,6 +1163,7 @@ section { scroll-margin-top: var(--header-h); }
   padding-block: 2.25rem;
 }
 .footer-brand { display: flex; align-items: center; gap: 1rem; }
+.footer-brand .brand-lockup { flex-shrink: 0; white-space: nowrap; }
 .footer-brand .brand-word { font-size: 0.95rem; color: var(--ink); }
 .footer-tagline { color: var(--ink-mute); font-size: 0.88rem; }
 .footer-meta { font-family: var(--font-mono); font-size: 0.75rem; text-align: right; }
@@ -1158,7 +1183,6 @@ section { scroll-margin-top: var(--header-h); }
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
 }
 .loading {
   padding: 2rem 1rem;
