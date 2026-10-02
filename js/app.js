@@ -89,6 +89,7 @@
         state.lang = (def === "en") ? "en" : "pt";
       }
 
+      applyLangAttr();
       renderAll();
     } catch (err) {
       console.error("MALTA Lab — data load error", err);
@@ -97,10 +98,15 @@
   }
 
   // ---- Renderers ----
+  /** Reflect the current language on <html lang>. */
+  function applyLangAttr() {
+    document.documentElement.setAttribute("lang", state.lang === "en" ? "en" : "pt-BR");
+  }
+
   function setLang(lang) {
     state.lang = lang;
     localStorage.setItem("malta_lang", lang);
-    document.documentElement.setAttribute("lang", lang === "en" ? "en" : "pt-BR");
+    applyLangAttr();
     renderAll();
   }
 
@@ -142,7 +148,7 @@
       { id: "light", svg: SUN_SVG,  label: state.lang === "en" ? "Light" : "Claro" },
       { id: "dark",  svg: MOON_SVG, label: state.lang === "en" ? "Dark"  : "Escuro" }
     ].map(o =>
-      `<button data-theme="${o.id}" class="${cur === o.id ? "is-active" : ""}" aria-label="${o.label}" title="${o.label}">${o.svg}</button>`
+      `<button data-theme="${o.id}" class="${cur === o.id ? "is-active" : ""}" aria-pressed="${cur === o.id}" aria-label="${o.label}" title="${o.label}">${o.svg}</button>`
     ).join("");
     tog.querySelectorAll("button").forEach(b =>
       b.addEventListener("click", () => setTheme(b.dataset.theme))
@@ -232,10 +238,11 @@
       `<a href="${item.href}">${esc(t(item.label))}</a>`
     ).join("");
 
-    // Language toggle
+    // Language toggle (label = language name, in that language; visible text stays PT/EN)
+    const langNames = { pt: "Português", en: "English" };
     const tog = $("#lang-toggle");
     tog.innerHTML = ["pt", "en"].map(l =>
-      `<button data-lang="${l}" class="${state.lang === l ? "is-active" : ""}" aria-label="Switch to ${l.toUpperCase()}">${l.toUpperCase()}</button>`
+      `<button data-lang="${l}" class="${state.lang === l ? "is-active" : ""}" aria-pressed="${state.lang === l}" aria-label="${langNames[l]}" lang="${l === "en" ? "en" : "pt-BR"}">${l.toUpperCase()}</button>`
     ).join("");
     tog.querySelectorAll("button").forEach(b =>
       b.addEventListener("click", () => setLang(b.dataset.lang))
@@ -511,9 +518,21 @@
     const menuBtn = $("#mobile-menu-button");
     const menu    = $("#mobile-menu");
     if (menuBtn) {
-      menuBtn.addEventListener("click", () => menu.classList.toggle("is-open"));
+      // Keep aria-expanded in sync with the .is-open class
+      const setMenuOpen = (open) => {
+        menu.classList.toggle("is-open", open);
+        menuBtn.setAttribute("aria-expanded", String(open));
+      };
+      menuBtn.addEventListener("click", () => setMenuOpen(!menu.classList.contains("is-open")));
       menu.addEventListener("click", e => {
-        if (e.target.tagName === "A") menu.classList.remove("is-open");
+        if (e.target.tagName === "A") setMenuOpen(false);
+      });
+      // Escape closes the menu and returns focus to the button
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) {
+          setMenuOpen(false);
+          menuBtn.focus();
+        }
       });
     }
     // Apply theme + particles once particlesJS is loaded
