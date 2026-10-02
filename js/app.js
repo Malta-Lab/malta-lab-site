@@ -260,6 +260,7 @@
 
   function renderNoticias() {
     const sec = state.data.site?.noticiasSection;
+    const cats = state.data.site?.newsCategories || {};
     const items = state.data.noticias || [];
     if (sec) {
       $("#noticias-eyebrow").textContent = t(sec.eyebrow);
@@ -267,18 +268,22 @@
       $("#noticias-body").textContent    = t(sec.body);
     }
 
-    const sorted = items.slice().sort((a, b) => (b.date || "").localeCompare(a.date || ""));
-    $("#noticias-list").innerHTML = sorted.map(n => `
+    // Home shows the latest three; the full list lives on noticias.html
+    const latest = items.slice().sort((a, b) => (b.date || "").localeCompare(a.date || "")).slice(0, 3);
+    const href = (n) => `noticia.html?n=${encodeURIComponent(n.slug)}`;
+    $("#noticias-list").innerHTML = latest.map(n => `
       <article class="news-item">
         <div class="news-meta">
           <time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time>
-          ${n.tag ? `<span class="news-tag">${esc(t(n.tag))}</span>` : ""}
+          ${cats[n.category] ? `<span class="news-tag">${esc(t(cats[n.category]))}</span>` : ""}
         </div>
-        <h3>${esc(t(n.title))}</h3>
-        <p>${esc(t(n.body))}</p>
-        ${n.link ? `<a class="news-link" href="${esc(n.link)}" ${n.link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${state.lang === "en" ? "Read more" : "Saiba mais"} →</a>` : ""}
+        <h3><a class="news-title-link" href="${href(n)}">${esc(t(n.title))}</a></h3>
+        <p>${esc(t(n.summary))}</p>
+        <a class="news-link" href="${href(n)}" aria-hidden="true" tabindex="-1">${esc(t(sec?.labels?.readMore))} →</a>
       </article>
     `).join("");
+    $("#noticias-more").innerHTML = items.length
+      ? `<a class="btn btn-secondary" href="noticias.html">${esc(t(sec?.labels?.viewAll))} →</a>` : "";
   }
 
   function renderContato() {

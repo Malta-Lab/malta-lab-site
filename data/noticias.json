@@ -1,72 +1,67 @@
 [
   {
+    "slug": "2025-09-22-bracis-2025",
     "date": "2025-09-22",
-    "kind": "publication",
-    "tag": { "pt": "BRACIS 2025", "en": "BRACIS 2025" },
+    "category": "publicacao",
     "title": {
       "pt": "Três artigos aceitos no BRACIS 2025",
       "en": "Three papers accepted at BRACIS 2025"
     },
-    "body": {
+    "summary": {
       "pt": "Trabalhos sobre LIBRAS, debiasing em modelos de difusão e subtipagem odorífera em α-sinucleinopatia serão apresentados na Brazilian Conference on Intelligent Systems.",
       "en": "Works on LIBRAS recognition, debiasing diffusion models, and odor subtyping in α-synucleinopathy will be presented at the Brazilian Conference on Intelligent Systems."
-    },
-    "link": "#publicacoes"
+    }
   },
   {
+    "slug": "2025-08-12-stil-2025-fact-checking",
     "date": "2025-08-12",
-    "kind": "release",
-    "tag": { "pt": "STIL · PT-BR", "en": "STIL · PT-BR" },
+    "category": "lancamento",
     "title": {
       "pt": "Dataset de fact-checking em português brasileiro",
       "en": "Brazilian-Portuguese fact-checking dataset released"
     },
-    "body": {
+    "summary": {
       "pt": "Recursos e baselines para checagem automática de fatos em PT-BR, aceitos no STIL 2025.",
       "en": "Resources and baselines for automated fact-checking in Brazilian Portuguese, accepted at STIL 2025."
-    },
-    "link": "https://doi.org/10.5753/stil.2025.37820"
+    }
   },
   {
-    "date": "2025-02-10",
-    "kind": "publication",
-    "tag": { "pt": "ACM CSUR", "en": "ACM CSUR" },
-    "title": {
-      "pt": "Survey de Fairness em Deep Learning na ACM Computing Surveys",
-      "en": "Fairness in Deep Learning survey published in ACM Computing Surveys"
-    },
-    "body": {
-      "pt": "Levantamento abrangente sobre equidade em pesquisa de visão e linguagem, publicado em um dos periódicos mais prestigiados da área.",
-      "en": "A comprehensive survey of fairness in vision and language research, published in one of the field's flagship journals."
-    },
-    "link": "https://doi.org/10.1145/3637549"
-  },
-  {
+    "slug": "2025-04-04-npj-parkinsons-hiposmia",
     "date": "2025-04-04",
-    "kind": "publication",
-    "tag": { "pt": "npj Parkinson's", "en": "npj Parkinson's" },
+    "category": "publicacao",
     "title": {
       "pt": "Hiposmia em Parkinson publicado na npj Parkinson's Disease",
       "en": "Hyposmia in Parkinson's published in npj Parkinson's Disease"
     },
-    "body": {
+    "summary": {
       "pt": "Estudo sobre perda olfativa seletiva como marcador precoce da Doença de Parkinson, em colaboração internacional.",
       "en": "Selective odour loss as an early Parkinson's marker, in international collaboration."
-    },
-    "link": "https://doi.org/10.1038/s41531-025-00922-3"
+    }
   },
   {
+    "slug": "2025-02-10-acm-csur-fairness",
+    "date": "2025-02-10",
+    "category": "publicacao",
+    "title": {
+      "pt": "Survey de Fairness em Deep Learning na ACM Computing Surveys",
+      "en": "Fairness in Deep Learning survey published in ACM Computing Surveys"
+    },
+    "summary": {
+      "pt": "Levantamento abrangente sobre equidade em pesquisa de visão e linguagem, publicado em um dos periódicos mais prestigiados da área.",
+      "en": "A comprehensive survey of fairness in vision and language research, published in one of the field's flagship journals."
+    }
+  },
+  {
+    "slug": "2024-02-25-lermo-aaai-2024",
     "date": "2024-02-25",
-    "kind": "publication",
-    "tag": { "pt": "AAAI 2024", "en": "AAAI 2024" },
+    "category": "publicacao",
     "title": {
       "pt": "LERMO apresentado no AAAI 2024",
       "en": "LERMO presented at AAAI 2024"
     },
-    "body": {
+    "summary": {
       "pt": "Web game para reconhecimento de Língua Brasileira de Sinais com IA, apresentado na principal conferência de Inteligência Artificial.",
       "en": "An AI-powered web game for Brazilian Sign Language recognition, presented at the premier AI conference."
-    },
-    "link": "https://doi.org/10.1609/aaai.v38i21.30384"
+    }
   }
 ]

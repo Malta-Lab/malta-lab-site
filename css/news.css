@@ -1,0 +1,473 @@
+/* ============================================================
+ * MALTA Lab — news pages (noticias.html, noticia.html)
+ * Built only from the tokens in styles.css, so both themes work.
+ * ============================================================ */
+
+/* -- list page: header ---------------------------------------- */
+.news-index { padding-top: 4rem; }
+.news-index-header { max-width: 720px; margin-bottom: 2.5rem; }
+.news-page-title {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+.news-index-header p {
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.news-toolbar { margin-bottom: 2rem; }
+.news-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* -- list page: cards ------------------------------------------ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .2s ease, transform .25s ease, box-shadow .25s ease;
+}
+.news-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.news-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--elev-2);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.news-card:hover .news-card-media img { transform: scale(1.03); }
+/* Photo too small to crop sharply: show it whole instead of stretching it */
+.news-card-media.is-small img { width: auto; height: auto; object-fit: contain; }
+
+/* No photo: the date is the image */
+.news-dateplate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem 1.4rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.news-dateplate::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  margin-bottom: 0.9rem;
+  background: var(--accent);
+}
+.news-dateplate-day {
+  font-size: 4.25rem;
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+.news-dateplate-month {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.news-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.25rem 1.4rem 1.5rem;
+}
+.news-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+.news-cat {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.news-card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.news-card-title a { color: inherit; text-decoration: none; }
+/* The title link covers the whole card */
+.news-card-title a::after { content: ""; position: absolute; inset: 0; }
+.news-card:hover .news-card-title a { color: var(--accent); }
+.news-card-summary {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@supports selector(:has(a)) {
+  .news-card-title a:focus-visible { outline: none; }
+  .news-card:has(.news-card-title a:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/* The newest story spans the row: photo left, text right */
+.news-card.is-featured { grid-column: 1 / -1; }
+.news-card.is-featured .news-card-title { font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.18; letter-spacing: -0.02em; }
+.news-card.is-featured .news-card-summary { font-size: 1.05rem; }
+.news-card.is-featured .news-dateplate-day { font-size: clamp(4.5rem, 9vw, 7rem); }
+@media (min-width: 860px) {
+  .news-card.is-featured { display: grid; grid-template-columns: 1.35fr 1fr; }
+  .news-card.is-featured .news-card-media {
+    aspect-ratio: 16 / 10;
+    border-bottom: 0;
+    border-right: 1px solid var(--border);
+  }
+  /* The photo fills the box without driving the row height */
+  .news-card.is-featured .news-card-media img { position: absolute; inset: 0; }
+  .news-card.is-featured .news-card-media.is-small img { position: static; }
+  .news-card.is-featured .news-card-body { justify-content: center; padding: 2rem 2.25rem; gap: 0.8rem; }
+}
+
+/* Phones: one column, so date plates don't need a photo-sized box */
+@media (max-width: 599px) {
+  .news-card.no-cover .news-card-media { aspect-ratio: 5 / 2; }
+  .news-dateplate { padding: 1rem 1.25rem; }
+  .news-dateplate-day,
+  .news-card.is-featured .news-dateplate-day { font-size: 3.25rem; }
+}
+
+.news-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+}
+.news-empty p { margin: 0 0 1.25rem; }
+
+/* -- article page ---------------------------------------------- */
+.news-article { padding-top: 3rem; }
+.article-wrap { max-width: 720px; margin: 0 auto; }
+
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-mute);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .15s ease;
+}
+.article-back:hover { color: var(--accent); }
+
+.article-header { margin-top: 2.25rem; }
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+.article-category { text-decoration: none; }
+.article-category:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.article-title {
+  margin: 0.75rem 0 0;
+  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.article-lede {
+  margin: 1.1rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* On wide screens, cover and galleries break out of the text column (up to 960px) */
+@media (min-width: 800px) {
+  .article-cover,
+  .article-gallery {
+    width: min(960px, calc(100vw - 4rem));
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.article-cover { margin: 2.5rem 0 0; }
+.article-cover-media {
+  aspect-ratio: 16 / 9;
+  background: var(--elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-cover-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.article-cover-media.is-small img { width: auto; height: auto; object-fit: contain; }
+.article-cover figcaption {
+  max-width: 720px;
+  margin: 0.75rem auto 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-mute);
+}
+
+.article-notice {
+  margin: 2rem 0 0;
+  padding: 0.8rem 1rem;
+  background: var(--elev-1);
+  border-left: 3px solid var(--accent);
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+/* -- article body (rendered Markdown) -------------------------- */
+.article-body {
+  margin-top: 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.article-body > :first-child { margin-top: 0; }
+.article-body p { margin: 0 0 1.25em; }
+.article-body h2 {
+  margin: 2.2em 0 0.6em;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.article-body h3 {
+  margin: 1.8em 0 0.4em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.article-body h4 { margin: 1.6em 0 0.4em; font-size: 1rem; font-weight: 700; }
+.article-body strong { color: var(--ink); font-weight: 700; }
+.article-body a:not(.btn) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.article-body a:not(.btn):hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
+.article-body ul, .article-body ol { margin: 0 0 1.25em; padding-left: 1.3em; }
+.article-body li { margin: 0.35em 0; }
+.article-body li::marker { color: var(--accent); }
+.article-body blockquote {
+  margin: 2em 0;
+  padding: 0.2em 0 0.2em 1.25em;
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+.article-body blockquote p:last-child { margin-bottom: 0; }
+.article-body hr { border: 0; border-top: 1px solid var(--border); margin: 3em 0; }
+.article-body code {
+  font-size: 0.88em;
+  background: var(--elev-1);
+  border: 1px solid var(--border);
+  padding: 0.08em 0.35em;
+  border-radius: 4px;
+}
+.article-body pre {
+  margin: 0 0 1.25em;
+  padding: 1rem 1.1rem;
+  background: var(--elev-1);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.article-body pre code { background: none; border: 0; padding: 0; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.5em; font-size: 0.95rem; }
+.article-body th, .article-body td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+.article-body th { color: var(--ink); font-weight: 700; }
+/* Images inside a sentence (rare): keep them in the column */
+.article-body img { max-width: 100%; height: auto; }
+
+/* Figures: the photo is never wider than its sharp size, and the caption
+   wraps to the photo's width, like a figure in a paper */
+.article-figure {
+  width: fit-content;
+  max-width: 100%;
+  margin: 2.5rem auto;
+}
+.figure-zoom { display: block; cursor: zoom-in; }
+.article-figure .figure-zoom img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;              /* portrait photos stay on screen */
+  margin: 0 auto;
+  border-radius: var(--radius);
+  background: var(--elev-1);
+}
+.article-figure figcaption,
+.article-gallery figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-mute);
+}
+.figure-label {
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.figure-text { color: var(--ink-soft); }
+.figure-credit { color: var(--ink-quiet); }
+.figure-credit::before { content: "— "; }
+
+/* Galleries: uniform tiles, click for the full photo */
+.article-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.5rem 0;
+}
+@media (min-width: 640px) {
+  .article-gallery:not([data-count="2"]):not([data-count="4"]) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* Two columns on phones: an odd photo count leads with one wide photo */
+@media (max-width: 639px) {
+  .article-gallery[data-count="3"] .article-figure:first-child,
+  .article-gallery[data-count="5"] .article-figure:first-child,
+  .article-gallery[data-count="7"] .article-figure:first-child { grid-column: 1 / -1; }
+}
+.article-gallery .article-figure { width: auto; margin: 0; }
+.article-gallery .figure-zoom {
+  aspect-ratio: 4 / 3;
+  background: var(--elev-1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-gallery .figure-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform .4s ease;
+}
+.article-gallery .figure-zoom:hover img { transform: scale(1.03); }
+.article-gallery .figure-zoom.is-small img { width: auto; height: auto; object-fit: contain; }
+.article-gallery figcaption { margin-top: 0.5rem; font-size: 0.82rem; }
+
+.article-error {
+  padding: 1rem 1.1rem;
+  background: var(--elev-1);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+
+.article-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.article-footer[hidden] { display: none; }
+.article-copy { font-size: 0.9rem; padding: 0.6rem 1rem; }
+
+/* -- lightbox --------------------------------------------------- */
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgba(12, 11, 10, 0.88); }
+.lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; }
+.lightbox img { display: block; width: auto; height: auto; max-width: 92vw; max-height: 80vh; }
+.lightbox figcaption {
+  max-width: 70ch;
+  margin-top: 0.9rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #E9E4DF;
+}
+.lightbox-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .news-card, .news-card-media img, .article-gallery .figure-zoom img { transition: none; }
+  .news-card:hover { transform: none; }
+  .news-card:hover .news-card-media img,
+  .article-gallery .figure-zoom:hover img { transform: none; }
+}

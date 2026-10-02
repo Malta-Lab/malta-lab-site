@@ -18,7 +18,7 @@
     { "href": "#pesquisa",    "label": { "pt": "Pesquisa",     "en": "Research" } },
     { "href": "#membros",     "label": { "pt": "Equipe",       "en": "Team" } },
     { "href": "#publicacoes", "label": { "pt": "Publicações",  "en": "Publications" } },
-    { "href": "#noticias",    "label": { "pt": "Notícias",     "en": "News" } },
+    { "href": "noticias.html", "label": { "pt": "Notícias",    "en": "News" } },
     { "href": "#contato",     "label": { "pt": "Contato",      "en": "Contact" } }
   ],
 
@@ -125,9 +125,49 @@
     "eyebrow": { "pt": "Atualizações",  "en": "Updates" },
     "title":   { "pt": "Notícias",      "en": "News" },
     "body": {
-      "pt": "Artigos aceitos, talks, defesas e novos recursos abertos.",
-      "en": "Accepted papers, talks, defences, and newly released resources."
+      "pt": "Artigos aceitos, palestras, eventos, defesas e novos recursos abertos.",
+      "en": "Accepted papers, talks, events, defences, and newly released resources."
+    },
+    "labels": {
+      "readMore": { "pt": "Ler notícia",             "en": "Read story" },
+      "viewAll":  { "pt": "Ver todas as notícias",   "en": "See all news" }
     }
+  },
+
+  "newsPage": {
+    "eyebrow": { "pt": "Atualizações", "en": "Updates" },
+    "title":   { "pt": "Notícias",     "en": "News" },
+    "body": {
+      "pt": "Eventos, palestras, defesas, prêmios e publicações do MALTA Lab.",
+      "en": "Events, talks, defences, awards, and publications from MALTA Lab."
+    },
+    "labels": {
+      "filter":      { "pt": "Categoria",              "en": "Category" },
+      "all":         { "pt": "Todas",                  "en": "All" },
+      "count":       { "pt": "notícias",               "en": "stories" },
+      "countOne":    { "pt": "notícia",                "en": "story" },
+      "empty":       { "pt": "Nenhuma notícia nesta categoria ainda.", "en": "No stories in this category yet." },
+      "showAll":     { "pt": "Ver todas as notícias",  "en": "See all news" },
+      "back":        { "pt": "Todas as notícias",      "en": "All news" },
+      "figure":      { "pt": "Fig.",                   "en": "Fig." },
+      "zoom":        { "pt": "Ampliar imagem",         "en": "Enlarge image" },
+      "close":       { "pt": "Fechar",                 "en": "Close" },
+      "copyLink":    { "pt": "Copiar link",            "en": "Copy link" },
+      "copied":      { "pt": "Link copiado",           "en": "Link copied" },
+      "notFoundTitle": { "pt": "Notícia não encontrada", "en": "Story not found" },
+      "notFoundBody":  { "pt": "Este endereço não corresponde a nenhuma notícia. Ela pode ter sido renomeada ou removida.", "en": "This address doesn't match any story. It may have been renamed or removed." },
+      "loadError":   { "pt": "Não foi possível carregar o texto desta notícia. Recarregue a página para tentar de novo.", "en": "The text of this story couldn't be loaded. Reload the page to try again." },
+      "enFallback":  { "pt": "", "en": "This story isn't available in English yet, so it's shown in Portuguese." }
+    }
+  },
+
+  "newsCategories": {
+    "publicacao": { "pt": "Publicação", "en": "Publication" },
+    "evento":     { "pt": "Evento",     "en": "Event" },
+    "palestra":   { "pt": "Palestra",   "en": "Talk" },
+    "defesa":     { "pt": "Defesa",     "en": "Defence" },
+    "premio":     { "pt": "Prêmio",     "en": "Award" },
+    "lancamento": { "pt": "Lançamento", "en": "Release" }
   },
 
   "contato": {
