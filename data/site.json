@@ -27,10 +27,6 @@
       "pt": "Grupo de Pesquisa da Escola Politécnica · Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)",
       "en": "Research Group of the School of Technology · Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)"
     },
-    "legendHint": {
-      "pt": "Passe o cursor para destacar no fundo",
-      "en": "Hover to highlight it in the background"
-    },
     "ctas": [
       {
         "href": "#pesquisa",

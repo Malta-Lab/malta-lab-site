@@ -537,20 +537,6 @@ section { scroll-margin-top: var(--header-h); }
 @media (max-width: 979px) {
   .legend-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); column-gap: 1.25rem; }
 }
-/* Only devices that can hover get the hint */
-.legend-hint { display: none; }
-@media (hover: hover) {
-  .legend-hint {
-    display: block;
-    margin-top: 0.6rem;
-    padding-top: 0.6rem;
-    border-top: 1px solid var(--border);
-    color: var(--ink-mute);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-  }
-}
-
 /* A cluster colour, with a soft halo like a point in the plot */
 .swatch {
   flex: 0 0 auto;

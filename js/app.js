@@ -92,8 +92,7 @@
           <li><a href="#area-${esc(l.id)}" data-cluster="${i}" style="--swatch: var(--area-${i})">
             <span class="swatch" aria-hidden="true"></span>${esc(t(l.title))}
           </a></li>`).join("")}
-      </ul>
-      <p class="legend-hint" aria-hidden="true">${esc(t(h.legendHint))}</p>`;
+      </ul>`;
   }
 
   function renderSobre() {
