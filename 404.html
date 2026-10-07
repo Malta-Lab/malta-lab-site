@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Página não encontrada · MALTA Lab</title>
+
+  <!-- GitHub Pages serves this page for any missing path. Links from before the
+       repo was renamed (/malta-lab-site/…, /malta-lab/…) go to the same page at the root. -->
+  <script>
+    (function () {
+      var m = location.pathname.match(/^\/(malta-lab-site|malta-lab)(\/.*)?$/);
+      if (m) location.replace((m[2] || "/") + location.search + location.hash);
+    })();
+  </script>
+
+  <meta name="theme-color" content="#F3EFED" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1A1816" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Atkinson+Hyperlegible+Mono:wght@400..600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+  <!-- Absolute paths: this page is served at whatever address was missing -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Apply saved / system theme before first paint (avoids a flash of wrong colors) -->
+  <script>
+    (function () {
+      let initial = null;
+      try { initial = localStorage.getItem("malta_theme"); } catch (e) { /* storage blocked */ }
+      if (initial !== "light" && initial !== "dark") {
+        initial = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", initial);
+    })();
+  </script>
+
+  <style>
+    .not-found { display: flex; align-items: center; min-height: 100vh; min-height: 100svh; }
+    .not-found .brand-mark { display: inline-flex; margin-bottom: 3rem; }
+    .not-found h1 {
+      margin-top: 0.75rem;
+      font-family: var(--font-display);
+      font-stretch: 112%;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 650;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .not-found .btn { margin-top: 2rem; }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg-network" aria-hidden="true"></canvas>
+
+  <main class="not-found">
+    <div class="container-narrow">
+      <header class="section-header">
+        <a class="brand-mark" href="/" aria-label="MALTA Lab">
+          <span class="brand-lockup"><span class="brand-word">MALTA Lab</span><span class="brand-bar" aria-hidden="true"></span></span>
+        </a>
+        <div><span class="eyebrow">404</span></div>
+        <h1 id="nf-title">Página não encontrada</h1>
+        <p id="nf-body">Este endereço não existe no site do MALTA Lab. Ele pode ter mudado ou sido removido.</p>
+      </header>
+      <a class="btn btn-primary" href="/" id="nf-home">Ir para a página inicial <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      let lang = null;
+      try { lang = localStorage.getItem("malta_lang"); } catch (e) { /* storage blocked */ }
+      if (!lang) lang = (navigator.language || "pt").slice(0, 2) === "en" ? "en" : "pt";
+      if (lang !== "en") return;
+      document.documentElement.setAttribute("lang", "en");
+      document.title = "Page not found · MALTA Lab";
+      document.getElementById("nf-title").textContent = "Page not found";
+      document.getElementById("nf-body").textContent = "This address doesn't exist on the MALTA Lab site. It may have moved or been removed.";
+      document.getElementById("nf-home").firstChild.textContent = "Go to the home page ";
+    })();
+  </script>
+  <script src="/js/network.js" defer></script>
+</body>
+</html>
